@@ -17,7 +17,11 @@ gem 'devise'
 
 group :development, :test do
   gem 'pry-rails'
+  gem 'pry'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'spring'
+  gem 'nokogiri', '1.6.6.2'
+  gem 'capybara'
+  gem 'selenium'
 end

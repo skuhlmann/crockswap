@@ -1,1 +1,7 @@
-<p>poopin</p>
+<div class="row">
+  <div class="six columns">Welcome <%= @user.email %></div>
+  <div class="three columns"></div>
+  <div class="three columns">
+      <%= link_to "sign the fuck out", destroy_user_session_path, :method => :delete %>
+  </div>
+</div>

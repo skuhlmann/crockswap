@@ -4,6 +4,7 @@ class Devise::RegistrationsController < DeviseController
 
   # GET /resource/sign_up
   def new
+    @poopin = 'POOOPIN'
     build_resource({})
     respond_with self.resource
   end
@@ -12,26 +13,22 @@ class Devise::RegistrationsController < DeviseController
   def create
     build_resource(sign_up_params)
 
-    # if account_exists?(sign_up_params[:email])
-      if resource.save
-        yield resource if block_given?
-        if resource.active_for_authentication?
-          set_flash_message :notice, :signed_up if is_flashing_format?
-          sign_up(resource_name, resource)
-          respond_with resource, location: after_sign_up_path_for(resource)
-        else
-          set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
-          expire_data_after_sign_in!
-          respond_with resource, location: "/users/sign_in"
-        end
+    if resource.save
+      yield resource if block_given?
+      if resource.active_for_authentication?
+        set_flash_message :notice, :signed_up if is_flashing_format?
+        sign_up(resource_name, resource)
+        respond_with resource, location: after_sign_up_path_for(resource)
       else
-        clean_up_passwords resource
-        respond_with resource
+        set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
+        expire_data_after_sign_in!
+        respond_with resource, location: "/users/sign_in"
       end
-    # else
-    #   flash[:notice] = "Account not found in QuickBase. Please try another email."
-    #   respond_with resource, location: "/users/sign_up"
-    # end
+    else
+      clean_up_passwords resource
+      flash[:notice] = resource.errors.full_messages.join(". ")
+      respond_with resource
+    end
   end
 
   # GET /resource/edit
