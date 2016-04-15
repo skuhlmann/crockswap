@@ -14,6 +14,7 @@ gem 'puma'
 gem "browserify-rails"
 gem 'react-rails', '~> 1.6.0'
 gem 'devise'
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'pry-rails'
