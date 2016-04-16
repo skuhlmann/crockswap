@@ -32,8 +32,8 @@ describe 'user managment', type: :feature do
     page.fill_in('user_password', with: 'password')
     page.click_button('Sign in')
 
-    expect(current_path).to eq(root_path)
-    expect(page).to have_content('sign the fuck out')
+    expect(current_path).to eq(user_root_path)
+    expect(page).to have_content('Sign out')
     expect(page).to have_content(user.email)
   end
 
@@ -77,7 +77,7 @@ describe 'user managment', type: :feature do
     page.fill_in('user_password', with: 'password')
     page.click_button('Sign in')
 
-    page.click_link('sign the fuck out')
-    expect(current_path).to eq(new_user_session_path)
+    page.click_link('Sign out')
+    expect(current_path).to eq(root_path)
   end
 end
