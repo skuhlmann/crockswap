@@ -65,10 +65,11 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     :enable_starttls_auto => true,
     :address => "smtp.gmail.com",
+    :domain => 'crockswap.com',
     :port => 587,
     :authentication => :login,
-    :user_name => "",
-    :password => ""
+    :user_name => ENV['GMAIL_USERNAME'],
+    :password => ENV['GMAIL_PASSWORD']
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to

@@ -13,7 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma'
 gem 'react-rails', '~> 1.6.0'
 gem 'devise'
-gem 'rails_12factor', group: :production
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'pry-rails'
@@ -24,4 +24,8 @@ group :development, :test do
   gem 'nokogiri', '1.6.6.2'
   gem 'capybara'
   gem 'selenium'
+end
+
+group :production, :staging do
+  gem 'rails_12factor'
 end

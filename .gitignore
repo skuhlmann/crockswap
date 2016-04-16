@@ -2,7 +2,6 @@
 /log/*
 !/log/.keep
 /tmp
-npm-debug.log
-node_modules
-/app/assets/webpack/*
 /vendor
+.env
+.DS_store
