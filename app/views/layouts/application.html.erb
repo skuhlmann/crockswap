@@ -8,9 +8,12 @@
   <%= favicon_link_tag 'fav.ico' %>
 </head>
 <body>
-  <div class="container">
-    <h1>crockswap</h1>
+  <%= render "shared/nav", object: current_user %>
+
+  <div id="content" class="container">
     <%= yield %>
   </div>
+
+  <%= render "shared/footer" %>
 </body>
 </html>
