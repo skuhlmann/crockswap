@@ -1,5 +1,22 @@
 @import "app-variables";
 
+// links
+a {
+  color: $orange;
+}
+
+a:hover {
+  color: $orange;
+}
+
+a.clean-link {
+  color: white;
+}
+// layout
 #content {
-  min-height: 500px;
+  min-height: 350px;
+}
+
+.center-content {
+  text-align: center;
 }

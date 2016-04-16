@@ -1,15 +1,20 @@
 <div id="menu">
   <div class="row">
-    <div class="six columns">
-      <%= image_tag("icon-svg/cutlery-1.svg", width: "35", alt: "CrockSwap") %>
+    <div class="eight columns">
+      <%= link_to root_path, {class: "clean-link"} do %>
+        <%= image_tag("icon-svg/cutlery-1.svg", width: "35", alt: "CrockSwap") %>
+      <% end %>
       <span class="nav-name">CrockSwap</span>
     </div>
-    <div class="six columns">
+    <div class="four columns">
       <nav>
           <ul>
-            <li class="u-pull-left"><a href="#">Sign in</a></li>
-            <li class="u-pull-left"><a href="#"></a>Sign up</li>
-            <li class="u-pull-left"><a href="#"></a>My Profile</li>
+            <% if current_user %>
+              <li class="u-pull-right"><%= link_to "My crock", user_root_path, :method => :delete %></li>
+              <li class="u-pull-right"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+            <% else %>
+              <li class="u-pull-right"><%= link_to "Sign in", new_user_session_path %></li>
+            <% end %>
           </ul>
       </nav>
     </div>

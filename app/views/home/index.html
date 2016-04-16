@@ -1,7 +1,7 @@
-<div class="row">
-  <div class="six columns">Welcome <%= @user.email %></div>
-  <div class="three columns"></div>
-  <div class="three columns">
-      <%= link_to "sign the fuck out", destroy_user_session_path, :method => :delete %>
+<div class="row center-content homepage-frame">
+  <div class="twelve columns">
+    <h2>HOMEPAGE CONTENT</h2>
+    <p>Spend less. Cook once. Eat for days.</p>
+    <%= link_to "Sign up", new_user_registration_path, {class: "button"} %>
   </div>
 </div>
