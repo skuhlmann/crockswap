@@ -9,11 +9,38 @@
   font-size: $font-size-large;
 }
 
-.tagline {
-  font-size: $font-size-base;
+.logo-img {
+  width: 23px;
+}
+
+.nav-links {
+  padding-top: 15px;
 }
 
 #menu li {
   list-style-type: none;
   padding: 5px;
+  font-size: $font-size-small;
+}
+
+// desktop
+
+@media (min-width: 750px) {
+  .logo-img {
+    width: 35px;
+  }
+
+  .nav-name {
+    font-size: $font-size-large-desk;
+  }
+
+  .nav-links {
+    padding-top: 25px;
+  }
+
+  #menu li {
+    list-style-type: none;
+    padding: 5px;
+    font-size: $font-size-small-desk;
+  }
 }
