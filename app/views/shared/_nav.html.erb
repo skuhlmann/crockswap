@@ -7,8 +7,8 @@
       <span class="nav-name">CrockSwap</span>
       <ul class="u-pull-right nav-links">
         <% if current_user %>
-          <li class="u-pull-right"><%= link_to "My crock", user_root_path, :method => :delete %></li>
-          <li class="u-pull-right"><%= link_to "Sign out", destroy_user_session_path %></li>
+          <li class="u-pull-right"><%= link_to "My crock", user_root_path %></li>
+          <li class="u-pull-right"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
         <% else %>
           <li class="u-pull-right"><%= link_to "Sign in", new_user_session_path %></li>
         <% end %>
