@@ -12,10 +12,10 @@
     <% end %>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <%= f.label :email %><br />
+        <%= f.label :email %>
         <%= f.email_field :email, autofocus: true %>
 
-        <%= f.label :password %><br />
+        <%= f.label :password %>
         <%= f.password_field :password, autocomplete: "off" %>
 
       <% if devise_mapping.rememberable? -%>

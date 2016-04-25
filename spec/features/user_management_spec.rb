@@ -80,4 +80,23 @@ describe 'user managment', type: :feature do
     page.click_link('Sign out')
     expect(current_path).to eq(root_path)
   end
+
+  it "can edit a profile" do
+    user = User.create(email: "colleen@example.com", password: "password")
+    user.confirm
+
+    visit new_user_session_path
+    page.fill_in('user_email', with: 'colleen@example.com')
+    page.fill_in('user_password', with: 'password')
+    page.click_button('Sign in')
+
+    page.click_link("My profile")
+    expect(current_path).to eq(edit_profile_path(user))
+
+    page.fill_in('Name', with: 'Colleen')
+    page.click_button("Update profile")
+
+    expect(page).to have_content("Successfully updated")
+    expect(User.where(name: "Colleen").length).to be(1)
+  end
 end
