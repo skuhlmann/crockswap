@@ -26,6 +26,10 @@ group :development, :test do
   gem 'selenium'
 end
 
+group :test do
+  gem 'database_cleaner'
+end
+
 group :production, :staging do
   gem 'rails_12factor'
 end
