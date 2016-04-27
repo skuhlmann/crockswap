@@ -14,6 +14,7 @@ gem 'puma'
 gem 'react-rails', '~> 1.6.0'
 gem 'devise'
 gem 'dotenv-rails'
+gem "font-awesome-rails"
 
 group :development, :test do
   gem 'pry-rails'
