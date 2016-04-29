@@ -11,10 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426212952) do
+ActiveRecord::Schema.define(version: 20160429195134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "containers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "size"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "containers_groups", id: false, force: :cascade do |t|
+    t.integer "group_id",     null: false
+    t.integer "container_id", null: false
+  end
+
+  create_table "diet_restrictions", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "diet_restrictions_groups", id: false, force: :cascade do |t|
+    t.integer "group_id",            null: false
+    t.integer "diet_restriction_id", null: false
+  end
+
+  create_table "diet_restrictions_users", id: false, force: :cascade do |t|
+    t.integer "user_id",             null: false
+    t.integer "diet_restriction_id", null: false
+  end
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"
@@ -25,13 +53,13 @@ ActiveRecord::Schema.define(version: 20160426212952) do
     t.datetime "updated_at",       null: false
   end
 
-  create_table "groups_users", id: false, force: :cascade do |t|
+  create_table "invites", force: :cascade do |t|
     t.integer "user_id",  null: false
     t.integer "group_id", null: false
   end
 
-  add_index "groups_users", ["group_id", "user_id"], name: "index_groups_users_on_group_id_and_user_id", using: :btree
-  add_index "groups_users", ["user_id", "group_id"], name: "index_groups_users_on_user_id_and_group_id", using: :btree
+  add_index "invites", ["group_id", "user_id"], name: "index_invites_on_group_id_and_user_id", using: :btree
+  add_index "invites", ["user_id", "group_id"], name: "index_invites_on_user_id_and_group_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

@@ -20,7 +20,14 @@
       <%= f.text_field :zip_code, autofocus: true %>
 
       <%= f.label :cooking_level %>
-      <%= f.select :cooking_level, @cooking_levels, {include_blank: true} %></br>
+      <%= f.select :cooking_level, @cooking_levels, {include_blank: true} %>
+
+      <br>
+      Dietary Restrictions:
+      <br>
+      <%= f.collection_check_boxes(:diet_restriction_ids, @diet_restrictions, :id, :name ) %>
+      <br>
+
 
       <%= f.submit "Update profile" %>
     <% end %>
