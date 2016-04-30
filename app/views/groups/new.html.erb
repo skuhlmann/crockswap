@@ -1,25 +1,27 @@
-<div class="row">
-  <div class="u-full-width">
+<div class="container">
+  <div class="row">
+    <div class="u-full-width">
 
-    <h3>Create Group</h3>
+      <h3>Create Group</h3>
 
-    <% if flash[:alert] %>
-      <div class="alert alert-danger"><%= flash[:alert] %></div>
-    <% end %>
+      <% if flash[:alert] %>
+        <div class="alert alert-danger"><%= flash[:alert] %></div>
+      <% end %>
 
-    <%= form_for(@group) do |f| %>
+      <%= form_for(@group) do |f| %>
 
-      <%= f.label :name %>
-      <%= f.text_field :name, autofocus: true %>
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true %>
 
-      <%= f.label :budget %>
-      <%= f.number_field :budget, autofocus: true %>
+        <%= f.label :budget %>
+        <%= f.number_field :budget, autofocus: true %>
 
-      <%= f.label :max_participants %>
-      <%= f.number_field :max_participants, autofocus: true %></br>
+        <%= f.label :max_participants %>
+        <%= f.number_field :max_participants, autofocus: true %></br>
 
-      <%= f.submit "Create group" %>
-    <% end %>
+        <%= f.submit "Create group" %>
+      <% end %>
 
+    </div>
   </div>
 </div>

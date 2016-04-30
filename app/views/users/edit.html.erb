@@ -1,36 +1,38 @@
-<div class="row">
-  <div class="u-full-width">
+<div class="container">
+  <div class="row">
+    <div class="u-full-width">
 
-    <h3>My Profile</h3>
-    <p><%= @user.email %></p>
+      <h3>My Profile</h3>
+      <p><%= @user.email %></p>
 
-    <% if flash[:alert] %>
-      <div class="alert alert-danger"><%= flash[:alert] %></div>
-    <% end %>
+      <% if flash[:alert] %>
+        <div class="alert alert-danger"><%= flash[:alert] %></div>
+      <% end %>
 
-    <%= form_for(@user, url: profile_path(@user.id)) do |f| %>
+      <%= form_for(@user, url: profile_path(@user.id)) do |f| %>
 
-      <%= f.label :name %>
-      <%= f.text_field :name, autofocus: true %>
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true %>
 
-      <%= f.label :city %>
-      <%= f.text_field :city, autofocus: true %>
+        <%= f.label :city %>
+        <%= f.text_field :city, autofocus: true %>
 
-      <%= f.label :zip_code %>
-      <%= f.text_field :zip_code, autofocus: true %>
+        <%= f.label :zip_code %>
+        <%= f.text_field :zip_code, autofocus: true %>
 
-      <%= f.label :cooking_level %>
-      <%= f.select :cooking_level, @cooking_levels, {include_blank: true} %>
+        <%= f.label :cooking_level %>
+        <%= f.select :cooking_level, @cooking_levels, {include_blank: true} %>
 
-      <br>
-      Dietary Restrictions:
-      <br>
-      <%= f.collection_check_boxes(:diet_restriction_ids, @diet_restrictions, :id, :name ) %>
-      <br>
+        <br>
+        Dietary Restrictions:
+        <br>
+        <%= f.collection_check_boxes(:diet_restriction_ids, @diet_restrictions, :id, :name ) %>
+        <br>
 
 
-      <%= f.submit "Update profile" %>
-    <% end %>
+        <%= f.submit "Update profile" %>
+      <% end %>
 
+    </div>
   </div>
 </div>

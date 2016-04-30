@@ -2,15 +2,15 @@
 
 #footer {
   background-color: #5E5E5E;
-  padding: 40px;
+  padding: 20px 20px 5px 20px;
 }
 
 #footer p {
   color: $white;
 }
 
-.footer-heading,
 .footer-content {
+  text-align: center;
   font-size: $font-size-small;
 }
 
