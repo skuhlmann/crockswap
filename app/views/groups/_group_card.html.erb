@@ -1,0 +1,7 @@
+<% @groups.each do |group| %>
+  <div class="five columns group-card">
+    <h4 class="group-name"><%= group.name %></h4>
+    <p>Budget: <%= number_to_currency(group.budget) %></p>
+    <p>Max Participants: <%= group.max_participants %></p>
+  </div>
+<% end %>

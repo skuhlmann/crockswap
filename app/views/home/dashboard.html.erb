@@ -1,26 +1,17 @@
 <div class="container">
   <div class="row">
-    <div class="six columns">
-      Welcome <%= @user.email %>
-
+    <div class="u-full-width">
       <% unless @groups.empty? %>
-      <hr>
-      <p>My groups: </p>
-      <ul>
-        <% @groups.each do |group| %>
-          <li><%= group.name %></li>
-        <% end %>
-      </ul>
+        <p class="medium"><%= fa_icon "users" %> My groups</p>
+        <%= render "groups/group_card", collection: @groups %>
+      <% else %>
+        <p>You aren't in any groups yet.</p>
+      <% end %>
+    </div>
+  </div>
+  <div class="u-full-width">
+    <%= link_to new_groups_path  do %>
+      <p><%= fa_icon "plus" %> Add a new group</p>
     <% end %>
-    </div>
-    <div class="three columns">
-      <% if flash[:alert] %>
-        <div class="alert alert-danger"><%= flash[:alert] %></div>
-      <% end %>
-
-      <% if flash[:notice] %>
-        <div class="alert alert-danger"><%= flash[:notice] %></div>
-      <% end %>
-    </div>
   </div>
 </div>

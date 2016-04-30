@@ -1,3 +1,5 @@
+@import "app-variables";
+
 /*
 * Skeleton V2.0.4
 * Copyright 2014, Dave Gamache
@@ -198,7 +200,7 @@ input[type="submit"]:focus,
 input[type="reset"]:focus,
 input[type="button"]:focus {
   color: #333;
-  border-color: #888;
+  border-color: $green;
   outline: 0; }
 .button.button-primary,
 button.button-primary,
@@ -206,8 +208,8 @@ input[type="submit"].button-primary,
 input[type="reset"].button-primary,
 input[type="button"].button-primary {
   color: #FFF;
-  background-color: #33C3F0;
-  border-color: #33C3F0; }
+  background-color: $green;
+  border-color: $green; }
 .button.button-primary:hover,
 button.button-primary:hover,
 input[type="submit"].button-primary:hover,
@@ -266,7 +268,7 @@ input[type="url"]:focus,
 input[type="password"]:focus,
 textarea:focus,
 select:focus {
-  border: 1px solid #33C3F0;
+  border: 1px solid $green;
   outline: 0; }
 label,
 legend {

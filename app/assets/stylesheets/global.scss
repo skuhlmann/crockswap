@@ -1,21 +1,29 @@
 @import "app-variables";
 
 //type
+body {
+  font-family: $font-family-serif;
+}
+
 p, a {
   font-family: $font-family-serif;
 }
 
-h1,h2,h3,h4,h5,h6,button,.button {
+h1,h2,h3,h4,h5,h6,button,.button, input {
   font-family: $font-family-sans-serif;
+}
+
+.medium {
+  font-size: $font-size-medium
 }
 
 // links
 a {
-  color: $orange;
+  color: $darkbluegrey;
 }
 
 a:hover {
-  color: $orange;
+  color: $green;
 }
 
 a.clean-link {
@@ -23,7 +31,7 @@ a.clean-link {
 }
 // layout
 #content {
-  padding-top: 110px;
+  padding-top: 80px;
   min-height: 650px;
   padding-left: 0px;
   padding-right: 0px;
@@ -49,6 +57,10 @@ a.clean-link {
     padding-right: 0px;
     width: 100%;
     max-width: 960px;
+  }
+
+  .medium {
+    font-size: $font-size-medium-desk;
   }
 }
 

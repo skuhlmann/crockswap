@@ -14,7 +14,6 @@ describe 'group managment', type: :feature do
     page.fill_in('group_budget', with: "$30")
     page.click_button("Create group")
 
-    expect(page).to have_content("Success")
     expect(page).to have_content("My groups")
     expect(page).to have_content("Hot swappin' devils")
   end
