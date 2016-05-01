@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'home#dashboard', as: 'user_root'
 
   resources :users, only: [:edit, :update], path: 'profile', as: :profile
-  resource :groups, only: [:new, :create]
+  resources :groups, only: [:new, :create, :show, :edit, :update], param: :name
 
   root "home#index"
 end

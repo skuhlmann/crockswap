@@ -15,7 +15,7 @@
           <% if current_user %>
             <p class="username">Hello <%= current_user.name %></p>
             <li><%= link_to "Groups", user_root_path %></li>
-            <li><%= link_to "Add group", new_groups_path %></li>
+            <li><%= link_to "Add group", new_group_path %></li>
             <li><%= link_to "Profile", edit_profile_path(current_user) %></li>
             <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
           <% else %>

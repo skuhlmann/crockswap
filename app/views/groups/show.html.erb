@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="ten columns">
+
+      <h3><%= @group.name %></h3>
+      <p>Budget: <%= number_to_currency(@group.budget) %></p>
+      <p>Max Participants: <%= @group.max_participants %></p>
+    </div>
+    <div class="two columns">
+      <a href="#">Week planner</a>
+      <%= link_to "Settings", edit_group_path(@group.name) %>
+    </div>
+  </div>
+</div>
