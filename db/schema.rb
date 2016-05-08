@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160429195134) do
+ActiveRecord::Schema.define(version: 20160508004425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,11 +21,6 @@ ActiveRecord::Schema.define(version: 20160429195134) do
     t.string   "size"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "containers_groups", id: false, force: :cascade do |t|
-    t.integer "group_id",     null: false
-    t.integer "container_id", null: false
   end
 
   create_table "diet_restrictions", force: :cascade do |t|
@@ -51,7 +46,11 @@ ActiveRecord::Schema.define(version: 20160429195134) do
     t.string   "container_type"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "swap_location"
+    t.integer  "container_id"
   end
+
+  add_index "groups", ["container_id"], name: "index_groups_on_container_id", using: :btree
 
   create_table "invites", force: :cascade do |t|
     t.integer "user_id",  null: false
@@ -87,4 +86,5 @@ ActiveRecord::Schema.define(version: 20160429195134) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "groups", "containers"
 end

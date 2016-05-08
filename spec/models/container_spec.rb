@@ -8,11 +8,11 @@ RSpec.describe Container, type: :model do
     expect(container.name).to eq("Tupperware")
   end
 
-  it "can belong to groups" do
+  it "can belong to  a group" do
     container = create(:container)
     group = create(:group)
-    group.containers << container
+    group.container = container
 
-    expect(group.containers.first.id).to eq(container.id)
+    expect(group.container.id).to eq(container.id)
   end
 end

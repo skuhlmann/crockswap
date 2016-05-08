@@ -23,11 +23,12 @@
         <%= f.label :cooking_level %>
         <%= f.select :cooking_level, @cooking_levels, {include_blank: true} %>
 
-        <br>
-        Dietary Restrictions:
-        <br>
-        <%= f.collection_check_boxes(:diet_restriction_ids, @diet_restrictions, :id, :name ) %>
-        <br>
+        <div class="checkbox-area">
+          <p>Dietary Restrictions <span class="instruction-label">(Check all that apply)</span></p>
+          <%= f.collection_check_boxes(:diet_restriction_ids, @diet_restrictions, :id, :name, class:"label-checkbox" ) do |b| %>
+              <%=b.check_box + b.text%>
+          <% end %>
+        </div>
 
 
         <%= f.submit "Update profile" %>
