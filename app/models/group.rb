@@ -7,6 +7,7 @@ class Group < ActiveRecord::Base
 
   validates :name, uniqueness: true
   validates :name, presence: true
+  validates :max_participants, numericality: { greater_than: 0 }
 end
 
 

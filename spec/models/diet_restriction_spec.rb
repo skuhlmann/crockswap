@@ -22,4 +22,10 @@ RSpec.describe DietRestriction, type: :model do
 
     expect(user.diet_restrictions.first.id).to eq(restriction.id)
   end
+
+  it "name is required" do
+    diet = DietRestriction.create
+
+    expect(diet).to be_invalid
+  end
 end

@@ -22,13 +22,12 @@ class GroupsController < ApplicationController
   def edit
     authorize_user_group
     @diet_restrictions = DietRestriction.all
-    @containers = Container.all.collect { |c| ["#{c.name} - #{c.size}", c.id] }
+    @containers = Container.active.collect { |c| ["#{c.name} - #{c.size}", c.id] }
   end
 
   def update
     authorize_user_group
     @group.diet_restriction_ids = diet_params
-    # @group.container_id = group_params[:container]
 
     if @group.update(group_params)
       redirect_to group_path(@group.name), alert: 'Successfully updated.'
