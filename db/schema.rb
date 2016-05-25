@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510221632) do
+ActiveRecord::Schema.define(version: 20160525215344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,13 +49,17 @@ ActiveRecord::Schema.define(version: 20160510221632) do
     t.datetime "updated_at",                   null: false
     t.string   "swap_location"
     t.integer  "container_id"
+    t.integer  "admin"
   end
 
   add_index "groups", ["container_id"], name: "index_groups_on_container_id", using: :btree
 
   create_table "members", force: :cascade do |t|
-    t.integer "user_id",  null: false
-    t.integer "group_id", null: false
+    t.integer  "user_id",        null: false
+    t.integer  "group_id",       null: false
+    t.string   "status"
+    t.string   "invite_token"
+    t.datetime "invite_sent_at"
   end
 
   add_index "members", ["group_id", "user_id"], name: "index_members_on_group_id_and_user_id", using: :btree

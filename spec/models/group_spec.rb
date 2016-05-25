@@ -22,4 +22,13 @@ RSpec.describe Group, type: :model do
     expect(group).to be_valid
     expect(group_2).to be_invalid
   end
+
+  it "can have an admin that belongs to the group" do
+    group = create(:group)
+    user = create(:user)
+
+    group.users << user
+    group.admin = user.id
+    expect(group.admin).to eq(user.id)
+  end
 end
