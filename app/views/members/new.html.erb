@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="u-full-width">
+
+      <h3>Invite a swapper</h3>
+
+      <% if flash[:alert] %>
+        <div class="alert alert-danger"><%= flash[:alert] %></div>
+      <% end %>
+
+      <%= form_for(@member, url: group_members_path(@group.name)) do |f| %>
+
+        <%= f.label :user, "Email Address" %>
+        <%= f.text_field :user %>
+
+        <br>
+        <%= f.submit "Send invite" %>
+      <% end %>
+
+    </div>
+  </div>
+</div>

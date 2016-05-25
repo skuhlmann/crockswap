@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="ten columns">
+
+      <h3><%= @group.name %> Members</h3>
+      <% @members.each_with_index do |member, index| %>
+        <% if member.id == current_user.id %>
+          <%= "#{index + 1}. " %>You
+        <% else %>
+          <%= "#{index + 1}. #{member.name}" %>
+        <% end %>
+      <% end %>
+
+      <div class="new-swapper-form">
+        <h5>Invite a swapper</h5>
+
+        <% if flash[:alert] %>
+          <div class="alert alert-danger"><%= flash[:alert] %></div>
+        <% end %>
+
+        <%= form_for(@member, url: group_members_path(@group.name)) do |f| %>
+
+          <%= f.label :user, "Email Address" %>
+          <%= f.text_field :user %>
+
+          <br>
+          <%= f.submit "Send invite" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="two columns">
+      <a href="#">Week planner</a>
+      <p><%= link_to "Settings", edit_group_path(@group.name) %></p>
+      <p><%= link_to "Group page", group_path(@group.name) %></p>
+    </div>
+  </div>
+</div>

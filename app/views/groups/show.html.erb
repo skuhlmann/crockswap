@@ -8,7 +8,8 @@
     </div>
     <div class="two columns">
       <a href="#">Week planner</a>
-      <%= link_to "Settings", edit_group_path(@group.name) %>
+      <p><%= link_to "Settings", edit_group_path(@group.name) %></p>
+      <p><%= link_to "Manage swappers", group_members_path(@group.name) %></p>
     </div>
   </div>
 </div>

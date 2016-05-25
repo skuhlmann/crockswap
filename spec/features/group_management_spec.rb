@@ -19,39 +19,35 @@ describe 'group managment', type: :feature do
   end
 
   it "can visit the group page" do
-    group = create(:group)
-    group.users << @user
-
     visit user_root_path
-    page.click_link("group-link")
+    page.click_link("group-link", :match => :first)
 
-    expect(current_path).to eq(group_path(group.name))
+    expect(current_path).to eq(group_path(@group.name))
     expect(page).to have_content("Week planner")
   end
 
   it "user can't visit a group page it doesn't belong to" do
-    group = create(:group)
-
-    visit group_path(group.name)
+    group2 = Group.create(name: "Men with crocks")
+    visit group_path(group2.name)
 
     expect(current_path).to eq(user_root_path)
   end
 
   it "can manage the group details" do
-    group = create(:group)
-    group.users << @user
+    # group = create(:group)
+    @group.users << @user
 
     visit user_root_path
-    page.click_link("group-link")
+    page.click_link("group-link", :match => :first)
     page.click_link("Settings")
 
-    expect(current_path).to eq(edit_group_path(group.name))
+    expect(current_path).to eq(edit_group_path(@group.name))
     expect(page).to have_content("Group Settings")
 
     page.fill_in('group_max_participants', with: "666")
     page.click_button("Update group")
 
-    expect(current_path).to eq(group_path(group.name))
+    expect(current_path).to eq(group_path(@group.name))
     expect(page).to have_content("666")
   end
 end

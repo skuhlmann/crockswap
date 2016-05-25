@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    authorize_user_group
+    authorize_user_group(params[:name])
   end
 
   def new
@@ -20,13 +20,13 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    authorize_user_group
+    authorize_user_group(params[:name])
     @diet_restrictions = DietRestriction.all
     @containers = Container.active.collect { |c| ["#{c.name} - #{c.size}", c.id] }
   end
 
   def update
-    authorize_user_group
+    authorize_user_group(params[:name])
     @group.diet_restriction_ids = diet_params
 
     if @group.update(group_params)
@@ -46,9 +46,9 @@ class GroupsController < ApplicationController
     params[:group][:diet_restriction_ids].reject { |diet| diet.empty? }
   end
 
-  def authorize_user_group
-    if current_user.groups.pluck(:name).any? { |name| name == params[:name] }
-      @group = Group.where(name: params[:name]).first
+  def authorize_user_group(group_name)
+    if current_user.groups.pluck(:name).any? { |name| name == group_name }
+      @group = Group.where(name: group_name).first
     else
       redirect_to user_root_path
     end
