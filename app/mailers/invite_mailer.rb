@@ -7,6 +7,6 @@ class InviteMailer < ActionMailer::Base
     @group_admin = User.find(@group.admin)
 
     mail(to: @user.email,
-         subject: "#{@group_admin.name} has invited to Crockswap!")
+         subject: "#{@group_admin.name} has invited you to Crockswap!")
   end
 end

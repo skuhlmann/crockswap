@@ -8,7 +8,7 @@
           <% if member.id == current_user.id %>
             <li>You</li>
           <% else %>
-            <li><%= member.name %></li>
+            <li><%= member.name %>: <%= member.invite_status(@group) %></li>
           <% end %>
         <% end %>
       </ol>

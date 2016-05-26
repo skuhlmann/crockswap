@@ -14,18 +14,17 @@ class MembersController < GroupsController
 
   def create
     authorize_user_group(params[:group_name])
-    user = User.where(email: user_params[:email])
-
-    if user.empty?
-      user = User.temporary(user_params[:email])
-      if Member.invite(user, @group)
-        redirect_to group_members_path(@group.name), alert: "An invite email has been sent."
-      else
-        redirect_to group_members_path(@group.name), alert: "Error"
-      end
-    elsif user_in_group?
-      redirect_to group_members_path(@group.name), alert: "User is already in this group"
+    if user_in_group?
+      return redirect_to group_members_path(@group.name), alert: "User is already in this group."
     end
+
+    user = User.where(email: user_params[:email]).first
+    if user.nil?
+      user = User.temporary(user_params)
+    end
+
+    Member.invite(user, @group)
+    redirect_to group_members_path(@group.name), alert: "An invite email has been sent."
   end
 
   private
@@ -37,5 +36,4 @@ class MembersController < GroupsController
   def user_in_group?
     @group.users.pluck(:email).include?(user_params[:email])
   end
-
 end

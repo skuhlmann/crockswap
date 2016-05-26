@@ -3,8 +3,10 @@ module TestHelpers
     @user = build(:user)
     @group = create(:group)
     @user.skip_confirmation!
-    @user.save!
+    @user.save
     @group.users << @user
+    @group.admin = @user.id
+    @group.save
     visit new_user_session_path
     page.fill_in('user_email', with: @user.email)
     page.fill_in('user_password', with: 'password')

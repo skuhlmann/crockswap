@@ -12,9 +12,8 @@ class Member < ActiveRecord::Base
       invite_sent_at: Time.now,
       status: "Pending"
     }
-
     create(new_member)
 
-    InviteMailer.invite_email(user, group).deliver
+    InviteMailer.invite_email(user, group).deliver_now
   end
 end

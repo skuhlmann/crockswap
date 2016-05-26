@@ -34,9 +34,6 @@ describe 'group managment', type: :feature do
   end
 
   it "can manage the group details" do
-    # group = create(:group)
-    @group.users << @user
-
     visit user_root_path
     page.click_link("group-link", :match => :first)
     page.click_link("Settings")
@@ -49,5 +46,16 @@ describe 'group managment', type: :feature do
 
     expect(current_path).to eq(group_path(@group.name))
     expect(page).to have_content("666")
+  end
+
+  it "is automatically set to admin when creating a group" do
+    visit new_group_path
+
+    page.fill_in('group_name', with: "Hot Dogs")
+    page.click_button("Create group")
+
+    new_group = Group.where(name: "Hot Dogs").first
+
+    expect(new_group.admin).to eq(@user.id)
   end
 end

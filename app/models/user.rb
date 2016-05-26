@@ -12,10 +12,14 @@ class User < ActiveRecord::Base
          :validatable,
          :confirmable
 
-  def self.temporary(email)
-    user = new(email: email, password: rand(36**8).to_s(36))
+  def self.temporary(data)
+    user = new(email: data[:email], name: data[:name], password: rand(36**10).to_s(36))
     user.skip_confirmation!
     user.save!
     user
+  end
+
+  def invite_status(group)
+    Member.where(group_id: group.id, user_id: id).first.status
   end
 end
