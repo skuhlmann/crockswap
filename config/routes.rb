@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   devise_for :users, controllers: { sessions: 'sessions' }
+  # get '/invite/:invite_token', :to => "members#invite", :as => "invite_confirmation", :only_path => false
+  get '/invite/:invite_token', :to => "members#invite", :as => "invite_confirmation", :only_path => false
 
   get '/dashboard', to: 'home#dashboard', as: 'user_root'
 

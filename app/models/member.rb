@@ -14,6 +14,6 @@ class Member < ActiveRecord::Base
     }
     create(new_member)
 
-    InviteMailer.invite_email(user, group).deliver_now
+    InviteMailer.invite_email(user, group, token).deliver_now
   end
 end

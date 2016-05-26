@@ -8,6 +8,7 @@
     <p>You've been invited to <%= @group_admin.name %>'s Crockswap group <%= @group.name %>!!
     <p>You are so lucky!</p>
     <p>Follow the link below to join the group and create a profile if you don't alreay have one.</p>
+    <p><%= link_to 'Join the group', invite_confirmation_url(@token) %></p>
     <hr>
     <p>-Crockswap</p>
   </body>
