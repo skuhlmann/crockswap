@@ -12,4 +12,8 @@ module TestHelpers
     page.fill_in('user_password', with: 'password')
     page.click_button('Sign in')
   end
+
+  def logout
+    page.click_link('Sign out')
+  end
 end

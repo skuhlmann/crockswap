@@ -13,7 +13,13 @@ class User < ActiveRecord::Base
          :confirmable
 
   def self.temporary(data)
-    user = new(email: data[:email], name: data[:name], password: rand(36**10).to_s(36))
+    new_user = {
+      email: data[:email],
+      name: data[:name],
+      password: rand(36**10).to_s(36),
+      temporary: true
+    }
+    user = new(new_user)
     user.skip_confirmation!
     user.save!
     user

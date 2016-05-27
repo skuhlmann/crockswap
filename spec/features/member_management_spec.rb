@@ -61,4 +61,26 @@ describe 'member management', type: :feature do
     expect(current_path).to eq(group_members_path(@group.name))
     expect(page).to have_content("User is already in this group.")
   end
+
+  it "can cancel a pending invite" do
+    visit group_path(@group.name)
+    click_link("Manage swappers")
+    page.fill_in('user[email]', with: 'sam@example.com')
+    page.fill_in('user[name]', with: 'sam k')
+    page.click_button("Send invite")
+    visit group_members_path(@group.name)
+
+    member = Member.last
+    new_user = User.last
+
+    expect(page).to have_content("sam k")
+    expect(page).to have_content("Pending")
+    expect(member.user_id).to eq(new_user.id)
+
+    page.click_link("Cancel invite")
+
+    expect(current_path).to eq(group_members_path(@group.name))
+    expect(page).not_to have_content("sam k")
+    expect(Member.where(id: member.id)).to be_empty
+  end
 end

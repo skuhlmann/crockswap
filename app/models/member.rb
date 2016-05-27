@@ -16,4 +16,8 @@ class Member < ActiveRecord::Base
 
     InviteMailer.invite_email(user, group, token).deliver_now
   end
+
+  def join_group
+    update(status: "Accepted")
+  end
 end

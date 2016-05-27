@@ -5,10 +5,13 @@
       <h3><%= @group.name %> Members</h3>
       <ol>
         <% @members.each do |member| %>
-          <% if member.id == current_user.id %>
+          <% if member.user_id == current_user.id %>
             <li>You</li>
           <% else %>
-            <li><%= member.name %>: <%= member.invite_status(@group) %></li>
+            <li><%= member.user.name %>: <%= member.status %></li>
+            <% if member.status == "Pending" %>
+              <%= link_to "Cancel invite", group_member_path(@group.name, member), :method => :delete %>
+            <% end %>
           <% end %>
         <% end %>
       </ol>

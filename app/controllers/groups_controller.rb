@@ -21,13 +21,13 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    authorize_user_group(params[:name])
+    authorize_admin(params[:name])
     @diet_restrictions = DietRestriction.all
     @containers = Container.active.collect { |c| ["#{c.name} - #{c.size}", c.id] }
   end
 
   def update
-    authorize_user_group(params[:name])
+    authorize_admin(params[:name])
     @group.diet_restriction_ids = diet_params
 
     if @group.update(group_params)
@@ -52,6 +52,13 @@ class GroupsController < ApplicationController
       @group = Group.where(name: group_name).first
     else
       redirect_to user_root_path
+    end
+  end
+
+  def authorize_admin(group_name)
+    @group = Group.where(name: group_name).first
+    unless @group.admin == current_user.id
+      redirect_to group_path(@group.name)
     end
   end
 end

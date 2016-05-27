@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Crockswap</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'fav.ico' %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+  <nav class="fixed-nav-bar">
+    <div class="row">
+      <div class="u-full-width">
+        <div id="menu" class="menu">
+          <span class="simple-sitename">Crockswap</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div id="content">
+    <%= yield %>
+  </div>
+
+</body>
+</html>
