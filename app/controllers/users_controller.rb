@@ -4,7 +4,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
-    @cooking_levels = %w[1 2 3 4 5]
     @diet_restrictions = DietRestriction.all
   end
 
@@ -21,7 +20,6 @@ class UsersController < ApplicationController
 
   def temporary
     @user = User.find(params[:id])
-    @cooking_levels = %w[1 2 3 4 5]
     @diet_restrictions = DietRestriction.all
   end
 

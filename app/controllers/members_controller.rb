@@ -3,7 +3,6 @@ class MembersController < GroupsController
 
   def index
     authorize_user_group(params[:group_name])
-    # @members = @group.users
     @members = Member.where(group_id: @group.id)
     @member = Member.new
   end

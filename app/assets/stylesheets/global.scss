@@ -41,6 +41,10 @@ a.clean-link {
   text-align: center;
 }
 
+.center-block {
+  margin-left: auto;
+  margin-right: auto;
+}
 
 //form helpers
 .check-spacing {
@@ -67,7 +71,7 @@ input[type="checkbox"] {
 
 @media (min-width: 750px) {
   #content {
-    padding-top: 220px;
+    padding-top: 160px;
     min-height: 500px;
     padding-left: 0px;
     padding-right: 0px;
