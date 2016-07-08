@@ -1,6 +1,11 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @user = current_user
+    @groups = @user.groups
+  end
+
   def show
     authorize_user_group(params[:name])
   end

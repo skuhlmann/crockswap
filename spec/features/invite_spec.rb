@@ -46,6 +46,17 @@ describe 'invite', type: :feature do
     expect(page).to have_content("Crock Swappers")
   end
 
+  it "unregistered users can join the group from an must enter a password" do
+    member = Member.last
+
+    visit invite_confirmation_path(member.invite_token)
+    page.click_button("Complete profile")
+
+    expect(page).to have_content("Password and matching confirmation are required")
+    expect(page.current_path).to eq(complete_profile_path(member.user.id))
+  end
+
+
   it "registered users can join the group from an invite" do
     @another_invite_user = User.create(email: "bill@example.com", name: "bill", password: "password", temporary: false)
     @another_invite_user.skip_confirmation!

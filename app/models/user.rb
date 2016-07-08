@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :diet_restrictions
 
+  before_destroy :delete_associated_members
+
   devise :database_authenticatable,
          :registerable,
          :recoverable,
@@ -27,5 +29,11 @@ class User < ActiveRecord::Base
 
   def invite_status(group)
     Member.where(group_id: group.id, user_id: id).first.status
+  end
+
+  private
+
+  def delete_associated_members
+    members.destroy_all
   end
 end

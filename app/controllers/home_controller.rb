@@ -7,5 +7,6 @@ class HomeController < ApplicationController
   def dashboard
     @user = current_user
     @groups = @user.groups
+    @group = @groups.first
   end
 end

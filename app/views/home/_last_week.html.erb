@@ -1,0 +1,19 @@
+<h6>Last Week's Swap</h6>
+<div class="dashboard-table">
+    <div class="dashboard-table-row">
+      <div class="dashboard-table-cell header">Swapper</div>
+      <div class="dashboard-table-cell header">Dish</div>
+      <div class="dashboard-table-cell header">Stars</div>
+    </div>
+  <% @group.users.each do |member| %>
+    <div class="dashboard-table-row">
+      <div class="dashboard-table-cell"><%= member.name %></div>
+      <div class="dashboard-table-cell">Hot dogs</div>
+      <div class="dashboard-table-cell">
+        <%= fa_icon "star-o" %>
+        <%= fa_icon "star-o" %>
+        <%= fa_icon "star-o" %>
+      </div>
+    </div>
+  <% end %>
+</div>

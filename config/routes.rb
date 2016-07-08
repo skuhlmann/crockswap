@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   patch 'profile/:id/update_profile', to: 'users#temporary_update', as: :complete_profile_update
 
   resources :users, only: [:edit, :update], path: 'profile', as: :profile
-  resources :groups, only: [:new, :create, :show, :edit, :update], param: :name do
+  resources :groups, only: [:index, :new, :create, :show, :edit, :update], param: :name do
     resources :members, only: [:new, :index, :create, :destroy]
   end
   devise_for :users, controllers: { sessions: 'sessions' }

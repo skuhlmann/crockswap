@@ -1,0 +1,13 @@
+<h6>This Week's Swap</h6>
+<div class="dashboard-table">
+    <div class="dashboard-table-row">
+      <div class="dashboard-table-cell header">Swapper</div>
+      <div class="dashboard-table-cell header">Dish</div>
+    </div>
+  <% @group.users.each do |member| %>
+    <div class="dashboard-table-row">
+      <div class="dashboard-table-cell"><%= member.name %></div>
+      <div class="dashboard-table-cell">Sloppy Joes</div>
+    </div>
+  <% end %>
+</div>

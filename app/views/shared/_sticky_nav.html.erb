@@ -5,18 +5,16 @@
         <%= link_to root_path, {class: "clean-link"} do %>
           <span class="sitename">Crockswap</span>
         <% end %>
-        <a class="show hamburger" href="#menu">
-          <%= fa_icon "align-justify" %>
-        </a>
-        <a class="hide hamburger" href="#hidemenu">
+        <a class="hamburger">
           <%= fa_icon "align-justify" %>
         </a>
         <ul class="menu-items u-pull-right">
           <% if current_user %>
-            <p class="username">Hello <%= current_user.name %></p>
-            <li><%= link_to "Groups", user_root_path %></li>
+            <li class="username">Hello <%= current_user.name %></li>
+            <li><%= link_to "Swapboard", user_root_path %></li>
+            <li><%= link_to "My profile", edit_profile_path(current_user) %></li>
+            <li><%= link_to "My groups", groups_path %></li>
             <li><%= link_to "Add group", new_group_path %></li>
-            <li><%= link_to "Profile", edit_profile_path(current_user) %></li>
             <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
           <% else %>
             <li><%= link_to "Sign in", new_user_session_path %></li>

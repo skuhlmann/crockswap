@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="u-full-width">
+    <h4><%= @group.name %> Swapboard</h4>
+  </div>
+</div>
+<div class="row">
+  <div class="six columns">
+    <%= render partial: "home/this_week", locals: {group: @group} %>
+    <%= render partial: "home/last_week", locals: {group: @group} %>
+    <%= render partial: "home/next_week", locals: {group: @group} %>
+  </div>
+
+  <div class="six columns">
+    <%= render partial: "home/this_week", locals: {group: @group} %>
+    <%= render partial: "home/search_recipes" %>
+    <%= render partial: "home/swap_vitals", locals: {group: @group} %>
+  </div>
+</div>

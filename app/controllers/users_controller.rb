@@ -33,8 +33,8 @@ class UsersController < ApplicationController
       sign_in @user, :bypass => true
       redirect_to user_root_path(@user), notice: "Success!"
     else
-      flash[:alert] = "Passwords do not match"
-      render :temporary
+      flash[:alert] = "Password and matching confirmation are required"
+      redirect_to complete_profile_path(@user)
     end
   end
 
@@ -50,6 +50,6 @@ class UsersController < ApplicationController
   end
 
   def confirm_password
-    user_params[:password] == user_params[:password_confirmation]
+    user_params[:password]!= "" && user_params[:password] == user_params[:password_confirmation]
   end
 end
