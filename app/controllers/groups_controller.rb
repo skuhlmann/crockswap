@@ -19,7 +19,7 @@ class GroupsController < ApplicationController
     @group.users << current_user
     @group.admin = current_user.id
     if @group.save!
-      redirect_to user_root_path, notice: "Success"
+      redirect_to group_path(@group.name), notice: "Success"
     else
       render :new
     end

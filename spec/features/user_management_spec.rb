@@ -17,7 +17,7 @@ describe 'user managment', type: :feature do
 
     expect(current_path).to eq(new_user_session_path)
 
-    expect(page).to have_content("A message with a confirmation link has been sent to your email address.")
+    expect(page).to have_content("Check your email now to activate your account.")
     expect(ActionMailer::Base.deliveries.length).to eq(1)
   end
 
@@ -90,7 +90,7 @@ describe 'user managment', type: :feature do
     page.fill_in('user_password', with: 'password')
     page.click_button('Sign in')
 
-    page.click_link("Profile")
+    page.click_link("My profile")
     expect(current_path).to eq(edit_profile_path(user))
 
     page.fill_in('Name', with: 'Colleen')

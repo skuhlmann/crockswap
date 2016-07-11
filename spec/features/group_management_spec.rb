@@ -20,6 +20,7 @@ describe 'group managment', type: :feature do
 
   it "can visit the group page" do
     visit user_root_path
+    page.click_link("My groups")
     page.click_link("group-link", :match => :first)
 
     expect(current_path).to eq(group_path(@group.name))
@@ -35,6 +36,7 @@ describe 'group managment', type: :feature do
 
   it "can manage the group details" do
     visit user_root_path
+    page.click_link("My groups")
     page.click_link("group-link", :match => :first)
     page.click_link("Settings")
 
@@ -72,6 +74,7 @@ describe 'group managment', type: :feature do
     page.click_button('Sign in')
 
     visit user_root_path
+    page.click_link("My groups")
     page.click_link("group-link", :match => :first)
 
     expect(page).not_to have_content("Settings")

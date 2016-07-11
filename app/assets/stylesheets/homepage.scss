@@ -1,50 +1,51 @@
 @import "app-variables";
 
-.homepage-frame {
-  padding-top: 0px;
-  padding-bottom: 80px;
-  border-bottom: 1px solid black;
-}
-
-.about-frame, .something-frame {
-  padding-top: 80px;
-  padding-bottom: 80px;
-  border-bottom: 1px solid black;
-}
-
-.about-steps {
-  border: 1px solid $black;
-  border-radius: 4px;
-  padding: 50px;
-  margin-bottom: 20px;
-  max-height: 170px;
-}
-
-.about-steps p {
-  font-size: 20px;
-  margin-bottom: 0px;
-}
-
-.crockswap {
-  font-size: 40px;
-  font-weight: bold;
-  margin-bottom: 0px;
-}
-
-.homepage-sign-up {
-  font-size: 20px;
-  font-weight: normal;
-}
-
-@media (min-width: 750px) {
+#home_controller.index-action {
   .homepage-frame {
     padding-top: 0px;
+    padding-bottom: 80px;
+    border-bottom: 1px solid black;
   }
 
-  .homepage-copy-block {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 50%;
+  .about-frame, .something-frame {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    border-bottom: 1px solid black;
+  }
+
+  .about-steps {
+    border: 1px solid $black;
+    border-radius: 4px;
+    padding: 50px;
+    margin-bottom: 20px;
+    max-height: 170px;
+  }
+
+  .about-steps p {
+    font-size: 20px;
+    margin-bottom: 0px;
+  }
+
+  .crockswap {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 0px;
+  }
+
+  .homepage-sign-up {
+    font-size: 20px;
+    font-weight: normal;
+  }
+
+  @media (min-width: 750px) {
+    .homepage-frame {
+      padding-top: 0px;
+    }
+
+    .homepage-copy-block {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 50%;
+    }
   }
 }
-
