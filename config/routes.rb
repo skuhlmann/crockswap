@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update], path: 'profile', as: :profile
   resources :groups, only: [:index, :new, :create, :show, :edit, :update], param: :name do
     resources :members, only: [:new, :index, :create, :destroy]
+    resources :weeks, only: [:new]
   end
   devise_for :users, controllers: { sessions: 'sessions' }
 

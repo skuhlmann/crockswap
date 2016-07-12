@@ -4,6 +4,7 @@ class Group < ActiveRecord::Base
 
   has_and_belongs_to_many :diet_restrictions
   belongs_to :container
+  has_many :weeks
 
   validates :name, uniqueness: true
   validates :name, presence: true
