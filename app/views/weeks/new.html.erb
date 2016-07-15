@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="u-full-width">
+
+      <h3>Create a schedule</h3>
+      <p>You can edit individual weeks and add more weeks after creating the schedule.</p>
+
+      <% if flash[:alert] %>
+        <div class="alert alert-danger"><%= flash[:alert] %></div>
+      <% end %>
+
+      <%= form_for(@week, url: group_weeks_path(@group.name)) do |f| %>
+
+        <%= f.label :start_date, "1st swap week" %>
+        <%= f.date_field :start_date %>
+
+        <%= label_tag :number_of_weeks %>
+        <%= number_field_tag :number_of_weeks %>
+
+        <div>
+          <p>Deafult swap day</p>
+          <% @days.each do |day| %>
+            <%= label_tag :swap_date, day, class: "radio-label" %>
+            <%= f.radio_button(:swap_date, day, class: "radio-button") %>
+          <% end %>
+        </div>
+
+        <br><br>
+        <%= submit_tag "Create schedule" %>
+      <% end %>
+    </div>
+  </div>
+</div>

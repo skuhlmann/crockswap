@@ -3,7 +3,7 @@
     <h4><%= @group.name %> Swapboard</h4>
     <% if @group.weeks.empty? %>
       <p>Now you need to create your swapping schedule.</p>
-      <%= link_to new_group_weeks_path(@group.name)  do %>
+      <%= link_to new_group_week_path(@group.name)  do %>
         <p><%= fa_icon "plus" %> Get started</p>
       <% end %>
     <% end %>

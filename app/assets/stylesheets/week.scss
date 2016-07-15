@@ -1,0 +1,14 @@
+@import "app-variables";
+
+#weeks_controller.new-action {
+  .radio-label {
+    font-size: 11px;
+    margin-right: 4px;
+    float: left;
+  }
+
+  .radio-button {
+    margin-right: 20px;
+    float: left;
+  }
+}

@@ -11,9 +11,9 @@ describe 'schedule management', type: :feature do
     expect(page).to have_content("Now you need to create your swapping schedule.")
 
     page.click_link("Get started")
-    page.fill_in('start_date', with: "06/11/2016")
+    page.fill_in('week[start_date]', with: "06/11/2016")
     page.fill_in('number_of_weeks', with: "4")
-    page.fill_in('default_swap_day', with: "Tuesday")
+    page.choose('week_swap_date_tuesday')
     page.click_button("Create schedule")
 
     weeks = Week.where(group_id: @group.id)
