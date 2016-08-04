@@ -12,3 +12,14 @@
     float: left;
   }
 }
+
+#weeks_controller.index-action {
+  .week-card {
+    border: 1px solid $black;
+    border-radius: 4px;
+    margin-left: 0;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+}

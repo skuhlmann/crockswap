@@ -1,3 +1,35 @@
-poopin'
+<div class="container">
+  <div class="row">
+    <div class="u-full-width">
+      <h5><%= @group.name %> Swapping Schedule</h5>
 
-weeks: <%= @group.weeks.count %>
+      <p># of schedule weeks: <%= @group.weeks.count %></p>
+
+      <% @group.weeks.each_with_index do |week, index| %>
+        <div class="four columns week-card">
+          <p>Week of <%= (week.start_date).strftime("%m/%d") %></p>
+          <p>Swap date: <%= (week.swap_date).strftime("%m/%d") %></p>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+  <% if @is_admin %>
+    <div class="row">
+      <div class="u-full-width">
+        <p>Add weeks</p>
+        <%= form_for(@week, url: group_weeks_path(@group.name)) do |f| %>
+
+          <%= hidden_field_tag :add, "true" %>
+          <%= f.hidden_field :start_date, value: @group.weeks.last.start_date + 7 %>
+          <%= f.hidden_field :swap_date, value: @group.weeks.last.swap_date %>
+
+          <%= label_tag :number_of_weeks %>
+          <%= number_field_tag :number_of_weeks %>
+
+          <%= submit_tag "Add" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

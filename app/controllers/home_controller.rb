@@ -8,5 +8,6 @@ class HomeController < ApplicationController
     @user = current_user
     @groups = @user.groups
     @group = @groups.first
+    @is_admin = set_admin(@group)
   end
 end

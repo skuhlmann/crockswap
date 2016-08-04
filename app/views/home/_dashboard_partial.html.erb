@@ -1,7 +1,14 @@
 <div class="row">
   <div class="u-full-width">
     <h4><%= @group.name %> Swapboard</h4>
-    <% if @group.weeks.empty? %>
+    <% unless @group.weeks.empty? %>
+      <%= link_to group_weeks_path(@group.name)  do %>
+        <p><%= fa_icon "calendar" %> Check out your swapping schedule</p>
+      <% end %>
+    <% else %>
+      <p>The schedule hasn't been created yet.</p>
+    <% end %>
+    <% if @group.weeks.empty? && @is_admin %>
       <p>Now you need to create your swapping schedule.</p>
       <%= link_to new_group_week_path(@group.name)  do %>
         <p><%= fa_icon "plus" %> Get started</p>

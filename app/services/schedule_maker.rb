@@ -1,9 +1,9 @@
 class ScheduleMaker
   attr_reader :start_date
 
-  def initialize(date, swap_day, num_of_weeks=1)
+  def initialize(date, swap_day_number, num_of_weeks=1)
     @start_date = find_start_date(date)
-    @swap_date = find_swap_date(swap_day)
+    @swap_date = find_swap_date(swap_day_number)
     @num_of_weeks = num_of_weeks
   end
 
@@ -25,19 +25,7 @@ class ScheduleMaker
     date.beginning_of_week
   end
 
-  def find_swap_date(day)
-    @start_date + (day_map[day.to_sym] - 1)
-  end
-
-  def day_map
-    {
-      sunday: 0,
-      monday: 1,
-      tuesday: 2,
-      wednesday: 3,
-      thursday: 4,
-      friday: 5,
-      saturday: 6
-    }
+  def find_swap_date(day_number)
+    @start_date + (day_number - 1)
   end
 end
