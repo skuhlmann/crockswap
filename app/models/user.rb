@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :members
+  has_many :meals
   has_many :groups, through: :members
 
   has_and_belongs_to_many :diet_restrictions

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160711212034) do
+ActiveRecord::Schema.define(version: 20160804020855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,42 @@ ActiveRecord::Schema.define(version: 20160711212034) do
   end
 
   add_index "groups", ["container_id"], name: "index_groups_on_container_id", using: :btree
+
+  create_table "meal_categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "meal_ratings", force: :cascade do |t|
+    t.integer  "rating"
+    t.string   "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "meal_id"
+  end
+
+  add_index "meal_ratings", ["meal_id"], name: "index_meal_ratings_on_meal_id", using: :btree
+
+  create_table "meals", force: :cascade do |t|
+    t.string   "name"
+    t.date     "shop_date"
+    t.date     "cook_date"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "user_id"
+    t.integer  "week_id"
+    t.integer  "meal_category_id"
+    t.string   "cooking_time"
+    t.string   "cooking_degrees"
+    t.boolean  "covered"
+    t.string   "timing_to_eat"
+    t.boolean  "freezable"
+  end
+
+  add_index "meals", ["meal_category_id"], name: "index_meals_on_meal_category_id", using: :btree
+  add_index "meals", ["user_id"], name: "index_meals_on_user_id", using: :btree
+  add_index "meals", ["week_id"], name: "index_meals_on_week_id", using: :btree
 
   create_table "members", force: :cascade do |t|
     t.integer  "user_id",        null: false
@@ -104,5 +140,9 @@ ActiveRecord::Schema.define(version: 20160711212034) do
   add_index "weeks", ["group_id"], name: "index_weeks_on_group_id", using: :btree
 
   add_foreign_key "groups", "containers"
+  add_foreign_key "meal_ratings", "meals"
+  add_foreign_key "meals", "meal_categories"
+  add_foreign_key "meals", "users"
+  add_foreign_key "meals", "weeks"
   add_foreign_key "weeks", "groups"
 end
