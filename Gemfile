@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.3.0"
+ruby "2.3.1"
 
 gem 'rails', '4.2.6'
 gem 'pg', '0.18.3'
@@ -22,7 +22,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'spring'
-  gem 'nokogiri', '1.6.6.2'
+  gem 'nokogiri'
   gem 'capybara'
   gem 'selenium'
 end
