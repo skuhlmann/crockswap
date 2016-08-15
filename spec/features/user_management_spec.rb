@@ -46,7 +46,7 @@ describe 'user managment', type: :feature do
     page.click_button('Sign in')
 
     expect(current_path).to eq(new_user_session_path)
-    expect(page).to have_content('Invalid email or password.')
+    expect(page).to have_content('Invalid Email or password.')
   end
 
   it "can request a forgotten password" do

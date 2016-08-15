@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
   private
 
   def set_admin(group)
-    group.admin == current_user.id
+    group.admin == current_user.id if group
   end
 end

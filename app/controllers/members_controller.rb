@@ -42,7 +42,7 @@ class MembersController < GroupsController
       if @user.temporary
         return redirect_to complete_profile_path(@user)
       else
-        sign_in @user, :bypass => true
+        bypass_sign_in(@user)
         redirect_to user_root_path(@user), notice: "You've been added to the group"
       end
     end

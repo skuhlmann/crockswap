@@ -7,7 +7,7 @@ RSpec.describe ScheduleMaker do
 
   it "finds the 1st day of the week" do
     start_date = Date.parse('2016-06-25')
-    swap_day = "tuesday"
+    swap_day = 2
     num_of_weeks = 6
     maker = ScheduleMaker.new(start_date, swap_day, num_of_weeks)
 
@@ -16,7 +16,7 @@ RSpec.describe ScheduleMaker do
 
   it "creates a week with correct start and swap dates" do
     start_date = Date.parse('2016-06-25')
-    swap_day = "tuesday"
+    swap_day = 2
     num_of_weeks = 1
     maker = ScheduleMaker.new(start_date, swap_day, num_of_weeks)
 
@@ -30,7 +30,7 @@ RSpec.describe ScheduleMaker do
 
   it "creates a mulitple weeks" do
     start_date = Date.parse('2016-06-25')
-    swap_day = "tuesday"
+    swap_day = 2
     num_of_weeks = 4
     maker = ScheduleMaker.new(start_date, swap_day, num_of_weeks)
 

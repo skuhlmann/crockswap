@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
     if confirm_password
       @user.update(update_params)
-      sign_in @user, :bypass => true
+      bypass_sign_in(@user)
       redirect_to user_root_path(@user), notice: "Success!"
     else
       flash[:alert] = "Password and matching confirmation are required"
