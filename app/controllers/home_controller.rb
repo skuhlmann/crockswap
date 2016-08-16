@@ -4,10 +4,18 @@ class HomeController < ApplicationController
   def index
   end
 
-  def dashboard
+  def swapboard
     @user = current_user
     @groups = @user.groups
-    @group = @groups.first
-    @is_admin = set_admin(@group)
+    if params[:group_name]
+      @group = @groups.select { |group| group.name == params[:group_name] }[0]
+      @is_admin = set_admin(@group)
+    else
+      if @groups.count > 1
+        redirect_to groups_path
+      end
+      @group = @groups.first
+      @is_admin = set_admin(@group)
+    end
   end
 end

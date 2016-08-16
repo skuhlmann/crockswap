@@ -14,14 +14,13 @@ describe 'group managment', type: :feature do
     page.fill_in('group_budget', with: "$30")
     page.click_button("Create group")
 
-    expect(page).to have_content("My groups")
+    expect(current_path).to eq(group_swapboard_path("Hot swappin' devils"))
     expect(page).to have_content("Hot swappin' devils")
   end
 
   it "can visit the group page" do
     visit user_root_path
-    page.click_link("My groups")
-    page.click_link("group-link", :match => :first)
+    page.click_link("Group settings")
 
     expect(current_path).to eq(group_path(@group.name))
     expect(page).to have_content("Week planner")
@@ -36,8 +35,7 @@ describe 'group managment', type: :feature do
 
   it "can manage the group details" do
     visit user_root_path
-    page.click_link("My groups")
-    page.click_link("group-link", :match => :first)
+    page.click_link("Group settings")
     page.click_link("Settings")
 
     expect(current_path).to eq(edit_group_path(@group.name))
@@ -67,6 +65,8 @@ describe 'group managment', type: :feature do
     another_user.skip_confirmation!
     another_user.save!
     @group.users << another_user
+    week = build(:week)
+    @group.weeks << week
     @group.save
     visit new_user_session_path
     page.fill_in('user_email', with: another_user.email)
@@ -74,8 +74,7 @@ describe 'group managment', type: :feature do
     page.click_button('Sign in')
 
     visit user_root_path
-    page.click_link("My groups")
-    page.click_link("group-link", :match => :first)
+    page.click_link("Group settings")
 
     expect(page).not_to have_content("Settings")
     expect(page).not_to have_content("Manage swappers")

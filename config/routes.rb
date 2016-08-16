@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  get '/dashboard', to: 'home#dashboard', as: 'user_root'
+  get '/swapboard', to: 'home#swapboard', as: 'user_root'
+  get ':group_name/swapboard', to: 'home#swapboard', as: 'group_swapboard'
 
   get '/invite/:invite_token', :to => "members#invite", :as => "invite_confirmation"
   get 'profile/:id/complete_profile', to: 'users#temporary', as: :complete_profile

@@ -6,6 +6,8 @@ describe 'invite', type: :feature do
     @user = create(:user)
     @group = create(:group)
     @group.admin = @user.id
+    week = build(:week)
+    @group.weeks << week
     @group.save
     @invite_user = User.create(email: "coll@example.com", name: "coll", password: "password", temporary: true)
     @invite_user.skip_confirmation!

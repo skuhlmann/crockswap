@@ -20,7 +20,7 @@ describe 'schedule management', type: :feature do
     expect(page).to have_content("Crock Swappers Swapping Schedule")
   end
 
-  it "can add weeks to a schedule" do
+  xit "can add weeks to a schedule" do
     visit user_root_path
     page.click_link("Check out your swapping schedule")
 
