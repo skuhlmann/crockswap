@@ -1,14 +1,17 @@
 <nav class="fixed-nav-bar">
   <div class="row">
     <div class="u-full-width">
-      <div id="menu" class="menu">
-        <%= link_to root_path, { class: "clean-link" } do %>
-          <span class="sitename">Crockswap</span>
+
+      <div class="title">
+        <%= link_to root_path, {class: "clean-link"} do %>
+          <span class="sitename">Crockswaps</span>
         <% end %>
-        <a class="hamburger">
-          <%= fa_icon "align-justify" %>
-        </a>
-        <ul class="menu-items u-pull-right">
+      </div>
+
+      <div class="menu_2">        
+        <!-- <div class="title hamburger">Menu</div> -->
+        <!-- <ul class="menu-items u-pull-right"> -->
+        <ul>
           <% if current_user %>
             <li class="username">Hello <%= current_user.name %></li>
             <li><%= link_to "Swapboard", user_root_path %></li>

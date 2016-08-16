@@ -1,10 +1,12 @@
-$(document).on("turbolinks:load", function() {
+// $(document).on("turbolinks:load", function() {
+// $(function() {
+$(document).ready(function() {
   navEvents.setToggle();
 });
 
 var navEvents = {
   setToggle: function() {
-    $(".hamburger").off().on("click", function() {
+    $(".hamburger").on("click", function() {
       $(".menu-items").toggle();
     });
   }
