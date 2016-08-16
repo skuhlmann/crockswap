@@ -1,5 +1,3 @@
-// $(document).on("turbolinks:load", function() {
-// $(function() {
 $(document).ready(function() {
   navEvents.setToggle();
 });
