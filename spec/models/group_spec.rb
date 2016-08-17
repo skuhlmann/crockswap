@@ -31,4 +31,13 @@ RSpec.describe Group, type: :model do
     group.admin = user.id
     expect(group.admin).to eq(user.id)
   end
+
+  it "can return the current week" do
+    group = create(:group)
+    this_week = Week.create(start_date: (Date.today - 3))
+    group.weeks << this_week
+    group.save!
+
+    expect(group.current_week).to eq(this_week)
+  end
 end

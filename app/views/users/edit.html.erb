@@ -35,6 +35,10 @@
         <% @user.groups.each do |group| %>
           <p><%= link_to group.name, group_path(group.name) %></p>
         <% end %>
+
+        <%= link_to new_group_path  do %>
+          <p><%= fa_icon "plus" %> Nobody swaps alone. Start a new group here.</p>
+        <% end %>
       </div>
 
     </div>

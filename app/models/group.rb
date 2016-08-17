@@ -9,6 +9,27 @@ class Group < ActiveRecord::Base
   validates :name, uniqueness: true
   validates :name, presence: true
   validates :max_participants, numericality: { greater_than: 0 }
+
+  def current_week
+    today = Date.today
+    weeks.find do |week|
+      today >= week.start_date && today <= (week.start_date + 7)
+    end
+  end
+
+  def next_week
+    next_week = Date.today + 7
+    weeks.find do |week|
+      next_week >= (week.start_date) && next_week <= (week.start_date + 7)
+    end
+  end
+
+  def last_week
+    next_week = Date.today - 7
+    weeks.find do |week|
+      next_week >= (week.start_date) && next_week <= (week.start_date + 7)
+    end
+  end
 end
 
 

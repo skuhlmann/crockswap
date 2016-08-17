@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   end
 
   def week_meal(week)
-    meals.select { |meal| meal.week_id == week.id }[0]
+    meals.find { |meal| meal.week_id == week.id }
   end
 
   private

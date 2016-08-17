@@ -7,7 +7,6 @@
     border: solid 1px black;
     border-bottom: 0px;
     width: 100%;
-    margin-bottom: 30px;
   }
 
   .dashboard-table-row {
@@ -28,5 +27,18 @@
   .recipe-search-box {
     width: 100%;
     margin-bottom: 40px;
+  }
+
+  .swapboard-week-links {
+    margin-bottom: 25px;
+    font-size: 12px;
+  }
+
+  .this-week {
+    margin-bottom: 15px;
+  }
+
+  .swap-vitals {
+    margin-bottom: 15px;
   }
 }
