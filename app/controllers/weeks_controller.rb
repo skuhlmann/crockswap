@@ -3,8 +3,28 @@ class WeeksController < ApplicationController
 
   def index
     authorize_user_group(params[:group_name])
+    @user = current_user
     @week = Week.new
     @is_admin = set_admin(@group)
+  end
+
+  def show
+    authorize_user_group(params[:group_name])
+    @week = Week.find(params[:id])
+    @is_admin = set_admin(@group)
+    @user_meal = current_user.week_meal(@week)
+    @list_users = @group.users.reject { |user| user.id == current_user.id }
+  end
+
+  def update
+    authorize_admin(params[:group_name])
+    @week = Week.find(params[:id])
+
+    if @week.update(week_params)
+      redirect_to group_week_path(@group.name, @week), alert: 'Successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def new
@@ -38,7 +58,7 @@ class WeeksController < ApplicationController
   private
 
   def week_params
-    params.require(:week).permit(:start_date, :swap_date)
+    params.require(:week).permit(:start_date, :swap_date, :swap_location)
   end
 
   def start_date_param

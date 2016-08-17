@@ -9,6 +9,7 @@
         <div class="four columns week-card">
           <p>Week of <%= (week.start_date).strftime("%m/%d") %></p>
           <p>Swap date: <%= (week.swap_date).strftime("%m/%d") %></p>
+          <p><%= link_to 'Week details', group_week_path(@group.name, week) %></p>
         </div>
       <% end %>
 

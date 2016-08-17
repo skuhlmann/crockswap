@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
     Member.where(group_id: group.id, user_id: id).first.status
   end
 
+  def week_meal(week)
+    meals.select { |meal| meal.week_id == week.id }[0]
+  end
+
   private
 
   def delete_associated_members

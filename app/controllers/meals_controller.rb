@@ -15,19 +15,33 @@ class MealsController < ApplicationController
   end
 
   def create
-    # binding.pry
-
     @group = Group.find(params[:group_name])
-    @user = current_user
+    @user = set_new_meal_user
     @meal = Meal.create(meal_params)
     @meal.week_id = params[:week_id]
     @meal.user_id = @user.id
     if @meal.save!
-
       redirect_to group_path(@group), notice: "Success"
     else
       render :new
     end
+  end
+
+  def create_multiple
+    @group = Group.where(name: params[:group_name]).first
+    @week = Week.find(params[:week_id])
+    multi_meal_params.each_pair do |k, new_meal|
+      new_data = { name: new_meal[:name] }
+      meal = Meal.where(user_id: new_meal[:user_id], week_id: @week.id).first
+      if meal
+        meal.update(new_data)
+      else
+        new_data[:user_id] = new_meal[:user_id]
+        new_data[:week_id] = @week.id
+        Meal.create(new_data)
+      end
+    end
+    redirect_to group_week_path(@group.name, @week), alert: 'Successfully updated.'
   end
 
   def edit
@@ -40,5 +54,13 @@ class MealsController < ApplicationController
 
   def meal_params
     params.require(:meal).permit(:name)
+  end
+
+  def multi_meal_params
+    params.select { |k, v| k.include?("user_") }
+  end
+
+  def set_new_meal_user
+    params[:user_id] ? params[:user_id] : current_user
   end
 end

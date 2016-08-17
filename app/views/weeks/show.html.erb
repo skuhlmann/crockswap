@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="u-full-width">
+
+    <h3><%= "#{@group.name}'s Week of #{@week.start_date}" %></h3>
+
+    <% if @is_admin %>
+
+      <% if flash[:alert] %>
+        <div class="alert alert-danger"><%= flash[:alert] %></div>
+      <% end %>
+
+      <%= form_for(@week, url: group_week_path(@group.name, @week), method: :put) do |f| %>
+
+        <%= f.label :swap_date %>
+        <%= f.date_field :swap_date %>
+
+        <%= f.label :swap_location %>
+        <%= f.text_field :swap_location %>
+        <br>
+
+        <%= f.submit "Update week" %>
+      <% end %>
+    <% else %>
+      <p>Swap Date: <%= @week.swap_date %></p>
+      <p>Swap Location: <%= @week.swap_location %></p>
+    <% end %>
+
+    <% if @user_meal %>
+      <p>Your meal:</p>
+      <p><%= @user_meal.name %></p>
+    <% else %>
+      <%= link_to "Add your meal", new_group_week_meal_path(@group.name, @week) %>
+    <% end %>
+
+
+    <p>What you'll be eating this week:</p>
+    <% if @is_admin %>
+      <%= render "meal_list", collection: @list_users %>
+    <% else %>
+      <%= render "meal_list", collection: @list_users %>
+    <% end %>
+
+    </div>
+  </div>
+</div>

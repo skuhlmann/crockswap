@@ -16,7 +16,7 @@
         <%= f.date_field :start_date %>
 
         <div>
-          <p>Deafult swap day</p>
+          <p>Default swap day</p>
           <% @days.each do |day| %>
             <%= label_tag :swap_date, day, class: "radio-label" %>
             <%= f.radio_button(:swap_date, day, class: "radio-button") %>
