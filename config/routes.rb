@@ -16,6 +16,11 @@ Rails.application.routes.draw do
       resources :meals, only: [:show, :index, :create, :new, :edit]
     end
   end
+
+  resources :meals, only: [] do
+    resources :ratings, only: [:create, :update]
+  end
+
   devise_for :users, controllers: { sessions: 'sessions' }
 
   root "home#index"

@@ -5,12 +5,6 @@
         <h4><%= @group.name %> Swapboard</h4>
       </div>
 
-      <div class="three columns">
-        <%= link_to group_path(@group.name) do %>
-          <p><%= fa_icon "users" %> Group settings</p>
-        <% end %>
-      </div>
-
       <div class="four columns">
         <% unless @group.weeks.empty? %>
           <%= link_to group_weeks_path(@group.name)  do %>
@@ -19,43 +13,51 @@
         <% else %>
           <p>The schedule hasn't been created yet.</p>
         <% end %>
+
         <% if @group.weeks.empty? && @is_admin %>
           <p>Now you need to create your swapping schedule.</p>
           <%= link_to new_group_week_path(@group.name)  do %>
             <p><%= fa_icon "plus" %> Get started</p>
           <% end %>
-        <% else %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="six columns">
-        <h6>This Week's Swap</h6>
-        <% if @group.current_week %>
-          <%= render partial: "home/swap_vitals", locals: { week: @group.current_week } %>
-          <%= render partial: "home/swapboard_week_list", locals: { week: @group.current_week } %>
-        <% else %>
-          You need to update your schedule. There is nothing sceduled for this week.
-        <% end %>
-        <h6>Next Week's Swap</h6>
-        <% if @group.next_week %>
-          <%= render partial: "home/swapboard_week_list", locals: { week: @group.next_week } %>
-        <% else %>
-          You need to update your schedule. There is nothing sceduled for next week.
         <% end %>
       </div>
 
-      <div class="six columns">
-        <h6>Last Week's Swap</h6>
-        <% if @group.last_week %>
-          <%= render partial: "home/swapboard_week_list", locals: { week: @group.last_week } %>
-        <% else %>
-          No swappin' last week.
+      <div class="two columns">
+        <%= link_to group_path(@group.name) do %>
+          <p><%= fa_icon "users" %> Group settings</p>
         <% end %>
-        <%= render partial: "home/leaderboard", locals: {} %>
-        <%= render partial: "home/search_recipes" %>
       </div>
     </div>
+
+    <% unless @group.weeks.empty? %>
+      <div class="row">
+        <div class="six columns">
+          <h6>This Week's Swap</h6>
+          <% if @group.current_week %>
+            <%= render partial: "home/swap_vitals", locals: { week: @group.current_week } %>
+            <%= render partial: "home/swapboard_week_list", locals: { week: @group.current_week } %>
+          <% else %>
+            You need to update your schedule. There is nothing scheduled for this week.
+          <% end %>
+          <h6>Next Week's Swap</h6>
+          <% if @group.next_week %>
+            <%= render partial: "home/swapboard_week_list", locals: { week: @group.next_week } %>
+          <% else %>
+            You need to update your schedule. There is nothing scheduled for next week.
+          <% end %>
+        </div>
+
+        <div class="six columns">
+          <h6>Last Week's Swap</h6>
+          <% if @group.last_week %>
+            <%= render partial: "home/swapboard_week_list", locals: { week: @group.last_week } %>
+          <% else %>
+            No swappin' last week.
+          <% end %>
+          <%= render partial: "home/leaderboard", locals: {} %>
+          <%= render partial: "home/search_recipes" %>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>

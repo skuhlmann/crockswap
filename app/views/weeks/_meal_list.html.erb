@@ -13,6 +13,9 @@
           </div>
           <div class="dashboard-table-cell">
             <% if member.week_meal(@week) %>
+
+              <%= render partial: "meals/rate_meal", locals: { meal: member.week_meal(@week) } %>
+
               <% member.week_meal(@week).ratings.each do |rating| %>
                 <%= fa_icon "star-o" %>
               <% end %>

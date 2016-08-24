@@ -5,6 +5,7 @@
         <%= render "home/swapboard_partial", object: @group %>
       <% else %>
         <p>You aren't in any groups yet.</p>
+        <%= link_to "Start a group", new_group_path %>
       <% end %>
     </div>
   </div>
