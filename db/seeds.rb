@@ -30,4 +30,4 @@ class Seeds
 end
 
 Seeds.seed_content
-# Seeds.clear_user_groups
+Seeds.clear_user_groups
