@@ -10,16 +10,19 @@
 
       <%= form_for(@group) do |f| %>
 
-        <%= f.label :name %>
-        <%= f.text_field :name, autofocus: true %>
+        <div class="field">
+          <%= f.label :name %>
+          <%= f.text_field :name, autofocus: true %>
+        </div>
 
-        <%= f.label :budget %>
-        <%= f.number_field :budget, autofocus: true %>
+        <div class="field">
+          <%= f.label :budget %>
+          <%= f.number_field :budget, autofocus: true %>
+        </div>
 
-        <%= f.label :max_participants %>
-        <%= f.number_field :max_participants, autofocus: true %></br>
-
-        <%= f.submit "Create group" %>
+        <div class="actions">
+          <%= f.submit "Create group" %>
+        </div>
       <% end %>
 
     </div>

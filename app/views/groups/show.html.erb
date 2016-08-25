@@ -4,11 +4,9 @@
 
       <h3><%= @group.name %></h3>
       <p>Budget: <%= number_to_currency(@group.budget) %></p>
-      <p>Max Participants: <%= @group.max_participants %></p>
     </div>
     <div class="two columns">
       <% if @group.admin == current_user.id %>
-        <a href="#">Week planner</a>
         <p><%= link_to "Settings", edit_group_path(@group.name) %></p>
         <p><%= link_to "Manage swappers", group_members_path(@group.name) %></p>
       <% end %>

@@ -30,7 +30,7 @@ class WeeksController < ApplicationController
   def new
     authorize_admin(params[:group_name])
     @week = Week.new
-    @days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    @days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
   end
 
   def create
@@ -38,13 +38,14 @@ class WeeksController < ApplicationController
 
     start = Date.parse(week_params[:start_date])
     number = params[:number_of_weeks].to_i
+    location = week_params[:swap_location]
     if params[:add]
       swap = Date.parse(week_params[:swap_date]).wday
     else
       swap = day_map[week_params[:swap_date].downcase.to_sym]
     end
 
-    weeks = ScheduleMaker.new(start, swap, number).create_weeks
+    weeks = ScheduleMaker.new(start, swap, location, number).create_weeks
     Week.transaction do
       weeks.each do |week|
         week.group_id = @group.id

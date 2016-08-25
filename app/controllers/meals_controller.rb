@@ -15,6 +15,8 @@ class MealsController < ApplicationController
   end
 
   def create
+    binding.pry
+    
     @group = Group.find(params[:group_name])
     @user = set_new_meal_user
     @meal = Meal.create(meal_params)
@@ -53,7 +55,7 @@ class MealsController < ApplicationController
   private
 
   def meal_params
-    params.require(:meal).permit(:name)
+    params.require(:meal).permit(:name, :recipe_url, :freezable, :covered, :time_to_eat, :cooking_degrees, :cooking_time)
   end
 
   def multi_meal_params

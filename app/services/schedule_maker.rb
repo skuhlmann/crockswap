@@ -1,9 +1,10 @@
 class ScheduleMaker
   attr_reader :start_date
 
-  def initialize(date, swap_day_number, num_of_weeks=1)
+  def initialize(date, swap_day_number, location, num_of_weeks=1)
     @start_date = find_start_date(date)
     @swap_date = find_swap_date(swap_day_number)
+    @location = location
     @num_of_weeks = num_of_weeks
   end
 
@@ -12,7 +13,8 @@ class ScheduleMaker
     @num_of_weeks.times do |i|
       new_week = {
         start_date: @start_date + (7 * i),
-        swap_date: @swap_date + (7 * i)
+        swap_date: @swap_date + (7 * i),
+        swap_location: @location
       }
       weeks << Week.new(new_week)
     end

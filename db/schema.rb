@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160804020855) do
+ActiveRecord::Schema.define(version: 20160825001421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,12 +46,10 @@ ActiveRecord::Schema.define(version: 20160804020855) do
     t.string   "container_type"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
-    t.string   "swap_location"
     t.integer  "container_id"
     t.integer  "admin"
+    t.index ["container_id"], name: "index_groups_on_container_id", using: :btree
   end
-
-  add_index "groups", ["container_id"], name: "index_groups_on_container_id", using: :btree
 
   create_table "meal_categories", force: :cascade do |t|
     t.string   "name"
@@ -66,9 +63,8 @@ ActiveRecord::Schema.define(version: 20160804020855) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "meal_id"
+    t.index ["meal_id"], name: "index_meal_ratings_on_meal_id", using: :btree
   end
-
-  add_index "meal_ratings", ["meal_id"], name: "index_meal_ratings_on_meal_id", using: :btree
 
   create_table "meals", force: :cascade do |t|
     t.string   "name"
@@ -84,11 +80,11 @@ ActiveRecord::Schema.define(version: 20160804020855) do
     t.boolean  "covered"
     t.string   "timing_to_eat"
     t.boolean  "freezable"
+    t.string   "recipe_url"
+    t.index ["meal_category_id"], name: "index_meals_on_meal_category_id", using: :btree
+    t.index ["user_id"], name: "index_meals_on_user_id", using: :btree
+    t.index ["week_id"], name: "index_meals_on_week_id", using: :btree
   end
-
-  add_index "meals", ["meal_category_id"], name: "index_meals_on_meal_category_id", using: :btree
-  add_index "meals", ["user_id"], name: "index_meals_on_user_id", using: :btree
-  add_index "meals", ["week_id"], name: "index_meals_on_week_id", using: :btree
 
   create_table "members", force: :cascade do |t|
     t.integer  "user_id",        null: false
@@ -96,10 +92,9 @@ ActiveRecord::Schema.define(version: 20160804020855) do
     t.string   "status"
     t.string   "invite_token"
     t.datetime "invite_sent_at"
+    t.index ["group_id", "user_id"], name: "index_members_on_group_id_and_user_id", using: :btree
+    t.index ["user_id", "group_id"], name: "index_members_on_user_id_and_group_id", using: :btree
   end
-
-  add_index "members", ["group_id", "user_id"], name: "index_members_on_group_id_and_user_id", using: :btree
-  add_index "members", ["user_id", "group_id"], name: "index_members_on_user_id_and_group_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -122,11 +117,10 @@ ActiveRecord::Schema.define(version: 20160804020855) do
     t.integer  "zip_code"
     t.string   "city"
     t.boolean  "temporary",              default: false
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "weeks", force: :cascade do |t|
     t.date     "swap_date"
@@ -135,9 +129,8 @@ ActiveRecord::Schema.define(version: 20160804020855) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "group_id"
+    t.index ["group_id"], name: "index_weeks_on_group_id", using: :btree
   end
-
-  add_index "weeks", ["group_id"], name: "index_weeks_on_group_id", using: :btree
 
   add_foreign_key "groups", "containers"
   add_foreign_key "meal_ratings", "meals"

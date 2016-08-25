@@ -15,14 +15,7 @@
         <%= f.text_field :name %>
 
         <%= f.label :budget %>
-        <!-- <%= f.number_field :budget, value: number_to_currency(f.object.budget) %> -->
         <%= f.number_field :budget, value: number_with_precision(f.object.budget, precision: 2) %>
-
-        <%= f.label :max_participants %>
-        <%= f.number_field :max_participants %>
-
-        <%= f.label :swap_location %>
-        <%= f.text_field :swap_location %>
 
         <%= f.label :container %>
         <%= f.select :container_id, @containers, {include_blank: true} %>

@@ -3,7 +3,7 @@
     <div class="u-full-width">
 
       <h3>Create a schedule</h3>
-      <p>You can edit individual weeks and add more weeks after creating the schedule.</p>
+      <p>You can edit individual week defaults and add more weeks after creating the schedule.</p>
 
       <% if flash[:alert] %>
         <div class="alert alert-danger"><%= flash[:alert] %></div>
@@ -11,26 +11,35 @@
 
       <%= form_for(@week, url: group_weeks_path(@group.name)) do |f| %>
 
-
-        <%= f.label :start_date, "1st swap week" %>
-        <%= f.date_field :start_date %>
-
-        <div>
-          <p>Default swap day</p>
-          <% @days.each do |day| %>
-            <%= label_tag :swap_date, day, class: "radio-label" %>
-            <%= f.radio_button(:swap_date, day, class: "radio-button") %>
-          <% end %>
+        <div class="field">
+          <%= f.label :start_date, "1st week of swapping" %>
+          <%= f.date_field :start_date %>
         </div>
 
-        <br>
-        <br>
+        <div class="field">
+          <%= label_tag :number_of_weeks %>
+          <%= number_field_tag :number_of_weeks %>
+        </div>
 
-        <%= label_tag :number_of_weeks %>
-        <%= number_field_tag :number_of_weeks %>
+        <div class="checkbox-area">
+          <p>Default swap day</p>
+            <% @days.each do |day| %>
+            <div class="radio-area">
+                <%= label_tag :swap_date, day, class: "radio-label" %>
+                <%= f.radio_button(:swap_date, day, class: "radio-button") %>
+            </div>
+            <% end %>
+        </div>
 
-        <br><br>
-        <%= submit_tag "Create schedule" %>
+        <div class="field">
+          <%= f.label :swap_location, "Default swap location" %>
+          <%= f.text_field :swap_location %>
+        </div>
+
+        <div class="actions">
+          <%= submit_tag "Create schedule" %>
+        </div>
+
       <% end %>
     </div>
   </div>

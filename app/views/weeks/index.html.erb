@@ -24,6 +24,7 @@
           <%= hidden_field_tag :add, "true" %>
           <%= f.hidden_field :start_date, value: @group.weeks.last.start_date + 7 %>
           <%= f.hidden_field :swap_date, value: @group.weeks.last.swap_date %>
+          <%= f.hidden_field :swap_location, value: @group.weeks.last.swap_location %>
 
           <%= label_tag :number_of_weeks %>
           <%= number_field_tag :number_of_weeks %>
