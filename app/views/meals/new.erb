@@ -11,6 +11,11 @@
       <%= form_for([@group, @week, @meal]) do |f| %>
 
         <div class="field">
+          <%= f.label :category %>
+          <%= f.select "meal_category_id", options_from_collection_for_select(@week.available_categories, "id", "name"), include_blank: "Select"  %>
+        </div>
+
+        <div class="field">
           <%= f.label :name %>
           <%= f.text_field :name %>
         </div>

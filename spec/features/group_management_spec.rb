@@ -10,7 +10,6 @@ describe 'group managment', type: :feature do
     visit new_group_path
 
     page.fill_in('group_name', with: "Hot swappin' devils")
-    page.fill_in('group_max_participants', with: "4")
     page.fill_in('group_budget', with: "$30")
     page.click_button("Create group")
 
@@ -23,7 +22,8 @@ describe 'group managment', type: :feature do
     page.click_link("Group settings")
 
     expect(current_path).to eq(group_path(@group.name))
-    expect(page).to have_content("Week planner")
+    expect(page).to have_content("Settings")
+    expect(page).to have_content("Manage swappers")
   end
 
   it "user can't visit a group page it doesn't belong to" do
@@ -41,7 +41,7 @@ describe 'group managment', type: :feature do
     expect(current_path).to eq(edit_group_path(@group.name))
     expect(page).to have_content("Group Settings")
 
-    page.fill_in('group_max_participants', with: "666")
+    page.fill_in('group_budget', with: "666")
     page.click_button("Update group")
 
     expect(current_path).to eq(group_path(@group.name))

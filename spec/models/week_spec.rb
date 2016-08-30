@@ -16,4 +16,24 @@ RSpec.describe Week, type: :model do
 
     expect(group.weeks.first.id).to eq(week.id)
   end
+
+  it "knows it's available categories" do
+    week = create(:week)
+    group = create(:group)
+    meal = create(:meal)
+    group.weeks << week
+    week.meals << meal
+
+    category = create(:meal_category)
+    next_category = MealCategory.create(name: "Beef")
+    
+    expect(week.available_categories.count).to eq(2)
+    expect(week.available_categories[0]).to eq(category)
+
+    meal.category = category
+    meal.save
+
+    expect(week.available_categories.count).to eq(1)
+    expect(week.available_categories[0]).to eq(next_category)
+  end
 end
