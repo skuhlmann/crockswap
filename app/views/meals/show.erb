@@ -1,8 +1,8 @@
 <div class="container">
+  <h3>Your meal</h3>
   <div class="row">
-    <div class="u-full-width">
+    <div class="seven columns">
 
-      <h3>Add your meal</h3>
 
       <% if flash[:alert] %>
         <div class="alert alert-danger"><%= flash[:alert] %></div>
@@ -12,12 +12,15 @@
 
         <%= render partial: "form", locals: { f: f }%>
 
-
         <div class="actions">
-          <%= f.submit "Create meal" %>
+          <%= f.submit "Edit meal" %>
         </div>
       <% end %>
+    </div>
 
+    <div class="five columns">
+      <p>Other meals this week:</p>
+      <%= render partial: "weeks/meal_list", collection: @list_users %>
     </div>
   </div>
 </div>

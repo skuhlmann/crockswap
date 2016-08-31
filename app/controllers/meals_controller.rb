@@ -1,10 +1,11 @@
 class MealsController < ApplicationController
   before_action :authenticate_user!
 
-  def index
-  end
-
   def show
+    authorize_meal_user
+    @group = Group.where(name: params[:group_name]).first
+    @week = Week.find(params[:week_id])
+    @list_users = @group.users.reject { |user| user.id == current_user.id }
   end
 
   def new
@@ -27,27 +28,14 @@ class MealsController < ApplicationController
     end
   end
 
-  def create_multiple
-    @group = Group.where(name: params[:group_name]).first
-    @week = Week.find(params[:week_id])
-    multi_meal_params.each_pair do |k, new_meal|
-      new_data = { name: new_meal[:name] }
-      meal = Meal.where(user_id: new_meal[:user_id], week_id: @week.id).first
-      if meal
-        meal.update(new_data)
-      else
-        new_data[:user_id] = new_meal[:user_id]
-        new_data[:week_id] = @week.id
-        Meal.create(new_data)
-      end
-    end
-    redirect_to group_week_path(@group.name, @week), alert: 'Successfully updated.'
-  end
-
-  def edit
-  end
-
   def update
+    authorize_meal_user
+    @group = Group.find(params[:group_name])
+    if @meal.update(meal_params)
+      redirect_to group_week_meal_path(@group.name, params[:week_id], @meal), notice: "Success"
+    else
+      render :edit
+    end
   end
 
   private
@@ -62,5 +50,12 @@ class MealsController < ApplicationController
 
   def set_new_meal_user
     params[:user_id] ? params[:user_id] : current_user
+  end
+
+  def authorize_meal_user
+    @meal = Meal.find(params[:id])
+    unless @meal.user_id == current_user.id
+      redirect_to user_root_path
+    end
   end
 end

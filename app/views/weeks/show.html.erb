@@ -29,18 +29,14 @@
     <% if @user_meal %>
       <p>Your meal:</p>
       <p><%= @user_meal.name %></p>
+      <p><%= link_to "Meal Details", group_week_meal_path(@group.name, @week, @user_meal) %></p>
     <% else %>
       <%= link_to "Add your meal", new_group_week_meal_path(@group.name, @week) %>
     <% end %>
 
 
     <p>Other meals:</p>
-    <% if @is_admin %>
-      <%= render "meal_list", collection: @list_users %>
-    <% else %>
-      <%= render "meal_list", collection: @list_users %>
-    <% end %>
-
+    <%= render "meal_list", collection: @list_users %>
     </div>
   </div>
 </div>
