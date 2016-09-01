@@ -9,4 +9,8 @@ class Week < ActiveRecord::Base
       meal_category_ids.any? { |id| id == category.id }
     end
   end
+
+  def is_past?
+    Date.today > (start_date + 7)
+  end
 end

@@ -10,10 +10,8 @@
       <% end %>
       </div>
     <div class="dashboard-table-cell">
-      <% if member.week_meal(@week) %>
-        <% member.week_meal(@week).ratings.each do |rating| %>
-          <%= fa_icon "star-o" %>
-        <% end %>
+      <% if member.week_meal(@week) && @week.is_past? %>
+        <p><%= rating_for member.week_meal(@week), "rating" %></p>
       <% end %>
     </div>
   </div>

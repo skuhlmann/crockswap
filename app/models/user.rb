@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  ratyrate_rater
+
   has_many :members
   has_many :meals
   has_many :groups, through: :members
@@ -34,6 +36,16 @@ class User < ActiveRecord::Base
 
   def week_meal(week)
     meals.find { |meal| meal.week_id == week.id }
+  end
+
+  def average_rating
+    meals.inject(0) do |sum, meal|
+      meal_avg = meal.rating_average
+      unless meal_avg.nil?
+        sum += meal_avg.avg
+      end
+      sum
+    end
   end
 
   private

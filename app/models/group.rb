@@ -30,6 +30,10 @@ class Group < ActiveRecord::Base
       next_week >= (week.start_date) && next_week <= (week.start_date + 7)
     end
   end
+
+  def leaderboard_users
+    users.sort_by(&:average_rating).reverse
+  end
 end
 
 

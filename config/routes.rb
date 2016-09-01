@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  post '/rate' => 'rater#create', :as => 'rate'
   get '/swapboard', to: 'home#swapboard', as: 'user_root'
   get ':group_name/swapboard', to: 'home#swapboard', as: 'group_swapboard'
 

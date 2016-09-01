@@ -14,6 +14,7 @@ gem 'devise'
 gem 'dotenv-rails'
 gem 'font-awesome-rails'
 gem 'coffee-rails'
+gem 'ratyrate'
 
 group :development, :test do
   gem 'pry-rails'
