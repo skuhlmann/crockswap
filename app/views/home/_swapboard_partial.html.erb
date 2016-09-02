@@ -37,13 +37,13 @@
             <%= render partial: "home/swap_vitals", locals: { week: @group.current_week } %>
             <%= render partial: "home/swapboard_week_list", locals: { week: @group.current_week } %>
           <% else %>
-            You need to update your schedule. There is nothing scheduled for this week.
+            <%= render partial: "home/empty_week" %>
           <% end %>
           <h6>Next Week's Swap</h6>
           <% if @group.next_week %>
             <%= render partial: "home/swapboard_week_list", locals: { week: @group.next_week } %>
           <% else %>
-            You need to update your schedule. There is nothing scheduled for next week.
+            <%= render partial: "home/empty_week" %>
           <% end %>
         </div>
 
@@ -52,9 +52,9 @@
           <% if @group.last_week %>
             <%= render partial: "home/swapboard_week_list", locals: { week: @group.last_week } %>
           <% else %>
-            No swappin' last week.
+            <%= render partial: "home/empty_week" %>
           <% end %>
-          <%= render partial: "home/leaderboard", locals: {} %>
+          <%= render partial: "home/leaderboard" %>
         </div>
       </div>
     <% end %>

@@ -2,6 +2,7 @@
     <div class="dashboard-table-row">
       <div class="dashboard-table-cell header">Swapper</div>
       <div class="dashboard-table-cell header">Dish</div>
+      <div class="dashboard-table-cell header">Category</div>
     </div>
   <% @group.users.each do |member| %>
     <div class="dashboard-table-row">
@@ -13,6 +14,11 @@
           <%= member.week_meal(week).name %> 
         <% else %>
             ???
+        <% end %>
+      </div>
+      <div class="dashboard-table-cell">
+        <% if member.week_meal(week) && member.week_meal(week).category.presence %>
+          <%= member.week_meal(week).category.name %> 
         <% end %>
       </div>
     </div>
