@@ -6,6 +6,8 @@ class WeeksController < ApplicationController
     @user = current_user
     @week = Week.new
     @is_admin = set_admin(@group)
+    @weeks = sort_weeks
+    @this_week_index = find_week_index
   end
 
   def show
@@ -65,6 +67,15 @@ class WeeksController < ApplicationController
   def start_date_param
     date = week_params[:start_date].split("-")
     "#{date[2]}-#{date[0]}-#{date[1]}"
+  end
+
+  def sort_weeks
+    @group.weeks.sort_by { |week| week.start_date }
+  end
+
+  def find_week_index
+    # @weeks.find_index(@group.current_week)
+    # @weeks.find_index(@group.next_week)
   end
 
   def authorize_user_group(group_name)
