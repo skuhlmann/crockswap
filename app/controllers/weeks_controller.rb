@@ -74,8 +74,7 @@ class WeeksController < ApplicationController
   end
 
   def find_week_index
-    # @weeks.find_index(@group.current_week)
-    # @weeks.find_index(@group.next_week)
+    @weeks.find_index(@group.current_week)
   end
 
   def authorize_user_group(group_name)
