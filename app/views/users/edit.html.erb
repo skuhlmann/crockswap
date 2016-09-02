@@ -42,5 +42,15 @@
       </div>
 
     </div>
+
+      <div>
+        <h5>My Meals</h5>
+        <% @user.meals.each do |meal| %>
+          <p><%= meal.name %> | <%= link_to "Meal details", group_week_meal_path(meal.week.group.name, meal.week.id, meal.id) %></p>
+        <% end %>
+
+      </div>
+
+    </div>
   </div>
 </div>

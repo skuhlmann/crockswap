@@ -1,5 +1,5 @@
 class Week < ActiveRecord::Base
-  belongs_to :groups
+  belongs_to :group
   has_many :meals
 
   def available_categories
