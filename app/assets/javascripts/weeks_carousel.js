@@ -1,7 +1,7 @@
 $(document).ready(function() {
   var owl = $(".owl-carousel");
 
-  if (owl) {
+  if (owl.length > 0) {
     // owl.owlCarousel({
     //   items : 3,
     // });
