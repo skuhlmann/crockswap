@@ -12,11 +12,11 @@
           <% if current_user %>
             <li class="username">Hello <%= current_user.name %></li>
             <% if current_user.groups.count > 1 %>
-              <li><%= link_to "My Swapboards", groups_path %></li>
+              <li><%= link_to "Swapboards", groups_path %></li>
             <% else %>
-              <li><%= link_to "My Swapboard", user_root_path %></li>
+              <li><%= link_to "Swapboard", user_root_path %></li>
             <% end %>
-            <li><%= link_to "My profile", edit_profile_path(current_user) %></li>
+            <li><%= link_to "Profile", edit_profile_path(current_user) %></li>
             <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
           <% else %>
             <li><%= link_to "Sign in", new_user_session_path %></li>
