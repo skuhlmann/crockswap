@@ -5,7 +5,7 @@
 
       <p># of schedule weeks: <%= @group.weeks.count %></p>
 
-      <div class="owl-carousel" data-current-week-index="<%= @this_week_index %>">
+      <div class="scroller" <%= "data-current-week-index=#{@this_week_index}" %>>
         <% @weeks.each_with_index do |week, index| %>
           <div class="week-card">
             <p>Week of <%= (week.start_date).strftime("%m/%d") %></p>
@@ -13,7 +13,6 @@
             <p><%= link_to 'Week details', group_week_path(@group.name, week) %></p>
           </div>
         <% end %>
-
       </div>
 
     </div>

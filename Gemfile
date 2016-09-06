@@ -15,7 +15,7 @@ gem 'dotenv-rails'
 gem 'font-awesome-rails'
 gem 'coffee-rails'
 gem 'ratyrate'
-gem 'owlcarousel-rails'
+gem 'jquery-slick-rails'
 
 group :development, :test do
   gem 'pry-rails'

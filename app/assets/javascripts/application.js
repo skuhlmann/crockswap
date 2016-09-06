@@ -12,5 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require owl.carousel
+//= require jquery.slick
 //= require_tree .
