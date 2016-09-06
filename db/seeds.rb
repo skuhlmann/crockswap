@@ -10,6 +10,8 @@ class Seeds
     DietRestriction.create(name: "Gluten-free")
     DietRestriction.create(name: "Vegetarian")
     DietRestriction.create(name: "Vegan")
+    DietRestriction.create(name: "Paleo")
+    DietRestriction.create(name: "Dairy-free")
 
     MealCategory.delete_all
     MealCategory.create(name: "Vegetarian")

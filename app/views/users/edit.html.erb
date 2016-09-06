@@ -3,7 +3,9 @@
     <div class="u-full-width">
 
       <h3>My Profile</h3>
+      <%= image_tag @user.avatar.url(:thumb), width: '50' %>
       <p><%= @user.email %></p>
+        
 
       <% if flash[:alert] %>
         <div class="alert alert-danger"><%= flash[:alert] %></div>
@@ -14,11 +16,12 @@
         <%= f.label :name %>
         <%= f.text_field :name %>
 
-        <%= f.label :city %>
-        <%= f.text_field :city %>
+        <%= f.label :description, 'Tell us about yourself' %>
+        <%= f.text_area :description %>
 
-        <%= f.label :zip_code %>
-        <%= f.text_field :zip_code %>
+        <%= f.label :avatar, "Photo" %>
+        <%= image_tag @user.avatar.url(:thumb), width: '50' %>
+        <%= f.file_field :avatar %>
 
         <div class="checkbox-area">
           <p>Dietary Restrictions <span class="instruction-label">(Check all that apply)</span></p>

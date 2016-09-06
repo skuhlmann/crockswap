@@ -16,6 +16,7 @@ gem 'font-awesome-rails'
 gem 'coffee-rails'
 gem 'ratyrate'
 gem 'jquery-slick-rails'
+gem "paperclip", "~> 5.0.0"
 
 group :development, :test do
   gem 'pry-rails'

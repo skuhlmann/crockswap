@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160831215740) do
+ActiveRecord::Schema.define(version: 20160906220203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -148,6 +148,11 @@ ActiveRecord::Schema.define(version: 20160831215740) do
     t.integer  "zip_code"
     t.string   "city"
     t.boolean  "temporary",              default: false
+    t.string   "description"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
@@ -157,9 +162,10 @@ ActiveRecord::Schema.define(version: 20160831215740) do
     t.date     "swap_date"
     t.date     "start_date"
     t.string   "swap_location"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "group_id"
+    t.boolean  "paused",        default: false
     t.index ["group_id"], name: "index_weeks_on_group_id", using: :btree
   end
 

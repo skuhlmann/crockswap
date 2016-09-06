@@ -9,7 +9,7 @@
     <div class="dashboard-table-row">
       <div class="dashboard-table-cell"><%= index + 1 %></div>
       <div class="dashboard-table-cell"><%= member.name %></div>
-      <div class="dashboard-table-cell"><%= member.average_rating %></div>
+      <div class="dashboard-table-cell"><%= member.average_rating(@group) %></div>
     </div>
   <% end %>
 </div>

@@ -32,7 +32,7 @@ class Group < ActiveRecord::Base
   end
 
   def leaderboard_users
-    users.sort_by(&:average_rating).reverse
+    users.sort_by { |user| user.average_rating(self) }.reverse
   end
 end
 

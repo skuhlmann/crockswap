@@ -61,7 +61,7 @@ class WeeksController < ApplicationController
   private
 
   def week_params
-    params.require(:week).permit(:start_date, :swap_date, :swap_location)
+    params.require(:week).permit(:start_date, :swap_date, :swap_location, :paused)
   end
 
   def start_date_param

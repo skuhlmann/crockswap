@@ -17,10 +17,16 @@
 
         <%= f.label :swap_location %>
         <%= f.text_field :swap_location %>
+
+        <%= f.label :paused do %>
+          <%= f.check_box :paused %>
+          <span>Pause this week's swap</span>
+        <% end %>
         <br>
 
         <%= f.submit "Update week" %>
       <% end %>
+
     <% else %>
       <p>Swap Date: <%= @week.swap_date %></p>
       <p>Swap Location: <%= @week.swap_location %></p>

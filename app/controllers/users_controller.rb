@@ -42,7 +42,8 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :city, :zip_code, :cooking_level,
-      :diet_restrictions, :temporary, :id, :password, :password_confirmation)
+      :diet_restrictions, :temporary, :id, :password, :password_confirmation, 
+      :description, :avatar)
   end
 
   def diet_params
