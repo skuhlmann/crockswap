@@ -11,7 +11,7 @@
         <div class="alert alert-danger"><%= flash[:alert] %></div>
       <% end %>
 
-      <%= form_for(@user, url: profile_path(@user.id)) do |f| %>
+      <%= form_for(@user, url: profile_path(@user.id), multipart: true) do |f| %>
 
         <%= f.label :name %>
         <%= f.text_field :name %>
