@@ -20,19 +20,21 @@
   <% if @is_admin %>
     <div class="row">
       <div class="u-full-width">
-        <p>Add weeks</p>
-        <%= form_for(@week, url: group_weeks_path(@group.name)) do |f| %>
+        <p class="add-weeks-link"><%= fa_icon "plus" %> Add weeks</p>
+        <div class="add-weeks-form">
+          <%= form_for(@week, url: group_weeks_path(@group.name)) do |f| %>
 
-          <%= hidden_field_tag :add, "true" %>
-          <%= f.hidden_field :start_date, value: @group.weeks.last.start_date + 7 %>
-          <%= f.hidden_field :swap_date, value: @group.weeks.last.swap_date %>
-          <%= f.hidden_field :swap_location, value: @group.weeks.last.swap_location %>
+            <%= hidden_field_tag :add, "true" %>
+            <%= f.hidden_field :start_date, value: @group.weeks.last.start_date + 7 %>
+            <%= f.hidden_field :swap_date, value: @group.weeks.last.swap_date %>
+            <%= f.hidden_field :swap_location, value: @group.weeks.last.swap_location %>
 
-          <%= label_tag :number_of_weeks %>
-          <%= number_field_tag :number_of_weeks %>
+            <%= label_tag :number_of_weeks %>
+            <%= number_field_tag :number_of_weeks %>
 
-          <%= submit_tag "Add" %>
-        <% end %>
+            <%= submit_tag "Add" %>
+          <% end %>
+        </div>
       </div>
     </div>
   <% end %>

@@ -3,7 +3,7 @@
     <div class="u-full-width">
 
       <h3>Create a schedule</h3>
-      <p>You can edit individual week defaults and add more weeks after creating the schedule.</p>
+      <p>“Don’t worry, swapper. You can update these details later if necessary.”</p>
 
       <% if flash[:alert] %>
         <div class="alert alert-danger"><%= flash[:alert] %></div>
@@ -21,19 +21,19 @@
           <%= number_field_tag :number_of_weeks %>
         </div>
 
+        <div class="field">
+          <%= f.label :swap_location, %>
+          <%= f.text_field :swap_location %>
+        </div>
+        
         <div class="checkbox-area">
-          <p>Default swap day</p>
+          <p>Swap day</p>
             <% @days.each do |day| %>
             <div class="radio-area">
                 <%= label_tag :swap_date, day, class: "radio-label" %>
                 <%= f.radio_button(:swap_date, day, class: "radio-button") %>
             </div>
             <% end %>
-        </div>
-
-        <div class="field">
-          <%= f.label :swap_location, "Default swap location" %>
-          <%= f.text_field :swap_location %>
         </div>
 
         <div class="actions">

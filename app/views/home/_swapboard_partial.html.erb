@@ -8,10 +8,8 @@
       <div class="four columns">
         <% unless @group.weeks.empty? %>
           <%= link_to group_weeks_path(@group.name)  do %>
-            <p><%= fa_icon "calendar" %> Check out your swapping schedule</p>
+            <p><%= fa_icon "calendar" %> Check out my swapping schedule</p>
           <% end %>
-        <% else %>
-          <p>The schedule hasn't been created yet.</p>
         <% end %>
 
         <% if @group.weeks.empty? && @is_admin %>
@@ -19,6 +17,8 @@
           <%= link_to new_group_week_path(@group.name)  do %>
             <p><%= fa_icon "plus" %> Get started</p>
           <% end %>
+        <% elsif @group.weeks.empty? && !@is_admin %>
+          <p>The schedule hasn't been created yet. Check back soon</p>
         <% end %>
       </div>
 

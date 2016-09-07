@@ -25,6 +25,14 @@
     margin-bottom: 20px;
     padding: 10px;
   }
+
+  .add-weeks-link:hover {
+    color: $green;
+  }
+
+  .add-weeks-form {
+    display: none;
+  }
 }
 
 #weeks_controller.show-action {
@@ -44,7 +52,7 @@
   .dashboard-table-cell {
     display: table-cell;
     padding: 10px;
-    border-bottom: 1px solid black;
+    // border-bottom: 1px solid black;
   }
 
 }
