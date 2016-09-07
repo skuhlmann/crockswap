@@ -17,8 +17,8 @@
 }
 
 .fixed-nav-bar li, .fixed-nav-bar a {
-  height: 50px;
-  line-height: 50px;
+  height: 25px;
+  line-height: 25px;
 }
 
 .menu {
@@ -122,7 +122,7 @@
   }
 
   .menu-items li {
-    font-size: $font-size-medium-desk;
+    font-size: $font-size-small-desk;
     text-align: right;
     padding-right: 40px;
   }

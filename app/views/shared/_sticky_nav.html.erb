@@ -2,21 +2,36 @@
   <div class="row">
     <div class="u-full-width">
       <div id="menu" class="menu">
-        <%= link_to root_path, { class: "clean-link" } do %>
-          <span class="sitename">Crockswap</span>
+        <% unless current_user %>
+          <%= link_to root_path, { class: "clean-link" } do %>
+            <span class="sitename">Crockswap</span>
+          <% end %>
+        <% else %>
+          <% if current_user.groups.count > 1 %>
+            <%= link_to groups_path, { class: "clean-link" } do %>
+              <span class="sitename">Crockswap</span>
+            <% end %>
+          <% else %>
+            <%= link_to user_root_path, { class: "clean-link" } do %>
+              <span class="sitename">Crockswap</span>
+            <% end %>
+          <% end %>
         <% end %>
         <a class="hamburger">
           <%= fa_icon "align-justify" %>
         </a>
         <ul class="menu-items u-pull-right">
           <% if current_user %>
-            <li class="username">Hello <%= current_user.name %></li>
             <% if current_user.groups.count > 1 %>
-              <li><%= link_to "Swapboards", groups_path %></li>
+              <% current_user.groups.each do |group| %>
+                <%= render partial: "shared/group_nav", locals: { group: group } %>
+              <% end %>
             <% else %>
-              <li><%= link_to "Swapboard", user_root_path %></li>
+              <%= render partial: "shared/group_nav", locals: { group: current_user.groups.first } %>
             <% end %>
-            <li><%= link_to "Profile", edit_profile_path(current_user) %></li>
+            <li class="username"><%= current_user.name %> 
+              <li><%= link_to "Profile", edit_profile_path(current_user) %></li>
+            </li>
             <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
           <% else %>
             <li><%= link_to "Sign in", new_user_session_path %></li>

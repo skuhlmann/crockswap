@@ -1,0 +1,7 @@
+<li class="username"><%= "#{group.name}" %></li>
+<li><%= link_to "Swapboard", group_swapboard_path(group.name) %></li>
+<% if group.current_week %>
+  <li><%= link_to "Current swap", group_week_path(group.name, group.current_week.id) %></li>
+<% end %>
+<li><%= link_to "Swapping schedule", group_weeks_path(group.name) %></li>
+<li><%= link_to "Group settings", group_path(group.name) %></li>
