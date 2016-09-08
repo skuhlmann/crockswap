@@ -1,8 +1,17 @@
 <div class="container">
+
+  <div class="row">
+    <div class="ten columns">
+      <h3>Create a schedule</h3>
+    </div>
+    <div class="two columns">
+      <%= render partial: "shared/swapboard_link", locals: { group: @group } %>
+    </div>
+  </div>
+
   <div class="row">
     <div class="u-full-width">
 
-      <h3>Create a schedule</h3>
       <p>“Don’t worry, swapper. You can update these details later if necessary.”</p>
 
       <% if flash[:alert] %>

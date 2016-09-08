@@ -37,9 +37,8 @@
       </div>
     </div>
     <div class="two columns">
-      <a href="#">Week planner</a>
-      <p><%= link_to "Settings", edit_group_path(@group.name) %></p>
-      <p><%= link_to "Group page", group_path(@group.name) %></p>
+      <%= render partial: "shared/swapboard_link", locals: { group: @group } %>
+      <p><%= link_to "Group settings", group_path(@group.name) %></p>
     </div>
   </div>
 </div>

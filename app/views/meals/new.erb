@@ -4,6 +4,8 @@
 
       <h3>Add my meal</h3>
 
+      <%= render partial: "shared/swapboard_link", locals: { group: @group } %>
+
       <% if flash[:alert] %>
         <div class="alert alert-danger"><%= flash[:alert] %></div>
       <% end %>

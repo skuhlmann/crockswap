@@ -25,12 +25,6 @@ class GroupsController < ApplicationController
     end
   end
 
-  def edit
-    authorize_admin(params[:name])
-    # @diet_restrictions = DietRestriction.all
-    # @containers = Container.active.collect { |c| ["#{c.name} - #{c.size}", c.id] }
-  end
-
   def update
     authorize_admin(params[:name])
     # @group.diet_restriction_ids = diet_params

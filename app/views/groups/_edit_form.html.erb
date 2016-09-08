@@ -1,0 +1,16 @@
+<% if flash[:alert] %>
+  <div class="alert alert-danger"><%= flash[:alert] %></div>
+<% end %>
+
+<%= form_for(group, url: group_path(group.name)) do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :budget %>
+  <%= f.number_field :budget, value: number_with_precision(f.object.budget, precision: 2) %>
+
+  <br><br>
+
+  <%= f.submit "Update group" %>
+<% end %>

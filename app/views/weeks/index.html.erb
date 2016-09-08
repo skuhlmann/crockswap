@@ -1,7 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="u-full-width">
+    <div class="ten columns">
       <h5><%= @group.name %> Swapping Schedule</h5>
+    </div>
+    <div class="two columns">
+      <%= render partial: "shared/swapboard_link", locals: { group: @group } %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="u-full-width">
 
       <p># of schedule weeks: <%= @group.weeks.count %></p>
 
