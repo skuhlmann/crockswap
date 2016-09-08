@@ -4,12 +4,12 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
-    @diet_restrictions = DietRestriction.all
+    # @diet_restrictions = DietRestriction.all
   end
 
   def update
     @user = current_user
-    @user.diet_restriction_ids = diet_params
+    # @user.diet_restriction_ids = diet_params
 
     if @user.update(user_params)
       redirect_to edit_profile_path(@user), alert: 'Successfully updated.'
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   def temporary
     @user = User.find(params[:id])
-    @diet_restrictions = DietRestriction.all
+    # @diet_restrictions = DietRestriction.all
   end
 
   def temporary_update
