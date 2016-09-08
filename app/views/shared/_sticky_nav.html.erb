@@ -26,7 +26,7 @@
               <% current_user.groups.each do |group| %>
                 <%= render partial: "shared/group_nav", locals: { group: group } %>
               <% end %>
-            <% else %>
+            <% elsif current_user.groups.count == 1 %>
               <%= render partial: "shared/group_nav", locals: { group: current_user.groups.first } %>
             <% end %>
             <li class="username"><%= current_user.name %> 

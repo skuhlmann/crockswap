@@ -17,15 +17,7 @@
         <%= f.label :budget %>
         <%= f.number_field :budget, value: number_with_precision(f.object.budget, precision: 2) %>
 
-        <%= f.label :container %>
-        <%= f.select :container_id, @containers, {include_blank: true} %>
-
-        <div class="checkbox-area">
-          <p>Group Dietary Restrictions <span class="instruction-label">(Check all that apply)</span></p>
-          <%= f.collection_check_boxes(:diet_restriction_ids, @diet_restrictions, :id, :name, class:"label-checkbox" ) do |b| %>
-              <%=b.check_box + b.text%>
-          <% end %>
-        </div>
+        <br><br>
 
         <%= f.submit "Update group" %>
       <% end %>

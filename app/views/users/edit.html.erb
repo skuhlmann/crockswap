@@ -23,13 +23,7 @@
         <%= image_tag @user.avatar.url(:thumb), width: '50' %>
         <%= f.file_field :avatar %>
 
-        <div class="checkbox-area">
-          <p>Dietary Restrictions <span class="instruction-label">(Check all that apply)</span></p>
-            <%= f.collection_check_boxes(:diet_restriction_ids, @diet_restrictions, :id, :name, class:"label-checkbox" ) do |b| %>
-                <%=b.check_box + b.text%>
-            <% end %>
-        </div>
-
+        <br><br>
         <%= f.submit "Update profile" %>
       <% end %>
 
