@@ -19,6 +19,6 @@ production:
 
 staging:
   <<: *default
-  database: crockswap_production
+  database: crockswap_staging
   username: crockswap
   password: <%= ENV['CROCKSWAP_DATABASE_PASSWORD'] %>
