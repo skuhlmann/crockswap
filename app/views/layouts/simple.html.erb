@@ -2,13 +2,13 @@
 <html>
 <head>
   <title>Crockswap</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'fav.ico' %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
-<body>
+<body <%= "id=#{controller_name}_controller class=#{params[:action] || 'unknown'}-action" %> >
 
   <nav class="fixed-nav-bar">
     <div class="row">
@@ -23,6 +23,8 @@
   <div id="content">
     <%= yield %>
   </div>
+
+  <%= render "shared/footer" %>
 
 </body>
 </html>
