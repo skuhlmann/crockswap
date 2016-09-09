@@ -2,8 +2,8 @@ class HomeController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    #temp prod view
-    render 'temp_index', layout: "simple"
+    # #temp prod view
+    # render 'temp_index', layout: "simple"
   end
 
   def swapboard
