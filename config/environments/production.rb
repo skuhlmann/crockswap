@@ -59,17 +59,17 @@ Rails.application.configure do
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
-  config.action_mailer.default_url_options = { :host => "evening-depths-39735.herokuapp.com", :protocol => 'https' }
+  config.action_mailer.default_url_options = { :host => host: 'crockswap.com' }
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    :enable_starttls_auto => true,
-    :address => "smtp.gmail.com",
+    :user_name => ENV['SENDGRID_USERNAME'],
+    :password => ENV['SENDGRID_PASSWORD'],
     :domain => 'crockswap.com',
+    :address => "smtp.sendgrid.net",
     :port => 587,
-    :authentication => :login,
-    :user_name => ENV['GMAIL_USERNAME'],
-    :password => ENV['GMAIL_PASSWORD']
+    :authentication => :plain,
+    :enable_starttls_auto => true,
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
