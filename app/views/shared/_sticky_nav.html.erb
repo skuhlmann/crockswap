@@ -17,26 +17,6 @@
             <% end %>
           <% end %>
         <% end %>
-        <a class="hamburger">
-          <%= fa_icon "align-justify" %>
-        </a>
-        <ul class="menu-items u-pull-right">
-          <% if current_user %>
-            <% if current_user.groups.count > 1 %>
-              <% current_user.groups.each do |group| %>
-                <%= render partial: "shared/group_nav", locals: { group: group } %>
-              <% end %>
-            <% elsif current_user.groups.count == 1 %>
-              <%= render partial: "shared/group_nav", locals: { group: current_user.groups.first } %>
-            <% end %>
-            <li class="username"><%= current_user.name %> 
-              <li><%= link_to "Profile", edit_profile_path(current_user) %></li>
-            </li>
-            <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
-          <% else %>
-            <li><%= link_to "Sign in", new_user_session_path %></li>
-          <% end %>
-        </ul>
       </div>
     </div>
   </div>

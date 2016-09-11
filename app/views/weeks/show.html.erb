@@ -40,17 +40,20 @@
     <div class="six columns boardered">
       <h5>My meal</h5>
       <% if @user_meal %>
-        <p><%= @user_meal.name %></p>
-        <p><%= link_to "Meal Details", group_week_meal_path(@group.name, @week, @user_meal) %></p>
+        <p><%= @user_meal.name %> (<%= @user_meal.category.name %>) </p>
+        <% unless @user_meal.recipe_url == "" || @user_meal.recipe_url.nil? %>
+          <p><%= link_to "Recipe", @user_meal.recipe_url, :target => "_blank" %></p>
+        <% end %>
+       <p><%= link_to "More meal details", group_week_meal_path(@group.name, @week, @user_meal) %></p>
       <% else %>
         <%= link_to "Add my meal", new_group_week_meal_path(@group.name, @week) %>
       <% end %>
     </div>
 
 
-    <div class="six columns boardered">
+    <div class="six columns all-meals">
       <div class="">
-        <h5>Other meals</h5>
+        <h5>All meals this week</h5>
         <%= render partial: "home/swapboard_week_list", locals: { week: @week } %>
       </div>
     </div>

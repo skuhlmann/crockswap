@@ -1,6 +1,17 @@
 <div class="container">
   <%= render partial: "shared/toolbar", locals: { group: @group } %>
-  <h3>My meal</h3>
+
+  <div class="row">
+    <div class="six columns">
+      <h3>My meal</h3>
+    </div>
+    <div class="six columns">
+      <%= link_to group_week_path(@group.name, @week) do %>
+        <%= fa_icon "calendar" %> Week details
+      <% end %>
+    </div>
+  </div>
+
   <div class="row">
     <div class="six columns boardered">
 
@@ -18,7 +29,7 @@
       <% end %>
     </div>
 
-    <div class="six columns boardered">
+    <div class="six columns">
       <h5>Other meals this week:</h5>
       <%= render partial: "home/swapboard_week_list", locals: { week: @week } %>
     </div>

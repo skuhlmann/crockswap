@@ -83,6 +83,37 @@ input[type="checkbox"] {
   padding: 10px;
 }
 
+.dashboard-table {
+  display: table;
+  border-radius: 4px;
+  border: solid 1px black;
+  border-bottom: 0px;
+  width: 100%;
+}
+
+.dashboard-table-row {
+  display: table-row;
+}
+
+.dashboard-table-cell {
+  display: table-cell;
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
+
+.above-rating-row {
+  border-bottom: 0px;
+}
+
+.rating-row {
+  padding: 0px 0px 0px 10px;
+}
+
+.header {
+  background-color: $lightgrey;
+  padding: 0px 10px 0px 10px;
+}
+
 // desktop
 
 @media (min-width: 750px) {
