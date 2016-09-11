@@ -3,10 +3,11 @@
     <%= render partial: "shared/toolbar", locals: { group: current_user.groups.first } %>
   <% end %>
   <div class="row">
-    <div class="u-full-width">
+    <div class="six columns boardered">
 
-      <h3>My Profile</h3>
-      <%= image_tag @user.avatar.url(:thumb), width: '50', class: 'img-circle' %>
+      <%= image_tag @user.avatar.url(:thumb), width: '50', class: 'img-circle profile-img' %>
+      <h3 class="profile-header">My Profile</h3>
+      
       <p><%= @user.email %></p>
         
 
@@ -22,13 +23,14 @@
         <%= f.label :description, 'Tell us about yourself' %>
         <%= f.text_area :description %>
 
-        <%= f.label :avatar, "Photo" %>
-        <%= image_tag @user.avatar.url(:thumb), width: '50' %>
+        <%= f.label :avatar, "Change Photo" %>
         <%= f.file_field :avatar %>
 
         <br><br>
         <%= f.submit "Update profile" %>
       <% end %>
+    </div>
+    <div class="six columns boardered">
 
       <div class="group-list">
         <h5>Groups</h5>
@@ -40,16 +42,16 @@
           <p><%= fa_icon "plus" %> Nobody swaps alone. Start a new group here.</p>
         <% end %>
       </div>
-
     </div>
 
+    <div class="six columns boardered">
       <div>
         <h5>My Meals</h5>
         <% @user.meals.each do |meal| %>
           <p><%= meal.name %> | <%= link_to "Meal details", group_week_meal_path(meal.week.group.name, meal.week.id, meal.id) %></p>
         <% end %>
-
       </div>
+    </div>
 
     </div>
   </div>

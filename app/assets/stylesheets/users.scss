@@ -1,0 +1,19 @@
+@import "app-variables";
+
+#users_controller.edit-action {
+  .profile-img {
+    float: left;
+  }
+
+  .profile-header {
+    margin-top: 5px;
+  }
+
+  .boardered {
+    margin-bottom: 20px;
+  }
+
+  @media (min-width: 750px) {
+
+  }
+}

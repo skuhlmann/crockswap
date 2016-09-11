@@ -1,23 +1,35 @@
 <div class="container">
   <%= render partial: "shared/toolbar", locals: { group: @group } %>
+  <h3><%= @group.name %> Members</h3>
   <div class="row">
-    <div class="ten columns">
-
-      <h3><%= @group.name %> Members</h3>
-      <ol>
+    <div class="six columns">
+      <div class="dashboard-table">
+        <div class="dashboard-table-row">
+          <div class="dashboard-table-cell header">Swapper</div>
+          <div class="dashboard-table-cell header">Status</div>
+        </div>
         <% @members.each do |member| %>
-          <% if member.user_id == current_user.id %>
-            <li>You</li>
-          <% else %>
-            <li><%= member.user.name %>: <%= member.status %></li>
-            <% if member.status == "Pending" %>
-              <%= link_to "Cancel invite", group_member_path(@group.name, member), :method => :delete %>
-            <% end %>
+        <div class="dashboard-table-row">
+          <div class="dashboard-table-cell">
+            <% if member.user_id == current_user.id %>
+              You
+            <% else %>
+              <%= member.user.name %>
           <% end %>
+          </div>
+          <div class="dashboard-table-cell">
+            <%= member.status %>
+            <% if member.status == "Pending" %>
+              | <%= link_to "Cancel invite", group_member_path(@group.name, member), :method => :delete, class: "cancel-link" %>
+            <% end %>
+          </div>
+        </div>
         <% end %>
-      </ol>
+      </div>
+    </div>
 
-      <div class="new-swapper-form">
+    <div class="six columns">
+      <div class="new-swapper-form boardered">
         <h5>Invite a Swapmate</h5>
 
         <% if flash[:alert] %>
@@ -36,10 +48,6 @@
           <%= submit_tag "Send invite" %>
         <% end %>
       </div>
-    </div>
-    <div class="two columns">
-      <%= render partial: "shared/toolbar", locals: { group: @group } %>
-      <p><%= link_to "Group settings", group_path(@group.name) %></p>
     </div>
   </div>
 </div>

@@ -1,5 +1,6 @@
 class MealsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_view_active
 
   def show
     authorize_meal_user
@@ -58,4 +59,9 @@ class MealsController < ApplicationController
       redirect_to user_root_path
     end
   end
+
+  def set_view_active
+    @active_week_view_path = "weeks_active"
+  end
+
 end
