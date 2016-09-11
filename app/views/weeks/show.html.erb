@@ -4,11 +4,8 @@
     <div class="ten columns">
       <h3><%= "#{@group.name}'s Week of #{ @week.start_date.strftime("%m/%d/%Y") }" %></h3>
     </div>
-    <div class="two columns">
-    </div>
-  </div>
   <div class="row">
-    <div class="u-full-width">
+    <div class="six columns boardered">
 
     <% if @is_admin %>
 
@@ -38,17 +35,24 @@
       <p>Swap Location: <%= @week.swap_location %></p>
     <% end %>
 
-    <% if @user_meal %>
-      <p>My meal:</p>
-      <p><%= @user_meal.name %></p>
-      <p><%= link_to "Meal Details", group_week_meal_path(@group.name, @week, @user_meal) %></p>
-    <% else %>
-      <%= link_to "Add my meal", new_group_week_meal_path(@group.name, @week) %>
-    <% end %>
+    </div>
+
+    <div class="six columns boardered">
+      <h5>My meal</h5>
+      <% if @user_meal %>
+        <p><%= @user_meal.name %></p>
+        <p><%= link_to "Meal Details", group_week_meal_path(@group.name, @week, @user_meal) %></p>
+      <% else %>
+        <%= link_to "Add my meal", new_group_week_meal_path(@group.name, @week) %>
+      <% end %>
+    </div>
 
 
-    <p>Other meals:</p>
-    <%= render "meal_list", collection: @list_users %>
+    <div class="six columns boardered">
+      <div class="">
+        <h5>Other meals</h5>
+        <%= render partial: "home/swapboard_week_list", locals: { week: @week } %>
+      </div>
     </div>
   </div>
 </div>

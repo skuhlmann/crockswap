@@ -75,7 +75,15 @@
   .dashboard-table-cell {
     display: table-cell;
     padding: 10px;
-    // border-bottom: 1px solid black;
+    border-bottom: 1px solid black;
+  }
+
+  .swapboard-week-links {
+    display: none;
+  }
+
+  .boardered {
+    margin-bottom: 20px;
   }
 
 }

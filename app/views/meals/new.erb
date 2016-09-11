@@ -1,10 +1,10 @@
 <div class="container">
   <%= render partial: "shared/toolbar", locals: { group: @group } %>
 
+  <h3>Add my meal</h3>
   <div class="row">
-    <div class="u-full-width">
+    <div class="u-full-width boardered">
 
-      <h3>Add my meal</h3>
 
       <% if flash[:alert] %>
         <div class="alert alert-danger"><%= flash[:alert] %></div>
