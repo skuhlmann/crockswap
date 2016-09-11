@@ -1,5 +1,7 @@
 <div class="container">
-  <%= render partial: "shared/toolbar", locals: { group: @group } %>
+  <% unless @groups.empty? %>
+    <%= render partial: "shared/toolbar", locals: { group: @group } %>
+  <% end %>
   <div class="row">
     <div class="u-full-width">
       <% unless @groups.empty? %>

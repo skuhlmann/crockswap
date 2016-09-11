@@ -9,6 +9,9 @@ class HomeController < ApplicationController
   def swapboard
     @user = current_user
     @groups = @user.groups
+    if @groups.empty?
+      redirect_to new_group_path
+    end
     if params[:group_name]
       @group = @groups.select { |group| group.name == params[:group_name] }[0]
       @is_admin = set_admin(@group)

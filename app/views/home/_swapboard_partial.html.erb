@@ -1,11 +1,11 @@
 <div class="row">
   <div class="u-full-width">
     <div class="row">
-      <div class="five columns">
+      <div class="six columns">
         <h4><%= @group.name %> Swapboard</h4>
       </div>
 
-      <div class="four columns">
+      <div class="six columns">
         <% if @group.weeks.empty? && @is_admin %>
           <p>Now you need to create your swapping schedule.</p>
           <%= link_to new_group_week_path(@group.name)  do %>
@@ -13,6 +13,13 @@
           <% end %>
         <% elsif @group.weeks.empty? && !@is_admin %>
           <p>The schedule hasn't been created yet. Check back soon</p>
+        <% end %>
+
+        <% if @group.members.count == 1 && @is_admin %>
+          <p>You need to invite some more swappers!</p>
+          <%= link_to group_members_path(@group.name) do %>
+            <p><%= fa_icon "users" %> Add swappers</p>
+          <% end %>
         <% end %>
       </div>
     </div>

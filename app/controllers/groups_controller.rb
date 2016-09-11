@@ -14,6 +14,7 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
+    @containers = Container.active.collect { |c| ["#{c.name} - #{c.size}", c.id] }
   end
 
   def create

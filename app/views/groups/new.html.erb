@@ -20,6 +20,11 @@
           <%= f.number_field :budget, autofocus: true %>
         </div>
 
+        <div class="field">
+          <%= f.label :container %>
+          <%= f.select :container_id, @containers, {include_blank: true} %>
+        </div>
+
         <div class="actions">
           <%= f.submit "Create group" %>
         </div>
