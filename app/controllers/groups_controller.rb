@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_view_active
 
   def index
     @user = current_user
@@ -8,6 +9,7 @@ class GroupsController < ApplicationController
 
   def show
     authorize_user_group(params[:name])
+    @containers = Container.active.collect { |c| ["#{c.name} - #{c.size}", c.id] }
   end
 
   def new
@@ -27,7 +29,6 @@ class GroupsController < ApplicationController
 
   def update
     authorize_admin(params[:name])
-    # @group.diet_restriction_ids = diet_params
 
     if @group.update(group_params)
       redirect_to group_path(@group.name), alert: 'Successfully updated.'
@@ -59,5 +60,9 @@ class GroupsController < ApplicationController
     unless @group.admin == current_user.id
       redirect_to group_path(@group.name)
     end
+  end
+
+  def set_view_active
+    @active_group_view_path = "group_active"
   end
 end

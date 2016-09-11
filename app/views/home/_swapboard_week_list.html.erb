@@ -4,7 +4,7 @@
       <div class="dashboard-table-cell header">Dish</div>
       <div class="dashboard-table-cell header">Category</div>
     </div>
-  <% @group.users.each do |member| %>
+  <% @group.active_users.each do |member| %>
     <div class="dashboard-table-row">
       <div class="dashboard-table-cell"><%= member.name %></div>
       <div class="dashboard-table-cell">

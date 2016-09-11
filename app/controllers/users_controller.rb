@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:temporary, :temporary_update]
+  before_action :set_view_active
   layout "simple", only: [:temporary]
 
   def edit
@@ -52,5 +53,9 @@ class UsersController < ApplicationController
 
   def confirm_password
     user_params[:password]!= "" && user_params[:password] == user_params[:password_confirmation]
+  end
+
+  def set_view_active
+    @active_profile_view_path = "profile_active"
   end
 end

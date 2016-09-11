@@ -8,7 +8,7 @@
   <%= favicon_link_tag 'fav.ico' %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
-<body <%= "id=#{controller_name}_controller class=#{params[:action] || 'unknown'}-action" %> >
+<body id=<%= "#{controller_name}_controller" %> class=<%= "#{params[:action] || 'unknown'}-action" %> >
 
   <%= render "shared/sticky_nav", object: current_user %>
 

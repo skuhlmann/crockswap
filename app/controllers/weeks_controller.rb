@@ -1,5 +1,6 @@
 class WeeksController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_view_active
 
   def index
     authorize_user_group(params[:group_name])
@@ -90,6 +91,10 @@ class WeeksController < ApplicationController
     unless @group.admin == current_user.id
       redirect_to group_path(@group.name)
     end
+  end
+
+  def set_view_active
+    @active_week_view_path = "weeks_active"
   end
 
   def day_map

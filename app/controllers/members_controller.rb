@@ -1,5 +1,6 @@
 class MembersController < GroupsController
   before_action :authenticate_user!, except: [:invite]
+  before_action :set_view_active
 
   def index
     authorize_user_group(params[:group_name])
@@ -18,7 +19,8 @@ class MembersController < GroupsController
       return redirect_to group_members_path(@group.name), alert: "User is already in this group."
     end
 
-    user = User.where(email: user_params[:email]).first
+    email = user_params[:email].downcase
+    user = User.where(email: email).first
     if user.nil?
       user = User.temporary(user_params)
     end
@@ -70,5 +72,9 @@ class MembersController < GroupsController
     if @member
       @member.invite_sent_at > 5.days.ago
     end
+  end
+
+  def set_view_active
+    @active_group_view_path = "group_active"
   end
 end

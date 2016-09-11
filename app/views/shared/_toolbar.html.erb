@@ -1,0 +1,33 @@
+<div class="row toolbar">
+  <div class="u-full-width">
+    
+    <div id="<%="#{params[:action]}_active"%>" class="toolbar-item">
+      <%= link_to group_swapboard_path(group.name), class: "toolbar-link" do %>
+        <%= fa_icon "tachometer" %> 
+        <p  class="toolbar-link-text" >Swapboard</p>
+      <% end %>
+    </div>
+
+    <div id="<%="#{@active_week_view_path}" %>" class="toolbar-item">
+      <%= link_to group_weeks_path(group.name), class: "toolbar-link" do %>
+        <%= fa_icon "calendar" %> 
+        <p class="toolbar-link-text">Calendar</p>
+      <% end %>
+    </div>
+
+    <div id="<%="#{@active_group_view_path}" %>" class="toolbar-item">
+      <%= link_to group_path(group.name), class: "toolbar-link" do %>
+        <%= fa_icon "users" %> 
+        <p  class="toolbar-link-text" >Group</p>
+      <% end %>
+    </div>
+
+    <div id="<%="#{@active_profile_view_path}" %>" class="toolbar-item">
+      <%= link_to edit_profile_path(current_user), class: "toolbar-link" do %>
+        <%= fa_icon "user" %> 
+        <p  class="toolbar-link-text" >Profile</p>
+      <% end %>
+    </div>
+
+  </div>
+</div>

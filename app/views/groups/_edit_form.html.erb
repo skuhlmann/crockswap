@@ -10,6 +10,9 @@
   <%= f.label :budget %>
   <%= f.number_field :budget, value: number_with_precision(f.object.budget, precision: 2) %>
 
+  <%= f.label :container %>
+  <%= f.select :container_id, @containers, {include_blank: true} %>
+
   <br><br>
 
   <%= f.submit "Update group" %>

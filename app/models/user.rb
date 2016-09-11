@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :diet_restrictions
 
+  before_create :normalize_email
+
   before_destroy :delete_associated_members
 
   devise :database_authenticatable,
@@ -70,6 +72,10 @@ class User < ActiveRecord::Base
   end
 
   private
+
+  def normalize_email
+    self.email = self.email.downcase
+  end
 
   def delete_associated_members
     members.destroy_all

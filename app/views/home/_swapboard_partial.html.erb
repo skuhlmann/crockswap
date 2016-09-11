@@ -6,12 +6,6 @@
       </div>
 
       <div class="four columns">
-        <% unless @group.weeks.empty? %>
-          <%= link_to group_weeks_path(@group.name)  do %>
-            <p><%= fa_icon "calendar" %> Check out my swapping schedule</p>
-          <% end %>
-        <% end %>
-
         <% if @group.weeks.empty? && @is_admin %>
           <p>Now you need to create your swapping schedule.</p>
           <%= link_to new_group_week_path(@group.name)  do %>
@@ -19,12 +13,6 @@
           <% end %>
         <% elsif @group.weeks.empty? && !@is_admin %>
           <p>The schedule hasn't been created yet. Check back soon</p>
-        <% end %>
-      </div>
-
-      <div class="two columns">
-        <%= link_to group_path(@group.name) do %>
-          <p><%= fa_icon "users" %> Group settings</p>
         <% end %>
       </div>
     </div>

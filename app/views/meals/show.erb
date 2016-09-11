@@ -1,10 +1,8 @@
 <div class="container">
+  <%= render partial: "shared/toolbar", locals: { group: @group } %>
   <h3>My meal</h3>
   <div class="row">
     <div class="seven columns">
-
-    <%= render partial: "shared/swapboard_link", locals: { group: @group } %>
-
 
       <% if flash[:alert] %>
         <div class="alert alert-danger"><%= flash[:alert] %></div>
