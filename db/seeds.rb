@@ -29,5 +29,5 @@ class Seeds
   end
 end
 
-Seeds.seed_content
 Seeds.clear_user_groups
+Seeds.seed_content
