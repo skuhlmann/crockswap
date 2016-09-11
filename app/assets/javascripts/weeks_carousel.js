@@ -3,10 +3,12 @@ $(document).ready(function() {
 
   if (scroller) {
     scroller.slick({
-      dots: true,
+      dots: false,
       slidesToShow: 3,
       slidesToScroll: 3,
       infinite: false,
+      prevArrow: $('.weeks-arrow-left'),
+      nextArrow: $('.weeks-arrow-right'),
       responsive: [
           {
             breakpoint: 1024,

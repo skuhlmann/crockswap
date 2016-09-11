@@ -33,6 +33,29 @@
   .add-weeks-form {
     display: none;
   }
+
+  .weeks-arrow-left {
+    font-size: 40px;
+    line-height: 10px;
+    float: left;
+  }
+
+  .weeks-arrow-right {
+    font-size: 40px;
+    line-height: 10px;
+    float: right;
+  }
+
+  .slick-slider {
+    margin-bottom: 0px;
+  }
+
+  .slider-arrows {
+    max-width: 100px;
+    margin-bottom: 60px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 #weeks_controller.show-action {
