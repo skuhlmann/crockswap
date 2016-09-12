@@ -4,6 +4,8 @@ class WeeksController < ApplicationController
 
   def index
     authorize_user_group(params[:group_name])
+    has_weeks?
+
     @user = current_user
     @week = Week.new
     @is_admin = set_admin(@group)
@@ -83,6 +85,12 @@ class WeeksController < ApplicationController
       @group = Group.where(name: group_name).first
     else
       redirect_to user_root_path
+    end
+  end
+
+  def has_weeks?
+    if @group.weeks.count == 0
+      redirect_to new_group_week_path(@group.name)
     end
   end
 
