@@ -41,16 +41,25 @@ class WeeksController < ApplicationController
   def create
     authorize_admin(params[:group_name])
 
-    start = Date.parse(week_params[:start_date])
     number = params[:number_of_weeks].to_i
-    location = week_params[:swap_location]
+
     if params[:add]
-      swap = Date.parse(week_params[:swap_date]).wday
+      start = @group.weeks.last.start_date + 7
+      default_values = {
+        swap: Date.parse(week_params[:swap_date]).wday,
+        location: @group.weeks.last.swap_location,
+        time: @group.weeks.last.swap_time
+      }
     else
-      swap = day_map[week_params[:swap_date].downcase.to_sym]
+      start = Date.parse(week_params[:start_date])
+      default_values = {
+        location: week_params[:swap_location],
+        time: week_params[:swap_time],
+        swap: day_map[week_params[:swap_date].downcase.to_sym]
+      }
     end
 
-    weeks = ScheduleMaker.new(start, swap, location, number).create_weeks
+    weeks = ScheduleMaker.new(start, default_values, number).create_weeks
     Week.transaction do
       weeks.each do |week|
         week.group_id = @group.id
@@ -64,7 +73,7 @@ class WeeksController < ApplicationController
   private
 
   def week_params
-    params.require(:week).permit(:start_date, :swap_date, :swap_location, :paused)
+    params.require(:week).permit(:start_date, :swap_date, :swap_location, :paused, :swap_time)
   end
 
   def start_date_param
