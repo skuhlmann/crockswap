@@ -22,12 +22,12 @@
     </div>
 
     <div class="dashboard-table-row">
+      <div class="dashboard-table-cell rating-row"></div>
       <div class="dashboard-table-cell rating-row">
         <% if member.week_meal(week) && member.week_meal(week).name.presence && week.is_past? %>
           <%= rating_for member.week_meal(week), 'rating' %>
         <% end %>
       </div>
-      <div class="dashboard-table-cell rating-row"></div>
       <div class="dashboard-table-cell rating-row"></div>
     </div>
   <% end %>
