@@ -11,6 +11,6 @@ class Week < ActiveRecord::Base
   end
 
   def is_past?
-    Date.today > (start_date + 7)
+    Date.today > (start_date)
   end
 end
