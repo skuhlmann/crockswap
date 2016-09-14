@@ -37,11 +37,11 @@ class User < ActiveRecord::Base
   end
 
   def invite_status(group)
-    Member.where(group_id: group.id, user_id: id).first.status
+    Member.where(group_id: group.id, user_id: id).take.status
   end
 
   def week_meal(week)
-    meals.find { |meal| meal.week_id == week.id }
+    meals.where(week_id: week.id).take
   end
 
   def group_meals(group)
