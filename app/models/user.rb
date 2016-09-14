@@ -52,23 +52,15 @@ class User < ActiveRecord::Base
   end
 
   def average_rating(group)
-    group_meals(group).inject(0) do |sum, meal|
+    meals = group_meals(group)
+    total = group_meals(group).inject(0) do |sum, meal|
       meal_avg = meal.rating_average
       unless meal_avg.nil?
         sum += meal_avg.avg
       end
       sum
     end
-  end
-
-  def average_overall_rating
-    meals.inject(0) do |sum, meal|
-      meal_avg = meal.rating_average
-      unless meal_avg.nil?
-        sum += meal_avg.avg
-      end
-      sum
-    end
+    total > 1 ? total / meals.count : total
   end
 
   private
