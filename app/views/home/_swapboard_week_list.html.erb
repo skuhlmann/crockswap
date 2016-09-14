@@ -25,7 +25,7 @@
       <div class="dashboard-table-cell rating-row"></div>
       <div class="dashboard-table-cell rating-row">
         <% if member.week_meal(week) && member.week_meal(week).name.presence && week.is_past? %>
-          <%= rating_for member.week_meal(week), 'rating', disable_after_rate: false, enable_half: true %>
+          <%= rating_for member.week_meal(week), 'rating', disable_after_rate: false %>
         <% end %>
       </div>
       <div class="dashboard-table-cell rating-row"></div>
