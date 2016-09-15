@@ -6,6 +6,7 @@ class MealsController < ApplicationController
     authorize_meal_user
     @group = Group.where(name: params[:group_name]).first
     @week = Week.find(params[:week_id])
+    @meal_categories = @week.available_categories.push(@meal.category)
     @list_users = @group.users.reject { |user| user.id == current_user.id }
   end
 
@@ -21,13 +22,13 @@ class MealsController < ApplicationController
     if invalid_input?
       return redirect_to new_group_week_meal_path(@group.name, params[:week_id]), alert: "Please select a category and add your meal name!"
     end
-    
+
     @user = set_new_meal_user
     @meal = Meal.create(meal_params)
     @meal.week_id = params[:week_id]
     @meal.user_id = @user.id
     if @meal.save!
-      redirect_to group_path(@group), notice: "Success"
+      redirect_to group_week_meal_path(@group.name, params[:week_id], @meal), notice: "That sounds tasty!"
     else
       render :new
     end
@@ -37,7 +38,7 @@ class MealsController < ApplicationController
     authorize_meal_user
     @group = Group.find(params[:group_name])
     if @meal.update(meal_params)
-      redirect_to group_week_meal_path(@group.name, params[:week_id], @meal), notice: "Success"
+      redirect_to group_week_meal_path(@group.name, params[:week_id], @meal), notice: "Updated. Still sounds tasty!"
     else
       render :edit
     end
