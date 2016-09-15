@@ -54,14 +54,16 @@ class User < ActiveRecord::Base
 
   def average_rating(group)
     meals = group_meals(group)
+    meals_with_ratings = 0
     total = group_meals(group).inject(0) do |sum, meal|
       meal_avg = meal.rating_average
       unless meal_avg.nil?
         sum += meal_avg.avg
+        meals_with_ratings += 1
       end
       sum
     end
-    total > 1 ? total / meals.count : total
+    total > 1 ? total / meals_with_ratings : total
   end
 
   private
