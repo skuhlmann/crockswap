@@ -32,11 +32,9 @@
       <div class="new-swapper-form boardered">
         <h5>Invite a Swapmate</h5>
 
-        <% if flash[:alert] %>
-          <div class="alert alert-danger"><%= flash[:alert] %></div>
-        <% end %>
-
         <%= form_tag(group_members_path(@group.name), method: "post") do %>
+        
+          <%= render partial: "shared/alerts" %> 
 
           <%= label_tag "Name" %>
           <%= text_field :user, :name %>

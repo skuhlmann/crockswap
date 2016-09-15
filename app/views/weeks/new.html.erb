@@ -13,11 +13,9 @@
 
       <p>Don’t worry, swapper. You can update these details later if necessary.</p>
 
-      <% if flash[:alert] %>
-        <div class="alert alert-danger"><%= flash[:alert] %></div>
-      <% end %>
-
       <%= form_for(@week, url: group_weeks_path(@group.name)) do |f| %>
+
+      <%= render partial: "shared/alerts" %> 
 
         <div class="field">
           <%= f.label :start_date, "1st week of swapping" %>

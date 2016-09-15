@@ -21,10 +21,10 @@ class GroupsController < ApplicationController
     @group = Group.create(group_params)
     @group.users << current_user
     @group.admin = current_user.id
-    if @group.save!
+    if @group.save
       redirect_to group_swapboard_path(@group.name), notice: "Success"
     else
-      render :new
+      redirect_to new_group_path, alert: "Your group needs a name!"
     end
   end
 
@@ -32,7 +32,7 @@ class GroupsController < ApplicationController
     authorize_admin(params[:name])
 
     if @group.update(group_params)
-      redirect_to group_path(@group.name), alert: 'Successfully updated.'
+      redirect_to group_path(@group.name), notice: 'Successfully updated.'
     else
       render :edit
     end

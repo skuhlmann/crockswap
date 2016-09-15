@@ -5,11 +5,9 @@
       <h5>Please finish filling out your profile to continue</h5>
       <p><%= @user.email %></p>
 
-      <% if flash[:alert] %>
-        <div class="alert alert-danger"><%= flash[:alert] %></div>
-      <% end %>
-
       <%= form_for(@user, url: complete_profile_update_path(@user)) do |f| %>
+
+       <%= render partial: "shared/alerts" %> 
 
         <%= f.hidden_field :temporary %>
         <%= f.hidden_field :id %>

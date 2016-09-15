@@ -16,7 +16,11 @@ class MembersController < GroupsController
   def create
     authorize_user_group(params[:group_name])
     if user_in_group?
-      return redirect_to group_members_path(@group.name), alert: "User is already in this group."
+      return redirect_to group_members_path(@group.name), alert: "That swapper is already in this group."
+    end
+
+    if invalid_input?
+      return redirect_to group_members_path(@group.name), alert: "Missing the name or email!"
     end
 
     email = user_params[:email].downcase
@@ -65,6 +69,10 @@ class MembersController < GroupsController
 
   def user_in_group?
     @group.users.pluck(:email).include?(user_params[:email])
+  end
+
+  def invalid_input?
+    user_params[:email].empty? || user_params[:name].empty?
   end
 
   def valid_invite?

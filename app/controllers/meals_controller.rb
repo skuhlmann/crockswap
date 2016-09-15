@@ -18,6 +18,10 @@ class MealsController < ApplicationController
 
   def create
     @group = Group.find(params[:group_name])
+    if invalid_input?
+      return redirect_to new_group_week_meal_path(@group.name, params[:week_id]), alert: "Please select a category and add your meal name!"
+    end
+    
     @user = set_new_meal_user
     @meal = Meal.create(meal_params)
     @meal.week_id = params[:week_id]
@@ -58,6 +62,10 @@ class MealsController < ApplicationController
     unless @meal.user_id == current_user.id
       redirect_to user_root_path
     end
+  end
+
+  def invalid_input?
+    meal_params[:name].empty? || meal_params[:meal_category_id].empty?
   end
 
   def set_view_active

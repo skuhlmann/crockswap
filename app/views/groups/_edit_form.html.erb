@@ -1,8 +1,6 @@
-<% if flash[:alert] %>
-  <div class="alert alert-danger"><%= flash[:alert] %></div>
-<% end %>
-
 <%= form_for(group, url: group_path(group.name)) do |f| %>
+  
+  <%= render partial: "shared/alerts" %> 
 
   <%= f.label :name %>
   <%= f.text_field :name %>

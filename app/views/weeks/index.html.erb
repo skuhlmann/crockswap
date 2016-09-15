@@ -33,6 +33,8 @@
         <div class="add-weeks-form">
           <%= form_for(@week, url: group_weeks_path(@group.name)) do |f| %>
 
+            <%= render partial: "shared/alerts" %> 
+
             <%= hidden_field_tag :add, "true" %>
             <%= f.hidden_field :swap_date, value: @group.weeks.last.swap_date %>
 

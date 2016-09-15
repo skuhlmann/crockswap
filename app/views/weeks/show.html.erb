@@ -9,11 +9,9 @@
 
     <% if @is_admin %>
 
-      <% if flash[:alert] %>
-        <div class="alert alert-danger"><%= flash[:alert] %></div>
-      <% end %>
-
       <%= form_for(@week, url: group_week_path(@group.name, @week), method: :put) do |f| %>
+
+        <%= render partial: "shared/alerts" %> 
 
         <%= f.label :swap_date %>
         <%= f.date_field :swap_date %>

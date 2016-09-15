@@ -44,6 +44,9 @@ class WeeksController < ApplicationController
     number = params[:number_of_weeks].to_i
 
     if params[:add]
+      if params[:number_of_weeks].empty?
+        return redirect_to group_weeks_path(@group.name), alert: "Did you put a number in the box?"
+      end
       start = @group.weeks.last.start_date + 7
       default_values = {
         swap: Date.parse(week_params[:swap_date]).wday,
@@ -51,6 +54,9 @@ class WeeksController < ApplicationController
         time: @group.weeks.last.swap_time
       }
     else
+      if invalid_input?
+        return redirect_to new_group_week_path(@group.name), alert: "Please enter all of this info. You can change details later!"
+      end
       start = Date.parse(week_params[:start_date])
       default_values = {
         location: week_params[:swap_location],
@@ -108,6 +114,14 @@ class WeeksController < ApplicationController
     unless @group.admin == current_user.id
       redirect_to group_path(@group.name)
     end
+  end
+
+  def invalid_input?
+    week_params[:start_date].empty? ||
+    week_params[:swap_date].empty? || 
+    week_params[:swap_location].empty? || 
+    week_params[:swap_time].empty? || 
+    params[:number_of_weeks].empty?
   end
 
   def set_view_active
