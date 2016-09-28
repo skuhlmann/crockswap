@@ -34,14 +34,6 @@ RSpec.describe Meal, type: :model do
     expect(meal.category.id).to eq(category.id)
   end
 
-  it "has ratings" do
-    meal = create(:meal)
-    rating = create(:meal_rating)
-    meal.ratings << rating
-
-    expect(meal.ratings.first.id).to eq(rating.id)
-  end
-
   it "can't have a duplicate category for the week" do
     meal = create(:meal)
     category = create(:meal_category)

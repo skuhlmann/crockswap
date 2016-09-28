@@ -19,7 +19,7 @@ describe 'group managment', type: :feature do
 
   it "can visit the group page" do
     visit user_root_path
-    page.click_link("Group settings")
+    page.click_link("Group")
 
     expect(current_path).to eq(group_path(@group.name))
     expect(page).to have_content("Settings")
@@ -35,17 +35,17 @@ describe 'group managment', type: :feature do
 
   it "can manage the group details" do
     visit user_root_path
-    page.click_link("Group settings")
-    page.click_link("Settings")
+    page.click_link("Group")
 
-    expect(current_path).to eq(edit_group_path(@group.name))
-    expect(page).to have_content("Group Settings")
+    expect(current_path).to eq(group_path(@group.name))
+    expect(page).to have_content("Crock Swappers Settings")
 
     page.fill_in('group_budget', with: "666")
     page.click_button("Update group")
+    updated_group = Group.find(@group.id)
 
     expect(current_path).to eq(group_path(@group.name))
-    expect(page).to have_content("666")
+    expect(updated_group.budget).to eq(666.00)
   end
 
   it "is automatically set to admin when creating a group" do
@@ -61,22 +61,20 @@ describe 'group managment', type: :feature do
 
   it "non-admin can't manage the group details" do
     logout
-    another_user = User.create(email: "bill@example.com", name: "bill", password: "password")
-    another_user.skip_confirmation!
-    another_user.save!
-    @group.users << another_user
+    add_non_admin_user
+
     week = build(:week)
     @group.weeks << week
     @group.save
     visit new_user_session_path
-    page.fill_in('user_email', with: another_user.email)
+    page.fill_in('user_email', with: @another_user.email)
     page.fill_in('user_password', with: 'password')
     page.click_button('Sign in')
 
     visit user_root_path
-    page.click_link("Group settings")
+    page.click_link("Group")
 
-    expect(page).not_to have_content("Settings")
+    expect(page).to have_content("Crock Swappers Settings")
     expect(page).not_to have_content("Manage swappers")
   end
 end

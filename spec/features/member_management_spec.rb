@@ -11,8 +11,8 @@ describe 'member management', type: :feature do
     click_link("Manage swappers")
 
     expect(current_path).to eq(group_members_path(@group.name))
-    expect(page).to have_content("Crock Swappers")
-    expect(page).to have_content("Invite a swapper")
+    expect(page).to have_content("Crock Swappers Members")
+    expect(page).to have_content("Invite a Swapmate")
   end
 
   it "can invite a new member" do
@@ -20,6 +20,7 @@ describe 'member management', type: :feature do
 
     visit group_path(@group.name)
     click_link("Manage swappers")
+    page.fill_in('user[name]', with: 'billy')
     page.fill_in('user[email]', with: 'sam@example.com')
     page.click_button("Send invite")
 
@@ -27,7 +28,8 @@ describe 'member management', type: :feature do
 
     expect(current_path).to eq(group_members_path(@group.name))
     expect(page).to have_content("An invite email has been sent.")
-    expect(mail.to.first).to eq("sam@example.com")
+    expect(page).to have_content("billy")
+    expect(page).to have_content("Pending")
     expect(User.count).to eq(user_count + 1)
   end
 
@@ -37,13 +39,13 @@ describe 'member management', type: :feature do
 
     visit group_path(@group.name)
     click_link("Manage swappers")
+    page.fill_in('user[name]', with: 'tobin')
     page.fill_in('user[email]', with: 'jim@example.com')
     page.click_button("Send invite")
 
     mail = ActionMailer::Base.deliveries.last
 
     expect(current_path).to eq(group_members_path(@group.name))
-    expect(page).to have_content("An invite email has been sent.")
     expect(mail.to.first).to eq("jim@example.com")
     expect(User.count).to eq(user_count)
   end
@@ -59,7 +61,7 @@ describe 'member management', type: :feature do
     page.click_button("Send invite")
 
     expect(current_path).to eq(group_members_path(@group.name))
-    expect(page).to have_content("User is already in this group.")
+    expect(page).to have_content("That swapper is already in this group.")
   end
 
   it "can cancel a pending invite" do

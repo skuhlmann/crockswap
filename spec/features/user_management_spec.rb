@@ -32,9 +32,8 @@ describe 'user managment', type: :feature do
     page.fill_in('user_password', with: 'password')
     page.click_button('Sign in')
 
-    expect(current_path).to eq(user_root_path)
-    expect(page).to have_content('Sign out')
-    expect(page).to have_content(user.name)
+    expect(current_path).to eq(new_group_path)
+    expect(page).to have_content("Nobody swaps alone. Start a group here.")
   end
 
   it "can't login to an non-existing account" do
@@ -84,13 +83,15 @@ describe 'user managment', type: :feature do
   it "can edit a profile" do
     user = User.create(email: "colleen@example.com", password: "password")
     user.confirm
+    group = create(:group)
+    group.users << user
 
     visit new_user_session_path
     page.fill_in('user_email', with: 'colleen@example.com')
     page.fill_in('user_password', with: 'password')
     page.click_button('Sign in')
 
-    page.click_link("My profile")
+    page.click_link("Profile")
     expect(current_path).to eq(edit_profile_path(user))
 
     page.fill_in('Name', with: 'Colleen')

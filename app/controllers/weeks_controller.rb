@@ -118,7 +118,7 @@ class WeeksController < ApplicationController
 
   def invalid_input?
     week_params[:start_date].empty? ||
-    week_params[:swap_date].empty? || 
+    week_params[:swap_date].nil? || 
     week_params[:swap_location].empty? || 
     week_params[:swap_time].empty? || 
     params[:number_of_weeks].empty?
