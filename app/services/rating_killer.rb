@@ -1,7 +1,7 @@
 class RatingKiller
   def self.perform
     @users = User.all
-    @users.each do { |user| clean_ratings(user) }
+    @users.each { |user| clean_ratings(user) }
   end
 
   def self.clean_ratings(user)
