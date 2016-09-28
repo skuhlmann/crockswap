@@ -32,12 +32,42 @@ RSpec.describe Group, type: :model do
     expect(group.admin).to eq(user.id)
   end
 
-  it "can return the current week" do
+  it "can return the current week for a given group" do
     group = create(:group)
     this_week = Week.create(start_date: (Date.today - 3))
     group.weeks << this_week
     group.save!
 
     expect(group.current_week).to eq(this_week)
+  end
+
+  it "can return the next week for a given group" do
+    group = create(:group)
+    next_week = Week.create(start_date: (Date.today + 7))
+    group.weeks << next_week
+    group.save!
+
+    expect(group.next_week).to eq(next_week)
+  end
+
+  it "can return the last week for a given group" do
+    group = create(:group)
+    last_week = Week.create(start_date: (Date.today - 7))
+    group.weeks << last_week
+    group.save!
+
+    expect(group.last_week).to eq(last_week)
+  end
+
+  it "can return the leaderboard users" do
+    group = create(:group)
+    user = create(:user)
+    inactive_user = User.create(email: "testing@example.com", name: "Paul", temporary: "true", password: "password")
+    group.users << user
+    group.users << inactive_user
+    group.save!
+
+    expect(group.leaderboard_users.count).to eq(1)
+    expect(group.leaderboard_users.first.name).to eq("Colleen Brown")
   end
 end
