@@ -30,7 +30,7 @@
         <%= f.text_area :description %>
 
         <%= f.label :avatar, "Change Photo" %>
-        <%= f.file_field :avatar %>
+        <%= f.file_field :avatar, accept: "image/*" %>
 
         <br><br>
         <%= f.submit "Update profile" %>
