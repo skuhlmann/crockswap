@@ -29,7 +29,6 @@
         <div class="six columns">
           <h6>This Week's Swap</h6>
           <% if @group.current_week %>
-            <%= render partial: "home/swap_vitals", locals: { week: @group.current_week } %>
             <%= render partial: "home/swapboard_week_list", locals: { week: @group.current_week } %>
           <% else %>
             <%= render partial: "home/empty_week" %>
