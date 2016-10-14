@@ -57,6 +57,9 @@ class MembersController < GroupsController
   def destroy
     authorize_admin(params[:group_name])
     @member = Member.find(params[:id])
+    if @member.user.temporary
+      @member.user.destroy
+    end
     @member.destroy
     redirect_to group_members_path(@group.name), alert: "Invite cancelled"
   end
