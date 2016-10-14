@@ -6,7 +6,7 @@ RSpec.describe Meal, type: :model do
 
     expect(meal).to be_valid
     expect(meal.name).to eq("Hot Dogs")
-    expect(meal.freezable).to be
+    expect(meal.instructions).to be
   end
 
   it "belongs to a user" do
