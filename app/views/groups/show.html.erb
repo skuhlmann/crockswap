@@ -12,6 +12,9 @@
       <% end %>
     </div>
   </div>
+
+  <%= render partial: "weeks/calendar", locals: { group: @group } %>
+
   <div class="row">
     <div class="ten columns boardered">
       <% if @group.admin == current_user.id %>

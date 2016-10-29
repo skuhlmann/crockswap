@@ -10,6 +10,12 @@ class GroupsController < ApplicationController
   def show
     authorize_user_group(params[:name])
     @containers = Container.active.collect { |c| ["#{c.name} - #{c.size}", c.id] }
+
+    # @user = current_user
+    @week = Week.new
+    @is_admin = set_admin(@group)
+    @weeks = sort_weeks
+    @this_week_index = find_week_index
   end
 
   def new
@@ -65,5 +71,13 @@ class GroupsController < ApplicationController
 
   def set_view_active
     @active_group_view_path = "group_active"
+  end
+
+  def sort_weeks
+    @group.weeks.sort_by { |week| week.start_date }
+  end
+
+  def find_week_index
+    @weeks.find_index(@group.current_week)
   end
 end

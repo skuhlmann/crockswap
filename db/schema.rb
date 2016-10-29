@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161014212530) do
+ActiveRecord::Schema.define(version: 20161028175521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20161014212530) do
     t.integer  "meal_category_id"
     t.string   "recipe_url"
     t.string   "instructions"
+    t.string   "accompaniments"
     t.index ["meal_category_id"], name: "index_meals_on_meal_category_id", using: :btree
     t.index ["user_id"], name: "index_meals_on_user_id", using: :btree
     t.index ["week_id"], name: "index_meals_on_week_id", using: :btree
