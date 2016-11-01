@@ -9,7 +9,6 @@ describe 'week management', type: :feature do
 
   describe 'admin' do
     it "can visit a week page" do
-      page.click_link("Calendar")
       page.click_link('Week details', match: :first)
 
       week = @group.weeks.first
@@ -21,7 +20,6 @@ describe 'week management', type: :feature do
 
 
     it "can manage a week" do
-      page.click_link("Calendar")
       page.click_link('Week details', match: :first)
       page.fill_in('week[swap_location]', with: "The beach")
       page.click_button("Update week")
@@ -45,7 +43,6 @@ describe 'week management', type: :feature do
       page.fill_in('user_password', with: 'password')
       page.click_button('Sign in')
       visit user_root_path
-      page.click_link('Calendar')
       page.click_link('Week details', match: :first)
       
       week = @group.weeks.first

@@ -38,7 +38,8 @@ describe 'group managment', type: :feature do
     page.click_link("Group")
 
     expect(current_path).to eq(group_path(@group.name))
-    expect(page).to have_content("Crock Swappers Settings")
+    expect(page).to have_content("Crock Swappers")
+    expect(page).to have_content("Group Settings")
 
     page.fill_in('group_budget', with: "666")
     page.click_button("Update group")
@@ -74,7 +75,8 @@ describe 'group managment', type: :feature do
     visit user_root_path
     page.click_link("Group")
 
-    expect(page).to have_content("Crock Swappers Settings")
+    expect(page).to have_content("Crock Swappers")
+    expect(page).to have_content("Group Settings")
     expect(page).not_to have_content("Manage swappers")
   end
 end

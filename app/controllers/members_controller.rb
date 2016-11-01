@@ -1,20 +1,18 @@
 class MembersController < GroupsController
   before_action :authenticate_user!, except: [:invite]
   before_action :set_view_active
+  before_action :authorize_user_group, only: [:index, :new, :create]
 
   def index
-    authorize_user_group(params[:group_name])
     @members = Member.where(group_id: @group.id)
     @member = Member.new
   end
 
   def new
-    authorize_user_group(params[:group_name])
     @member = Member.new
   end
 
   def create
-    authorize_user_group(params[:group_name])
     if user_in_group?
       return redirect_to group_members_path(@group.name), alert: "That swapper is already in this group."
     end
@@ -72,6 +70,14 @@ class MembersController < GroupsController
 
   def user_in_group?
     @group.users.pluck(:email).include?(user_params[:email])
+  end
+
+  def authorize_user_group
+    if current_user.groups.pluck(:name).any? { |name| name == params[:group_name] }
+      @group = Group.where(name: params[:group_name]).first
+    else
+      redirect_to user_root_path
+    end
   end
 
   def invalid_input?

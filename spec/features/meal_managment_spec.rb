@@ -7,7 +7,6 @@ describe 'meal management', type: :feature do
     visit user_root_path
     MealCategory.create(name: "Vegetarian")
     MealCategory.create(name: "Chicken")
-    page.click_link("Calendar")
     page.click_link('Week details', match: :first)
     page.click_link('Add my meal')
   end

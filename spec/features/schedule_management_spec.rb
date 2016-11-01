@@ -17,7 +17,6 @@ describe 'schedule management', type: :feature do
   end
 
   describe 'sucessful creation' do
-
     before(:each) do
       login_user
       visit user_root_path
@@ -33,9 +32,10 @@ describe 'schedule management', type: :feature do
     it "can create a new schedule" do
       weeks = Week.where(group_id: @group.id)
 
-      expect(current_path).to eq(group_weeks_path(@group.name))
+      expect(current_path).to eq(group_path(@group.name))
       expect(weeks.count).to eq(4)
-      expect(page).to have_content("Crock Swappers Swapping Schedule")
+      expect(page).to have_content("Crock Swappers")
+      expect(page).to have_content("Swapping Schedule")
     end
 
     xit "can add weeks to a schedule" do

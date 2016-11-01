@@ -13,7 +13,18 @@
     </div>
   </div>
 
-  <%= render partial: "weeks/calendar", locals: { group: @group } %>
+  <% if has_weeks? %>
+    <%= render partial: "weeks/calendar", locals: { group: @group } %>
+  <% else %>
+    <% if @is_admin %>
+      <p>Now you need to create your swapping schedule.</p>
+      <%= link_to new_group_week_path(@group.name)  do %>
+        <p><%= fa_icon "plus" %> Get started</p>
+      <% end %>
+    <% else %>
+      <p>The schedule hasn't been created yet. Check back soon</p>
+    <% end %>
+  <% end %>
 
   <div class="row">
   <h5>Group Settings</h5>

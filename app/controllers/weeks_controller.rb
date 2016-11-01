@@ -2,17 +2,6 @@ class WeeksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_view_active
 
-  def index
-    authorize_user_group(params[:group_name])
-    has_weeks?
-
-    @user = current_user
-    @week = Week.new
-    @is_admin = set_admin(@group)
-    @weeks = sort_weeks
-    @this_week_index = find_week_index
-  end
-
   def show
     authorize_user_group(params[:group_name])
     @week = Week.find(params[:id])
@@ -45,7 +34,7 @@ class WeeksController < ApplicationController
 
     if params[:add]
       if params[:number_of_weeks].empty?
-        return redirect_to group_weeks_path(@group.name), alert: "Did you put a number in the box?"
+        return redirect_to group_path(@group.name), alert: "Did you put a number in the box?"
       end
       start = @group.weeks.last.start_date + 7
       default_values = {
@@ -73,7 +62,7 @@ class WeeksController < ApplicationController
       end
     end
 
-    redirect_to group_weeks_path(@group.name)
+    redirect_to group_path(@group.name)
   end
 
   private
@@ -100,12 +89,6 @@ class WeeksController < ApplicationController
       @group = Group.where(name: group_name).first
     else
       redirect_to user_root_path
-    end
-  end
-
-  def has_weeks?
-    if @group.weeks.count == 0
-      redirect_to new_group_week_path(@group.name)
     end
   end
 

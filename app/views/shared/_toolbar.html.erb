@@ -8,13 +8,6 @@
       <% end %>
     </div>
 
-    <div id="<%="#{@active_week_view_path}" %>" class="toolbar-item">
-      <%= link_to group_weeks_path(group.name), class: "toolbar-link" do %>
-        <%= fa_icon "calendar" %> 
-        <p class="toolbar-link-text">Calendar</p>
-      <% end %>
-    </div>
-
     <div id="<%="#{@active_group_view_path}" %>" class="toolbar-item">
       <%= link_to group_path(group.name), class: "toolbar-link" do %>
         <%= fa_icon "users" %> 

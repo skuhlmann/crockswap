@@ -1,6 +1,8 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_view_active
+  before_action :authorize_user_group, only: [:show]
+  helper_method :has_weeks?
 
   def index
     @user = current_user
@@ -8,10 +10,7 @@ class GroupsController < ApplicationController
   end
 
   def show
-    authorize_user_group(params[:name])
     @containers = Container.active.collect { |c| ["#{c.name} - #{c.size}", c.id] }
-
-    # @user = current_user
     @week = Week.new
     @is_admin = set_admin(@group)
     @weeks = sort_weeks
@@ -54,9 +53,9 @@ class GroupsController < ApplicationController
     params[:group][:diet_restriction_ids].reject { |diet| diet.empty? }
   end
 
-  def authorize_user_group(group_name)
-    if current_user.groups.pluck(:name).any? { |name| name == group_name }
-      @group = Group.where(name: group_name).first
+  def authorize_user_group
+    if current_user.groups.pluck(:name).any? { |name| name == params[:name] }
+      @group = Group.where(name: params[:name]).first
     else
       redirect_to user_root_path
     end
@@ -79,5 +78,9 @@ class GroupsController < ApplicationController
 
   def find_week_index
     @weeks.find_index(@group.current_week)
+  end
+
+  def has_weeks?
+    @group.weeks.count > 0
   end
 end
