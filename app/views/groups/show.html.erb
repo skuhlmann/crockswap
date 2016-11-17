@@ -7,7 +7,7 @@
     <div class="three columns">
       <% if @group.admin == current_user.id %>
         <%= link_to group_members_path(@group.name) do %>
-        <p><%= fa_icon "user-plus" %> Manage swappers</p>
+          <p><%= fa_icon "user-plus" %> Manage swappers</p>
         <% end %>
       <% end %>
 
@@ -37,6 +37,20 @@
         <h3><%= @group.name %></h3>
         <p>Budget: <%= number_to_currency(@group.budget) %></p>
       <% end %>
+
+      <% if @group.admin == current_user.id %>
+
+        <hr>
+        <p class="delete-group-link button"><%= fa_icon "exclamation-triangle" %> Delete group</p>
+        <div class="delete-group-confirmation" style="display:none;">
+          <p>Are you sure?</p>
+
+          <%= link_to "Yes", group_path(@group.name), :method => "delete", class: "button float-left" %>
+          <p class="delete-group-cancel button float-left"> Nevermind!</p>
+
+        </div>
+      <% end %>
+      
     </div>
   </div>
 </div>

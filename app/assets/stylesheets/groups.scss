@@ -47,9 +47,20 @@
 
   .meal-details {
     line-height: 5px;
-
   }
 
+  .delete-group-link:hover {
+    background-color: red;
+    border-color: red;
+  }
+
+  .delete-group-confirmation {
+    padding: 20px;
+  }
+
+  .delete-group-cancel {
+    margin-left: 20px;
+  }
 }
 
 #groups_controller.index-action {

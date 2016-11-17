@@ -10,6 +10,8 @@ class Group < ActiveRecord::Base
   validates :name, presence: true
   validates :max_participants, numericality: { greater_than: 0 }
 
+  before_destroy :clean_up_members
+
   def current_week
     today = Date.today
     weeks.find do |week|
@@ -37,6 +39,10 @@ class Group < ActiveRecord::Base
 
   def active_users
     users.where(temporary: false)
+  end
+
+  def clean_up_members
+    members.destroy_all
   end
 end
 

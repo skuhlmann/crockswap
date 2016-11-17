@@ -17,6 +17,17 @@ describe 'group managment', type: :feature do
     expect(page).to have_content("Hot swappin' devils")
   end
 
+  it "can delete a group as admin" do
+    visit new_group_path
+
+    page.fill_in('group_name', with: "Hot swappin' devils")
+    page.fill_in('group_budget', with: "$30")
+    page.click_button("Create group")
+    page.click_link("Group")
+
+    expect(page).to have_content("Delete group")
+  end
+
   it "can visit the group page" do
     visit user_root_path
     page.click_link("Group")

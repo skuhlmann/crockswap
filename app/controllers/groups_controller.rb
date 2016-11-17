@@ -43,6 +43,12 @@ class GroupsController < ApplicationController
     end
   end
 
+  def destroy
+    authorize_admin(params[:name])
+    @group.destroy
+    redirect_to user_root_path, notice: 'Group deleted.'
+  end
+
   private
 
   def group_params

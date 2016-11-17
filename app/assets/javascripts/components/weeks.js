@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var addLink = $('.add-weeks-link')
+  var addLink = $('.add-weeks-link');
 
   if (addLink) {
     $(addLink).off().on('click', function() {
