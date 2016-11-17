@@ -4,8 +4,8 @@ $(document).ready(function() {
   if (scroller) {
     scroller.slick({
       dots: false,
-      slidesToShow: 3,
-      slidesToScroll: 3,
+      slidesToShow: 2,
+      slidesToScroll: 2,
       infinite: false,
       prevArrow: $('.weeks-arrow-left'),
       nextArrow: $('.weeks-arrow-right'),
@@ -13,8 +13,8 @@ $(document).ready(function() {
           {
             breakpoint: 1024,
             settings: {
-              slidesToShow: 3,
-              slidesToScroll: 3,
+              slidesToShow: 2,
+              slidesToScroll: 2,
             }
           },
           {

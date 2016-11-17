@@ -9,17 +9,17 @@
         <%= render partial: "shared/alerts" %> 
 
         <div class="field">
-          <%= f.label :name %>
+          <%= f.label :name, class: "field-label" %>
           <%= f.text_field :name, autofocus: true %>
         </div>
 
         <div class="field">
-          <%= f.label :budget %>
+          <%= f.label :budget, class: "field-label" %>
           <%= f.number_field :budget, autofocus: true %>
         </div>
 
         <div class="field">
-          <%= f.label :container %>
+          <%= f.label :container, class: "field-label" %>
           <%= f.select :container_id, @containers, {include_blank: true} %>
         </div>
 

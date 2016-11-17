@@ -3,11 +3,12 @@ class MealsController < ApplicationController
   before_action :set_view_active
 
   def show
-    authorize_meal_user
+    @meal = Meal.find(params[:id])
     @group = Group.where(name: params[:group_name]).first
     @week = Week.find(params[:week_id])
     @meal_categories = @week.available_categories.push(@meal.category)
     @list_users = @group.users.reject { |user| user.id == current_user.id }
+    @is_meal_owner = is_meal_owner?(@meal)
   end
 
   def new
@@ -60,9 +61,13 @@ class MealsController < ApplicationController
 
   def authorize_meal_user
     @meal = Meal.find(params[:id])
-    unless @meal.user_id == current_user.id
+    unless is_meal_owner?(@meal)
       redirect_to user_root_path
     end
+  end
+
+  def is_meal_owner?(meal)
+    meal.user_id == current_user.id
   end
 
   def invalid_input?

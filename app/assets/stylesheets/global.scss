@@ -93,6 +93,7 @@ input[type="checkbox"] {
 
 .dashboard-table-row {
   display: table-row;
+  border-bottom: 1px solid black;
 }
 
 .dashboard-table-cell {
@@ -100,11 +101,6 @@ input[type="checkbox"] {
   padding: 10px;
   border-bottom: 1px solid black;
 }
-
-.above-rating-row {
-  border-bottom: 0px;
-}
-
 .rating-row {
   padding: 0px 0px 0px 10px;
 }
@@ -118,6 +114,24 @@ input[type="checkbox"] {
   color: $green;
   font-weight: 900;
   margin-bottom: 10px;
+}
+
+.leaderboard {
+  border-bottom: 0px;
+}
+
+.list-label {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.field-label {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.paused {
+  color: $black;
 }
 
 // desktop

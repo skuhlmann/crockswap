@@ -13,18 +13,18 @@
 
         <%= render partial: "shared/alerts" %> 
 
-        <%= f.label :swap_date %>
+        <%= f.label :swap_date, class: "field-label" %>
         <%= f.date_field :swap_date %>
 
-        <%= f.label :swap_location %>
+        <%= f.label :swap_location, class: "field-label" %>
         <%= f.text_field :swap_location %>
 
-        <%= f.label :swap_time %>
+        <%= f.label :swap_time, class: "field-label" %>
         <%= f.text_field :swap_time %>
 
         <%= f.label :paused do %>
           <%= f.check_box :paused %>
-          <span>Pause this week's swap</span>
+          <span class="field-label">Pause this week's swap</span>
         <% end %>
         <br>
 

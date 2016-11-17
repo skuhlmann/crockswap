@@ -2,13 +2,13 @@
   
   <%= render partial: "shared/alerts" %> 
 
-  <%= f.label :name %>
+  <%= f.label :name, class: "field-label" %>
   <%= f.text_field :name %>
 
-  <%= f.label :budget %>
+  <%= f.label :budget, class: "field-label" %>
   <%= f.number_field :budget, value: number_with_precision(f.object.budget, precision: 2) %>
 
-  <%= f.label :container %>
+  <%= f.label :container, class: "field-label" %>
   <%= f.select :container_id, @containers, {include_blank: true} %>
 
   <br><br>

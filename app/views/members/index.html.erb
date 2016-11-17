@@ -36,10 +36,10 @@
         
           <%= render partial: "shared/alerts" %> 
 
-          <%= label_tag "Name" %>
+          <%= label_tag :name, "Name", class: "field-label" %>
           <%= text_field :user, :name %>
 
-          <%= label_tag "Email Address" %>
+          <%= label_tag :email, "Email Address", class: "field-label" %>
           <%= text_field :user, :email %>
 
           <br>

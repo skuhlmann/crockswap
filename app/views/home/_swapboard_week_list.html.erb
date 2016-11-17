@@ -1,38 +1,45 @@
+<% unless local_assigns[:header].nil? %>
+  <h6><%= header %> - Week of <%= week.start_date.strftime("%m/%d") %> </h6>
+<% end %>
+
 <div class="dashboard-table this-week">
     <div class="dashboard-table-row">
       <div class="dashboard-table-cell header">Swapper</div>
       <div class="dashboard-table-cell header">Dish</div>
       <div class="dashboard-table-cell header">Category</div>
     </div>
-  <% @group.active_users.each do |member| %>
-    <div class="dashboard-table-row">
-      <div class="dashboard-table-cell above-rating-row"><%= member.name %></div>
-      <div class="dashboard-table-cell above-rating-row">
-        <% if member.week_meal(week) && member.week_meal(week).name.presence %>
-          <%= member.week_meal(week).name %> 
-        <% else %>
+  <% if week.paused %>
+
+  <div class="dashboard-table-row empty-week">
+    <div class="dashboard-table-cell empty-week">
+      <span class="paused"><%= fa_icon "exclamation-circle" %> Swap paused</span>
+      </div>
+    <div class="dashboard-table-cell empty-week"></div>
+    <div class="dashboard-table-cell empty-week"></div>
+  </div>
+
+  <% else %>
+    <% @group.active_users.each do |member| %>
+      <div class="dashboard-table-row">
+        <div class="dashboard-table-cell above-rating-row"><%= member.name %></div>
+        <div class="dashboard-table-cell above-rating-row">
+          <% @week_meal = member.week_meal(week) %>
+          <% if @week_meal && @week_meal.name.presence %>
+            <%= link_to group_week_meal_path(@group.name, week, @week_meal) do %>
+              <%= @week_meal.name %>
+            <% end %>
+          <% elsif member == current_user %>
+              <%= link_to "Add my meal", new_group_week_meal_path(@group.name, week) %>
+          <% else %>
             ???
-        <% end %>
+          <% end %>
+        </div>
+        <div class="dashboard-table-cell">
+          <% if @week_meal && @week_meal.category.presence %>
+            <%= @week_meal.category.name %> 
+          <% end %>
+        </div>
       </div>
-      <div class="dashboard-table-cell above-rating-row">
-        <% if member.week_meal(week) && member.week_meal(week).category.presence %>
-          <%= member.week_meal(week).category.name %> 
-        <% end %>
-      </div>
-    </div>
-
-    <div class="dashboard-table-row">
-      <div class="dashboard-table-cell rating-row"></div>
-      <div class="dashboard-table-cell rating-row">
-        <% if member.week_meal(week) && member.week_meal(week).name.presence && week.is_past? %>
-          <%= rating_for member.week_meal(week), 'rating', disable_after_rate: false %>
-        <% end %>
-      </div>
-      <div class="dashboard-table-cell rating-row"></div>
-    </div>
+    <% end %>
   <% end %>
-</div>
-
-<div class="swapboard-week-links">
-  <%= link_to "Week details", group_week_path(@group.name, week.id) %>
 </div>

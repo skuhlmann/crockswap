@@ -3,7 +3,11 @@
 
   <div class="row">
     <div class="six columns">
-      <h3>My meal</h3>
+      <% if @is_meal_owner %>
+        <h3>My meal</h3>
+      <% else %>
+        <h3><%= @meal.user.name + "'s" %> meal</h3>
+      <% end %>
     </div>
     <div class="six columns">
       <%= link_to group_week_path(@group.name, @week) do %>
@@ -13,12 +17,12 @@
   </div>
 
   <div class="row">
+  <% if @is_meal_owner %>
     <div class="six columns boardered">
-
       <%= form_for([@group, @week, @meal]) do |f| %>
 
         <div class="field">
-          <%= f.label :category %>
+          <%= f.label :category, class: "field-label" %>
           <%= f.select "meal_category_id", options_from_collection_for_select(@meal_categories, "id", "name", @meal.category.id) %>
         </div>
 
@@ -29,6 +33,27 @@
         </div>
       <% end %>
     </div>
+  <% else %>
+    <div class="six columns boardered">
+      <h5 class="meal-name"><%= @meal.name %></h5>
+      
+      <p class="list-label">Category</p>
+      <p><%= @meal.category.name %></p>
+
+      <p class="list-label">Recipe</p>
+      <% unless @meal.recipe_url.nil? %>
+        <p><%= link_to @meal.recipe_url, @meal.recipe_url, :target => "_blank" %></p>
+      <% else %>
+        <p></p>
+      <% end %>
+      
+      <p class="list-label">Instructions</p>
+      <p><%= @meal.instructions %></p>
+
+      <p class="list-label">Recommended Accompaniments</p>
+      <p><%= @meal.accompaniments %></p>
+    </div>
+  <% end %>
 
     <div class="six columns">
       <h5>Other meals this week:</h5>

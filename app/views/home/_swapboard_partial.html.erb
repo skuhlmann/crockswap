@@ -27,24 +27,21 @@
     <% unless @group.weeks.empty? %>
       <div class="row">
         <div class="six columns">
-          <h6>This Week's Swap</h6>
           <% if @group.current_week %>
-            <%= render partial: "home/swapboard_week_list", locals: { week: @group.current_week } %>
+            <%= render partial: "home/swapboard_week_list", locals: { week: @group.current_week, header: "Current Week" } %>
           <% else %>
             <%= render partial: "home/empty_week" %>
           <% end %>
-          <h6>Next Week's Swap</h6>
           <% if @group.next_week %>
-            <%= render partial: "home/swapboard_week_list", locals: { week: @group.next_week } %>
+            <%= render partial: "home/swapboard_week_list", locals: { week: @group.next_week, header: "Next Week" } %>
           <% else %>
             <%= render partial: "home/empty_week" %>
           <% end %>
         </div>
 
         <div class="six columns">
-          <h6>Last Week's Swap</h6>
           <% if @group.last_week %>
-            <%= render partial: "home/swapboard_week_list", locals: { week: @group.last_week } %>
+            <%= render partial: "home/swapboard_week_list", locals: { week: @group.last_week, header: "Last Week" } %>
           <% else %>
             <%= render partial: "home/empty_week" %>
           <% end %>

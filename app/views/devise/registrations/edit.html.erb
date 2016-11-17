@@ -10,7 +10,7 @@
         </div>
 
         <div class="field">
-          <%= f.label :email %>
+          <%= f.label :email, class: "field-label" %>
           <%= f.email_field :email, autofocus: true %>
         </div>
 
@@ -19,17 +19,17 @@
         <% end %>
 
         <div class="field">
-          <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+          <%= f.label :password, class: "field-label" %> <i>(leave blank if you don't want to change it)</i>
           <%= f.password_field :password, autocomplete: "off" %>
         </div>
 
         <div class="field">
-          <%= f.label :password_confirmation %>
+          <%= f.label :password_confirmation, class: "field-label" %>
           <%= f.password_field :password_confirmation, autocomplete: "off" %>
         </div>
 
         <div class="field">
-          <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+          <%= f.label :current_password, class: "field-label" %> <i>(we need your current password to confirm your changes)</i>
           <%= f.password_field :current_password, autocomplete: "off" %>
         </div>
 

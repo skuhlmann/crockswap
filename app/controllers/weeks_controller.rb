@@ -15,7 +15,7 @@ class WeeksController < ApplicationController
     @week = Week.find(params[:id])
 
     if @week.update(week_params)
-      redirect_to group_week_path(@group.name, @week), alert: 'Successfully updated.'
+      redirect_to group_path(@group.name), alert: 'Successfully updated.'
     else
       render :edit
     end

@@ -23,13 +23,13 @@
 
        <%= render partial: "shared/alerts" %> 
 
-        <%= f.label :name %>
+        <%= f.label :name, class: "field-label" %>
         <%= f.text_field :name %>
 
-        <%= f.label :description, 'Tell us about yourself' %>
+        <%= f.label :description, 'Tell us about yourself', class: "field-label" %>
         <%= f.text_area :description %>
 
-        <%= f.label :avatar, "Change Photo" %>
+        <%= f.label :avatar, "Change Photo", class: "field-label" %>
         <%= f.file_field :avatar, accept: "image/*" %>
 
         <br><br>

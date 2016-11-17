@@ -18,22 +18,22 @@
       <%= render partial: "shared/alerts" %> 
 
         <div class="field">
-          <%= f.label :start_date, "1st week of swapping" %>
+          <%= f.label :start_date, "1st week of swapping", class: "field-label" %>
           <%= f.date_field :start_date %>
         </div>
 
         <div class="field">
-          <%= label_tag :number_of_weeks %>
+          <%= label_tag :number_of_weeks, "Number of weeks", class: "field-label" %>
           <%= number_field_tag :number_of_weeks %>
         </div>
 
         <div class="field">
-          <%= f.label :swap_location %>
+          <%= f.label :swap_location, class: "field-label" %>
           <%= f.text_field :swap_location %>
         </div>
 
         <div class="field">
-          <%= f.label :swap_time %>
+          <%= f.label :swap_time, class: "field-label" %>
           <%= f.text_field :swap_time %>
         </div>
         

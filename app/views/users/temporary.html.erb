@@ -12,16 +12,16 @@
         <%= f.hidden_field :temporary %>
         <%= f.hidden_field :id %>
 
-        <%= f.label :name %>
+        <%= f.label :name, class: "field-label" %>
         <%= f.text_field :name %>
 
-        <%= f.label :password %>
+        <%= f.label :password, class: "field-label" %>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %>
         <%= f.password_field :password, autocomplete: "off" %>
 
-        <%= f.label :password_confirmation %>
+        <%= f.label :password_confirmation, class: "field-label" %>
         <%= f.password_field :password_confirmation, autocomplete: "off" %>
 
         <%= f.submit "Complete profile" %>

@@ -48,4 +48,12 @@ RSpec.describe Meal, type: :model do
 
     expect(next_meal).not_to be_valid
   end
+
+  it "appends http to urls" do
+    meal = Meal.create(name: "Pizza", recipe_url: "www.pizza.com")
+    other_meal = Meal.create(name: "Ribs", recipe_url: "https://www.ribs.com")
+
+    expect(meal.recipe_url).to eq("http://www.pizza.com")
+    expect(other_meal.recipe_url).to eq("https://www.ribs.com")
+  end
 end

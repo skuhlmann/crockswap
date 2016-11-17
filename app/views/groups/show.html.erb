@@ -10,6 +10,8 @@
         <p><%= fa_icon "user-plus" %> Manage swappers</p>
         <% end %>
       <% end %>
+
+      <p><a href="#group-settings"><i class="fa fa-cog" aria-hidden="true"></i> Settings</a></p>
     </div>
   </div>
 
@@ -27,7 +29,7 @@
   <% end %>
 
   <div class="row">
-  <h5>Group Settings</h5>
+  <h5 id="group-settings">Group Settings</h5>
     <div class="u-full-width boardered group-settings">
       <% if @group.admin == current_user.id %>
         <%= render partial: "groups/edit_form", locals: { group: @group } %>
