@@ -2,17 +2,16 @@
   <div class="u-full-width">
     <%= image_tag "icon-only-black-small.jpg", width: "300" %>
     <p class="crockswap">Crockswap</p>
-    <p class="medium tag-line">Spend less. Cook once. Eat all week.</p>
-    <p class="medium">Nobody swaps alone.</p>
-    <%= link_to "Start a group here", new_user_registration_path, {class: "button homepage-sign-up"} %>
+    <p class="medium tag-line">Cook once. Eat all week.</p>
+    <%= link_to "Sign up", new_user_registration_path, {class: "button homepage-sign-up"} %>
     <p class='sign-in'>or</p>
-    <p class='sign-in'><%= link_to "Sign in", new_user_session_path %></p>
+    <p class='sign-in'><%= link_to "Sign in", new_user_session_path, {class: "button homepage-sign-up"} %></p>
   </div>
 </div>
 
 <div class="row center-content about-frame">
   <div>
-    <p class="medium homepage-copy-block">Crockswap facilitates meal sharing for working families who can't find the time to shop frugally, cook efficiently, and eat healthily.</p>
+    <p class="medium homepage-copy-block">Crockswap was created for working families who want healthy, home-cooked meals without the hassle.</p>
     <p>Steps to a Swap</p>
 
     <div class="container">
@@ -20,25 +19,35 @@
         <div class="four columns about-steps">
           <%= fa_icon "users 3x" %>
           <p>Start a group</p>
+          <p class="step-content">Find 2 - 3 families who also stress about meal-planning, shopping, and cooking.</p>
         </div>
         <div class="four columns about-steps">
           <%= fa_icon "shopping-basket 3x" %>
-          <p>Shop</p>
+          <p>Plan</p>
+          <p class="step-content">Set up your group in Crockswap, enter your meal for the week.</p>
         </div>
         <div class="four columns about-steps">
           <%= fa_icon "flask 3x" %>
           <p>Cook</p>
+          <p class="step-content">Make enough servings to feed each family, divide into containers.</p>
         </div>
       </div>
 
       <div class="row">
-        <div class="six columns about-steps">
+        <div class="four columns about-steps">
           <%= fa_icon "hand-peace-o 3x" %>
           <p>Swap</p>
+          <p class="step-content">Meet, swap meals.</p>
         </div>
-        <div class="six columns about-steps">
+        <div class="four columns about-steps">
           <%= fa_icon "cutlery 3x" %>
           <p>Eat</p>
+          <p class="step-content">Enjoy home-cooked, hassle-free meals all week.</p>
+        </div>
+        <div class="four columns about-steps">
+          <%= fa_icon "repeat 3x" %>
+          <p>Repeat!</p>
+          <p class="step-content">Rate and comment on each other's meals in Crockswap.</p>
         </div>
       </div>
     </div>

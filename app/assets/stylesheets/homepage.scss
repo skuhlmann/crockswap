@@ -18,7 +18,8 @@
     border-radius: 4px;
     padding: 50px;
     margin-bottom: 20px;
-    max-height: 170px;
+    max-height: 220px;
+    min-height: 220px;
   }
 
   .about-steps p {
@@ -40,7 +41,11 @@
   .sign-in {
     font-size: 14px;
     line-height: 15px;
-    margin: 0px;
+    margin: 0px 0px 12px 0px;
+  }
+
+  p.step-content {
+    font-size: 12px;
   }
 
   @media (min-width: 750px) {

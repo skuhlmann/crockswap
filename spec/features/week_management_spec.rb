@@ -33,7 +33,6 @@ describe 'week management', type: :feature do
 
     it "can pause a week" do
       page.click_link('Group')
-      # page.fill_in('week[swap_location]', match: :first, with: "The beach")
       page.check('week[paused]', match: :first)
       page.click_button("Update week", match: :first)
 

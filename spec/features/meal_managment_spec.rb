@@ -52,7 +52,7 @@ describe 'meal management', type: :feature do
     expect(@meal.name).to eq("Meatball Subs")
 
     page.fill_in('meal[name]', with: "Meatballs")
-    page.click_button("Edit meal")
+    page.click_button("Save")
 
     @meal = Meal.last
     expect(current_path).to eq(group_week_meal_path(@group.name, week, @meal))
