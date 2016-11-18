@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  ratyrate_rater
-
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "pizza.svg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
@@ -50,20 +48,6 @@ class User < ActiveRecord::Base
     meals.select do |meal|
       week_ids.any? { |week_id| meal.week_id == week_id }
     end
-  end
-
-  def average_rating(group)
-    meals = group_meals(group)
-    meals_with_ratings = 0
-    total = group_meals(group).inject(0) do |sum, meal|
-      meal_avg = meal.rating_average
-      unless meal_avg.nil?
-        sum += meal_avg.avg
-        meals_with_ratings += 1
-      end
-      sum
-    end
-    total > 1 ? total / meals_with_ratings : total
   end
 
   private

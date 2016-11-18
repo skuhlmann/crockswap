@@ -170,7 +170,6 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (11.2.2)
-    ratyrate (1.2.2.alpha)
     rdoc (4.2.2)
       json (~> 1.4)
     ref (2.0.0)
@@ -256,7 +255,6 @@ DEPENDENCIES
   puma
   rails (= 5.0.0)
   rails_12factor
-  ratyrate
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
@@ -269,4 +267,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.12.5
+   1.13.3

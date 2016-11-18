@@ -8,8 +8,6 @@ class Meal < ActiveRecord::Base
   validates :category, uniqueness: { scope: :week, 
     message: "That category is already taken" }
 
-  ratyrate_rateable 'rating'
-
   def parse_url
     if self.recipe_url && !self.recipe_url.include?("http")
       self.recipe_url = "http://#{recipe_url}"

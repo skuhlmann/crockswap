@@ -14,7 +14,6 @@ gem 'devise'
 gem 'dotenv-rails'
 gem 'font-awesome-rails'
 gem 'coffee-rails'
-gem 'ratyrate'
 gem 'jquery-slick-rails'
 gem "paperclip", "~> 5.0.0"
 gem 'aws-sdk', '~> 2.3'
