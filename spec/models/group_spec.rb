@@ -59,7 +59,7 @@ RSpec.describe Group, type: :model do
     expect(group.last_week).to eq(last_week)
   end
 
-  it "can return the leaderboard users" do
+  it "can return the active users" do
     group = create(:group)
     user = create(:user)
     inactive_user = User.create(email: "testing@example.com", name: "Paul", temporary: "true", password: "password")
@@ -67,7 +67,7 @@ RSpec.describe Group, type: :model do
     group.users << inactive_user
     group.save!
 
-    expect(group.leaderboard_users.count).to eq(1)
-    expect(group.leaderboard_users.first.name).to eq("Colleen Brown")
+    expect(group.active_users.count).to eq(1)
+    expect(group.active_users.first.name).to eq("Colleen Brown")
   end
 end

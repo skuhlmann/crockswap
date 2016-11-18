@@ -56,4 +56,17 @@ RSpec.describe Meal, type: :model do
     expect(meal.recipe_url).to eq("http://www.pizza.com")
     expect(other_meal.recipe_url).to eq("https://www.ribs.com")
   end
+
+  it "returns it's review for a specific user" do
+    meal = create(:meal)
+    review = create(:review)
+    user = create(:user)
+    review.user = user
+    review.meal = meal
+    review.save
+
+    users_review = meal.review_by_user(user)
+
+    expect(users_review.id).to eq(review.id)
+  end
 end

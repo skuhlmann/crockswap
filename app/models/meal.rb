@@ -14,4 +14,8 @@ class Meal < ActiveRecord::Base
       self.recipe_url = "http://#{recipe_url}"
     end
   end
+
+  def review_by_user(user)
+    self.reviews.where(user_id: user.id).take
+  end
 end

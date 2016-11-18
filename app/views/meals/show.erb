@@ -34,25 +34,9 @@
       <% end %>
     </div>
   <% else %>
-    <div class="six columns boardered">
-      <h5 class="meal-name"><%= @meal.name %></h5>
-      
-      <p class="list-label">Category</p>
-      <p><%= @meal.category.name %></p>
 
-      <p class="list-label">Recipe</p>
-      <% unless @meal.recipe_url.nil? %>
-        <p><%= link_to @meal.recipe_url, @meal.recipe_url, :target => "_blank" %></p>
-      <% else %>
-        <p></p>
-      <% end %>
-      
-      <p class="list-label">Instructions</p>
-      <p><%= @meal.instructions %></p>
+    <%= render partial: "meal", locals: { meal: @meal }%>
 
-      <p class="list-label">Recommended Accompaniments</p>
-      <p><%= @meal.accompaniments %></p>
-    </div>
   <% end %>
 
     <div class="six columns">

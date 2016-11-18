@@ -9,6 +9,7 @@ class MealsController < ApplicationController
     @meal_categories = @week.available_categories.push(@meal.category)
     @list_users = @group.users.reject { |user| user.id == current_user.id }
     @is_meal_owner = is_meal_owner?(@meal)
+    set_review if !@is_meal_owner
   end
 
   def new
@@ -78,4 +79,10 @@ class MealsController < ApplicationController
     @active_week_view_path = "weeks_active"
   end
 
+  def set_review
+    @review = @meal.review_by_user(current_user)
+    if @review.nil?
+      @review = Review.new
+    end
+  end
 end

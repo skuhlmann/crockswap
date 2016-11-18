@@ -1,0 +1,53 @@
+<div class="six columns boardered">
+  <h5 class="meal-name"><%= @meal.name %></h5>
+  
+  <p class="list-label">Category</p>
+  <p><%= @meal.category.name %></p>
+
+  <p class="list-label">Recipe</p>
+  <% unless @meal.recipe_url.nil? %>
+    <p><%= link_to @meal.recipe_url, @meal.recipe_url, :target => "_blank" %></p>
+  <% else %>
+    <p></p>
+  <% end %>
+  
+  <p class="list-label">Instructions</p>
+  <p><%= @meal.instructions %></p>
+
+  <p class="list-label">Recommended Accompaniments</p>
+  <p><%= @meal.accompaniments %></p>
+
+  <p>Review <%= @meal.user.name %>'s Meal</p>
+
+  <%= form_for([@meal, @review]) do |f| %>
+
+    <div class="field">
+      <div class="three columns">
+        <%= f.label :rating, "Make it again", class: "field-label" %>
+        <%= f.radio_button :rating, "1" %>
+      </div>
+
+      <div class="five columns">
+        <%= f.label :rating, "Make it again, with changes",class: "field-label" %>
+        <%= f.radio_button :rating, "2" %>
+      </div>
+
+      <div class="three columns">
+        <%= f.label :rating, "Retire it",class: "field-label" %>
+        <%= f.radio_button :rating, "3" %>
+      </div>
+    </div>
+
+    <br><br><br><br>
+
+    <div class="field">
+      <%= f.label :feedback, class: "field-label" %>
+      <%= f.text_area :feedback, class: "area-field" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Save" %>
+    </div>
+  <% end %>
+
+</div>

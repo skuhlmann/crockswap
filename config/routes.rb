@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   end
 
   resources :meals, only: [] do
-    resources :ratings, only: [:create, :update]
+    resources :reviews, only: [:create, :update]
   end
 
   devise_for :users, controllers: { sessions: 'sessions' }
