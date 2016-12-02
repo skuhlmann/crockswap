@@ -37,6 +37,12 @@ class Group < ActiveRecord::Base
     users.where(temporary: false)
   end
 
+  def leaderboard_users
+    users.where(temporary: false)
+      .sort_by { |user| user.average_rating(self) }.reverse
+  end
+
+
   def clean_up_members
     members.destroy_all
   end

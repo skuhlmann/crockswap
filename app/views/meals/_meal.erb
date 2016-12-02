@@ -2,7 +2,7 @@
   <h5 class="meal-name"><%= @meal.name %></h5>
   
   <p class="list-label">Category</p>
-  <p><%= @meal.category.name %></p>
+  <p><%= @meal.category ? @meal.category.name : "" %></p>
 
   <p class="list-label">Recipe</p>
   <% unless @meal.recipe_url.nil? %>
