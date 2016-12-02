@@ -31,4 +31,26 @@ RSpec.describe User, type: :model do
 
     expect(status).to eq("Pending")
   end
+
+  it "has an average rating for a group" do
+    user = create(:user)
+    group = create(:group)
+    week = create(:week)
+    meal = create(:meal)
+    review = create(:review)
+    group.users << user
+    group.weeks << week
+    week.meals << meal
+    user.meals << meal
+    meal.reviews << review
+    review_two = Review.create(rating: 3, meal_id: meal.id)
+    review_three = Review.create(rating: 3, meal_id: meal.id)
+
+    meal_two = Meal.create(name: "pizza", user_id: user.id)
+    meal_three = Meal.create(name: "pasta", user_id: user.id)
+
+    avg_rating = user.average_rating(group)
+
+    expect(avg_rating).to eq(2.67)
+  end
 end

@@ -51,6 +51,27 @@ class User < ActiveRecord::Base
     end
   end
 
+  def average_rating(group)
+    week_ids = group.weeks.pluck(:id)
+    group_meals = self.meals.select { |meal| week_ids.include?(meal.week_id) }
+
+    all_ratings = []
+    group_meals.each do |meal|
+      all_ratings << meal.reviews.pluck(:rating)
+    end
+    all_ratings = all_ratings.flatten.compact
+
+    unless all_ratings.empty?
+      total = all_ratings.inject(&:+)
+      count = all_ratings.count
+      avg = total.to_f / count.to_f
+
+      avg.round(2)
+    else
+      0
+    end
+  end
+
   private
 
   def normalize_email

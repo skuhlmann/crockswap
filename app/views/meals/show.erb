@@ -40,7 +40,23 @@
   <% end %>
 
     <div class="six columns">
-      <h5>Other meals this week:</h5>
+      <% unless @meal.reviews.empty? %>
+      <h5>Meal feedback</h5>
+        <div class="dashboard-table leaderboard">
+            <div class="dashboard-table-row">
+              <div class="dashboard-table-cell header">Make Again?</div>
+              <div class="dashboard-table-cell header">Notes</div>
+            </div>
+          <% @meal.reviews.each do |review| %>
+            <div class="dashboard-table-row">
+              <div class="dashboard-table-cell"><%= review.rating_text %></div>
+              <div class="dashboard-table-cell"><%= review.feedback %></div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      
+      <h5>Other meals this week</h5>
       <%= render partial: "home/swapboard_week_list", locals: { week: @week } %>
     </div>
   </div>
