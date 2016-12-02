@@ -8,6 +8,15 @@ class MembersController < GroupsController
     @member = Member.new
   end
 
+  def show
+    if current_user.id == params[:id].to_i
+      redirect_to edit_profile_path(current_user)
+    end
+
+    @group = Group.where(name: params[:group_name]).first
+    @member = User.find(params[:id])
+  end
+
   def new
     @member = Member.new
   end

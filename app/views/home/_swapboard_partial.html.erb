@@ -45,7 +45,10 @@
           <% else %>
             <%= render partial: "home/empty_week" %>
           <% end %>
-          <%= render partial: "home/leaderboard" %>
+
+          <% if @group.leaderboard %>
+            <%= render partial: "home/leaderboard" %>
+          <% end %>
         </div>
       </div>
     <% end %>

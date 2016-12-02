@@ -52,7 +52,7 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :budget, :max_participants, :container_id)
+    params.require(:group).permit(:name, :budget, :max_participants, :container_id, :leaderboard)
   end
 
   def diet_params

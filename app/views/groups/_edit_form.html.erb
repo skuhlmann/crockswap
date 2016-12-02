@@ -11,6 +11,9 @@
   <%= f.label :container, class: "field-label" %>
   <%= f.select :container_id, @containers, {include_blank: true} %>
 
+  <%= f.label :leaderboard, "Turn on leaderboard", class: "field-label" %>
+  <%= f.check_box :leaderboard %>
+
   <br><br>
 
   <%= f.submit "Update group" %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161118011023) do
+ActiveRecord::Schema.define(version: 20161202224947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,10 +44,11 @@ ActiveRecord::Schema.define(version: 20161118011023) do
     t.integer  "max_participants", default: 1
     t.decimal  "budget"
     t.string   "container_type"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.integer  "container_id"
     t.integer  "admin"
+    t.boolean  "leaderboard",      default: false
     t.index ["container_id"], name: "index_groups_on_container_id", using: :btree
   end
 

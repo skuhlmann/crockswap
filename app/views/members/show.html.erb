@@ -1,0 +1,20 @@
+<div class="container">
+  <%= render partial: "shared/toolbar", locals: { group: @group } %>
+
+  <h3><%= @member.name %></h3>
+  <div class="row">
+    <div class="four columns boardered">
+      <%= image_tag @member.avatar.url(:thumb), width: '70', class: 'img-circle profile-img' %>
+
+      <p><%= @member.description %></p>
+    </div>
+    <div class="eight columns boardered">
+      <h5>Meals</h5>
+
+      <% @member.meals.each do |meal| %>
+        <p><%= meal.name %> | <%= link_to "Meal details", group_week_meal_path(meal.week.group.name, meal.week.id, meal.id) %></p>
+      <% end %>
+
+    </div>
+  </div>
+</div>
