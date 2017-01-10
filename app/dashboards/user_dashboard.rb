@@ -1,18 +1,8 @@
 require "administrate/base_dashboard"
 
 class UserDashboard < Administrate::BaseDashboard
-  # ATTRIBUTE_TYPES
-  # a hash that describes the type of each of the model's fields.
-  #
-  # Each different type represents an Administrate::Field object,
-  # which determines how the attribute is displayed
-  # on pages throughout the dashboard.
+
   ATTRIBUTE_TYPES = {
-    members: Field::HasMany,
-    meals: Field::HasMany,
-    reviews: Field::HasMany,
-    groups: Field::HasMany,
-    diet_restrictions: Field::HasMany,
     id: Field::Number,
     email: Field::String,
     encrypted_password: Field::String,
@@ -39,28 +29,22 @@ class UserDashboard < Administrate::BaseDashboard
     avatar_content_type: Field::String,
     avatar_file_size: Field::Number,
     avatar_updated_at: Field::DateTime,
+    members: Field::HasMany,
+    meals: Field::HasMany,
+    reviews: Field::HasMany,
+    groups: Field::HasMany,
+    diet_restrictions: Field::HasMany,
   }.freeze
 
-  # COLLECTION_ATTRIBUTES
-  # an array of attributes that will be displayed on the model's index page.
-  #
-  # By default, it's limited to four items to reduce clutter on index pages.
-  # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :members,
-    :meals,
-    :reviews,
+    :id,
+    :email,
+    :name,
+    :last_sign_in_at,
     :groups,
   ].freeze
 
-  # SHOW_PAGE_ATTRIBUTES
-  # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :members,
-    :meals,
-    :reviews,
-    :groups,
-    :diet_restrictions,
     :id,
     :email,
     :encrypted_password,
@@ -87,17 +71,17 @@ class UserDashboard < Administrate::BaseDashboard
     :avatar_content_type,
     :avatar_file_size,
     :avatar_updated_at,
+    :members,
+    :meals,
+    :reviews,
+    :groups,
   ].freeze
 
-  # FORM_ATTRIBUTES
-  # an array of attributes that will be displayed
-  # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :members,
     :meals,
     :reviews,
     :groups,
-    :diet_restrictions,
     :email,
     :encrypted_password,
     :reset_password_token,
@@ -123,10 +107,7 @@ class UserDashboard < Administrate::BaseDashboard
     :avatar_updated_at,
   ].freeze
 
-  # Overwrite this method to customize how users are displayed
-  # across all pages of the admin dashboard.
-  #
-  # def display_resource(user)
-  #   "User ##{user.id}"
-  # end
+  def display_resource(user)
+    "User: #{user.email}"
+  end
 end

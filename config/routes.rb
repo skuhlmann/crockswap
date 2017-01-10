@@ -2,14 +2,13 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
-resources :containers
-resources :diet_restrictions
-resources :groups
-resources :meals
-resources :meal_categories
-resources :members
-resources :reviews
-resources :weeks
+    resources :groups
+    resources :meals
+    resources :reviews
+    resources :meal_categories
+    resources :containers
+    resources :members
+    resources :weeks
 
     root to: "users#index"
   end
