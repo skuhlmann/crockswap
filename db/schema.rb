@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161202224947) do
+ActiveRecord::Schema.define(version: 20170110221649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,14 @@ ActiveRecord::Schema.define(version: 20161202224947) do
     t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
 
+  create_table "testing_comments", force: :cascade do |t|
+    t.string   "email"
+    t.string   "name"
+    t.string   "comments"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -120,6 +128,7 @@ ActiveRecord::Schema.define(version: 20161202224947) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.boolean  "super_admin"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree

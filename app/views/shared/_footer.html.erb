@@ -4,9 +4,14 @@
       <p class="footer-content">Copyright © Crockswap</p>
       <% if current_user %>
         <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+        <% if current_user.super_admin %>
+          <%= link_to "Admin tool", admin_root_path %>
+        <% end %>
       <% else %>
         <%= link_to "Sign in", new_user_session_path %>
       <% end %>
+      
+      <%= link_to "Tell us what you think", new_testing_comment_path %>
     </div>
   </div>
 </div>

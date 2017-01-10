@@ -44,11 +44,8 @@ class GroupDashboard < Administrate::BaseDashboard
   ].freeze
 
   FORM_ATTRIBUTES = [
-    :members,
-    :users,
-    :container,
-    :weeks,
     :name,
+    :container,
     :max_participants,
     :budget,
     :container_type,

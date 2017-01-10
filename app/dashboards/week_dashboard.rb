@@ -36,7 +36,6 @@ class WeekDashboard < Administrate::BaseDashboard
 
   FORM_ATTRIBUTES = [
     :group,
-    :meals,
     :swap_date,
     :start_date,
     :swap_location,

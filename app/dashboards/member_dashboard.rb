@@ -31,7 +31,5 @@ class MemberDashboard < Administrate::BaseDashboard
     :user,
     :group,
     :status,
-    :invite_token,
-    :invite_sent_at,
   ].freeze
 end

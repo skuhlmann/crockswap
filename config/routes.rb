@@ -1,18 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    resources :users
-    resources :groups
-    resources :meals
-    resources :reviews
-    resources :meal_categories
-    resources :containers
-    resources :members
-    resources :weeks
-
-    root to: "users#index"
-  end
-
   post '/rate' => 'rater#create', :as => 'rate'
   get '/swapboard', to: 'home#swapboard', as: 'user_root'
   get ':group_name/swapboard', to: 'home#swapboard', as: 'group_swapboard'
@@ -36,6 +23,22 @@ Rails.application.routes.draw do
   end
 
   devise_for :users, controllers: { sessions: 'sessions' }
+
+  namespace :admin do
+    resources :users
+    resources :groups
+    resources :meals
+    resources :reviews
+    resources :meal_categories
+    resources :containers
+    resources :members
+    resources :weeks
+    resources :testing_comments
+
+    root to: "users#index"
+  end
+
+  resources :testing_comments, only: [:new, :create]
 
   root "home#index"
 end

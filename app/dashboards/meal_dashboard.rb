@@ -42,17 +42,13 @@ class MealDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :user,
     :week,
-    :category,
-    :reviews,
     :name,
     :meal_category_id,
     :recipe_url,
     :instructions,
     :accompaniments,
   ].freeze
-
-
-  #
+  
   def display_resource(meal)
     "Meal: #{meal.name}"
   end

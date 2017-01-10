@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="u-full-width">
+
+      <h2>Comments, Questions, Suggestions?</h2>
+
+      <%= form_for(@testing_comment) do |f| %>
+
+        <%= render partial: "shared/alerts" %> 
+
+        <div class="field">
+          <%= f.label :email, class: "field-label" %>
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+
+        <div class="field">
+          <%= f.label :name, class: "field-label" %>
+          <%= f.text_field :name, autofocus: true %>
+        </div>
+
+        <div class="field">
+          <%= f.label :comments, "Comments", class: "field-label" %>
+          <%= f.text_area :comments %>
+        </div>
+
+
+        <div class="actions">
+          <%= f.submit "Send" %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
