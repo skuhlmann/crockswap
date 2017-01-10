@@ -15,8 +15,10 @@ gem 'dotenv-rails'
 gem 'font-awesome-rails'
 gem 'coffee-rails'
 gem 'jquery-slick-rails'
-gem "paperclip", "~> 5.0.0"
+gem 'paperclip', '~> 5.0.0'
 gem 'aws-sdk', '~> 2.3'
+gem 'administrate', '~> 0.3.0'
+gem 'bourbon'
 
 group :development, :test do
   gem 'pry-rails'

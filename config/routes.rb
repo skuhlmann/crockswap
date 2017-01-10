@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    resources :users
+resources :containers
+resources :diet_restrictions
+resources :groups
+resources :meals
+resources :meal_categories
+resources :members
+resources :reviews
+resources :weeks
+
+    root to: "users#index"
+  end
+
   post '/rate' => 'rater#create', :as => 'rate'
   get '/swapboard', to: 'home#swapboard', as: 'user_root'
   get ':group_name/swapboard', to: 'home#swapboard', as: 'group_swapboard'
