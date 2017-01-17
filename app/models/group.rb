@@ -15,21 +15,21 @@ class Group < ActiveRecord::Base
   def current_week
     today = Date.today
     weeks.find do |week|
-      today >= week.start_date && today <= (week.start_date + 7)
+      today >= week.start_date && today <= (week.start_date + 6)
     end
   end
 
   def next_week
     next_week = Date.today + 7
     weeks.find do |week|
-      next_week >= (week.start_date) && next_week <= (week.start_date + 7)
+      next_week >= (week.start_date) && next_week <= (week.start_date + 6)
     end
   end
 
   def last_week
     next_week = Date.today - 7
     weeks.find do |week|
-      next_week >= (week.start_date) && next_week <= (week.start_date + 7)
+      next_week >= (week.start_date) && next_week <= (week.start_date + 6)
     end
   end
 

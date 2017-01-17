@@ -7,8 +7,13 @@
     </div>
   <% @group.leaderboard_users.each_with_index do |member, index| %>
     <div class="dashboard-table-row">
-      <div class="dashboard-table-cell"><%= index + 1 %></div>
-      <div class="dashboard-table-cell"><%= member.name %></div>
+      <div class="dashboard-table-cell">
+        <%= index + 1 %>
+      </div>
+      <div class="dashboard-table-cell">
+        <%= image_tag member.avatar.url(:thumb), width: '20', class: 'img-circle' %>
+        <%= member.name %>
+      </div>
       <div class="dashboard-table-cell"><%= member.average_rating(@group) %></div>
     </div>
   <% end %>
