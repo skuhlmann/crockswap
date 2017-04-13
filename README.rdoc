@@ -6,10 +6,10 @@ Cook once. Eat all week.
 
 A beta/prototype of a meal sharing platform.
 
-[Production Site](http://www.crockswap.com/)
+http://www.crockswap.com/
 
 ### Features/Focus
 - Production ready site in use
 - Ruby/Rails, Javascript, HTML/CSS, PostgreSQL, Amazon S3, Heroku
 
-![Crockswap](crockswap-mobile.gif)
+![Crockswap](public/crockswap-mobile.gif)
