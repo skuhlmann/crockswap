@@ -1,4 +1,7 @@
 class Meal < ActiveRecord::Base
+  has_attached_file :picture, styles: { medium: "300", thumb: "100x100#" }, default_url: "pizza.svg"
+  validates_attachment_content_type :picture, content_type: /\Aimage\/.*\z/
+
   belongs_to :user
   belongs_to :week
   belongs_to :category, class_name: MealCategory, foreign_key: "meal_category_id"

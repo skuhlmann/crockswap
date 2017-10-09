@@ -12,7 +12,9 @@
       </div>
       <div class="dashboard-table-cell">
         <%= image_tag member.avatar.url(:thumb), width: '20', class: 'img-circle' %>
-        <%= member.name %>
+        <span class="week-meal-name">
+          <%= member.name %>
+        </span> 
       </div>
       <div class="dashboard-table-cell"><%= member.average_rating(@group) %></div>
     </div>

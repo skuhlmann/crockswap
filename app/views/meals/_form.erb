@@ -19,3 +19,9 @@
   <%= f.label :accompaniments, "Recommended Accompaniments", class: "field-label" %>
   <%= f.text_area :accompaniments %>
 </div>
+
+<div class="field">
+  <%= f.label :picture, "Picture", class: "field-label" %>
+  <%= image_tag @meal.picture.url(:medium), width: '300' %>
+  <%= f.file_field :picture, accept: "image/*" %>
+</div>

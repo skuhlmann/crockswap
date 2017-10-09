@@ -23,12 +23,13 @@
       <div class="dashboard-table-row">
         <div class="dashboard-table-cell above-rating-row">
           <%= link_to group_member_path(@group.name, member) do %>
-            <%= member.name %>
+              <%= member.name %>
           <% end %>
         </div>
         <div class="dashboard-table-cell above-rating-row">
           <% @week_meal = member.week_meal(week) %>
           <% if @week_meal && @week_meal.name.presence %>
+            <%= image_tag @week_meal.picture.url(:thumb), width: '25', class: 'img-circle profile-img' %>
             <%= link_to group_week_meal_path(@group.name, week, @week_meal) do %>
               <%= @week_meal.name %>
             <% end %>
