@@ -7,6 +7,7 @@
         <div class="dashboard-table-row">
           <div class="dashboard-table-cell header">Swapper</div>
           <div class="dashboard-table-cell header">Status</div>
+          <div class="dashboard-table-cell header">Active?</div>
         </div>
         <% @members.each do |member| %>
         <div class="dashboard-table-row">
@@ -14,13 +15,33 @@
             <% if member.user_id == current_user.id %>
               You
             <% else %>
-              <%= member.user.name %>
+              <% if member.status != "Pending" %>
+                <%= link_to group_member_path(@group.name, member.user) do %>
+                    <%= member.user.name %>
+                <% end %>
+              <% else %>
+                <%= member.user.name %>
+              <% end %>
           <% end %>
           </div>
           <div class="dashboard-table-cell">
             <%= member.status %>
             <% if member.status == "Pending" %>
               | <%= link_to "Cancel invite", group_member_path(@group.name, member), :method => :delete, class: "cancel-link" %>
+            <% end %>
+          </div>
+
+          <div class="dashboard-table-cell">
+            <% if member.status != "Pending" && member.user_id != current_user.id %>
+              <% if member.active %>
+                Yes | <%= link_to "Deactivate", group_member_path(@group.name, member), :method => :put, class: "cancel-link" %>
+              <% else %>
+                No | <%= link_to "Activate", group_member_path(@group.name, member), :method => :put, class: "cancel-link" %>
+              <% end %>
+            <% end %>
+
+            <% if member.user_id == current_user.id %>
+              Group Admin
             <% end %>
           </div>
         </div>

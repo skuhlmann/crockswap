@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :meals, only: [:index, :show]
   end
   resources :groups, only: [:index, :new, :create, :show, :update, :destroy], param: :name do
-    resources :members, only: [:new, :index, :create, :destroy, :show]
+    resources :members, only: [:new, :index, :create, :destroy, :show, :update]
     resources :weeks, only: [:new, :create, :show, :update] do
       resources :meals, only: [:index, :create, :new, :show, :update]
     end

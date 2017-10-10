@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171009205454) do
+ActiveRecord::Schema.define(version: 20171009222629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,11 +78,12 @@ ActiveRecord::Schema.define(version: 20171009205454) do
   end
 
   create_table "members", force: :cascade do |t|
-    t.integer  "user_id",        null: false
-    t.integer  "group_id",       null: false
+    t.integer  "user_id",                       null: false
+    t.integer  "group_id",                      null: false
     t.string   "status"
     t.string   "invite_token"
     t.datetime "invite_sent_at"
+    t.boolean  "active",         default: true
     t.index ["group_id", "user_id"], name: "index_members_on_group_id_and_user_id", using: :btree
     t.index ["user_id", "group_id"], name: "index_members_on_user_id_and_group_id", using: :btree
   end

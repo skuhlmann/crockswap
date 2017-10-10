@@ -1,7 +1,7 @@
 class MembersController < GroupsController
   before_action :authenticate_user!, except: [:invite]
   before_action :set_view_active
-  before_action :authorize_user_group, only: [:index, :new, :create]
+  before_action :authorize_user_group, only: [:index, :new, :create, :update]
 
   def index
     @members = Member.where(group_id: @group.id)
@@ -38,6 +38,14 @@ class MembersController < GroupsController
 
     Member.invite(user, @group)
     redirect_to group_members_path(@group.name), alert: "An invite email has been sent."
+  end
+
+  def update
+    member = Member.find(params[:id])
+    member.active = !member.active
+    member.save
+
+    redirect_to group_members_path(@group.name)
   end
 
   def invite

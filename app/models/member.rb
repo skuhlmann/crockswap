@@ -20,4 +20,8 @@ class Member < ActiveRecord::Base
   def join_group
     update(status: "Accepted")
   end
+
+  def self.active
+    where(active: true)
+  end
 end
