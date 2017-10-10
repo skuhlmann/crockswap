@@ -6,7 +6,7 @@ class MealsController < ApplicationController
     @meal = Meal.find(params[:id])
     @group = Group.where(name: params[:group_name]).first
     @week = Week.find(params[:week_id])
-    @meal_categories = @week.available_categories.push(@meal.category)
+    @meal_categories = MealCategory.all
     @list_users = @group.users.reject { |user| user.id == current_user.id }
     @is_meal_owner = is_meal_owner?(@meal)
     set_review if !@is_meal_owner
@@ -17,6 +17,7 @@ class MealsController < ApplicationController
     @user = current_user
     @week = Week.find(params[:week_id])
     @meal = Meal.new
+    @meal_categories = MealCategory.all
   end
 
   def create

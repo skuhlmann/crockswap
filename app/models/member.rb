@@ -16,12 +16,12 @@ class Member < ActiveRecord::Base
 
     InviteMailer.invite_email(user, group, token).deliver_now
   end
+  
+  def self.active
+    where(active: true)
+  end
 
   def join_group
     update(status: "Accepted")
-  end
-
-  def self.active
-    where(active: true)
   end
 end

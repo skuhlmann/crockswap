@@ -9,9 +9,6 @@ class Meal < ActiveRecord::Base
 
   before_save :parse_url
 
-  validates :category, uniqueness: { scope: :week, 
-    message: "That category is already taken" }
-
   def parse_url
     if self.recipe_url && !self.recipe_url.include?("http")
       self.recipe_url = "http://#{recipe_url}"
