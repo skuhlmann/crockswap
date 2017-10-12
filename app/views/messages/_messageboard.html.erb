@@ -1,7 +1,8 @@
 <h6>Swap Feed</h6>
+<%= render partial: "messages/add", locals: { new_message: new_message, group: group } %>
 
 <div class="dashboard-table message-table">
-<% group.messages.each do |message| %>
+<% group.messages.reverse.each do |message| %>
   <div class="dashboard-table-row">
     <div class="dashboard-table-cell avatar-cell messages-cell">
         <%= image_tag message.user.avatar.url(:thumb), width: '25', class: 'img-circle profile-img' %>
@@ -26,5 +27,3 @@
   </div>  
 <% end %>
 </div>  
-
-<%= render partial: "messages/add", locals: { new_message: new_message, group: group } %>
