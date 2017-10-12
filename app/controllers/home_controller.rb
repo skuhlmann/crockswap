@@ -9,6 +9,8 @@ class HomeController < ApplicationController
   def swapboard
     @user = current_user
     @groups = @user.groups
+    @new_message = Message.new
+
     if @groups.empty?
       redirect_to new_group_path
     end

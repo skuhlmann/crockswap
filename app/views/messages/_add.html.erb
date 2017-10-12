@@ -1,0 +1,15 @@
+<%= form_for(new_message, url: group_messages_path(group.name)) do |f| %>
+
+  <div class="row">
+    <div class="eleven columns">
+        <%= f.text_area :body, autofocus: true %>
+    </div>
+
+    <div class="one column">
+      <%= button_tag(type: 'submit', class: "btn submit") do %>
+      <%= fa_icon "paper-plane-o" %>
+      <% end %>
+    </div>
+
+  </div>
+<% end %>

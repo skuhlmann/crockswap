@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171009222629) do
+ActiveRecord::Schema.define(version: 20171011213553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,20 @@ ActiveRecord::Schema.define(version: 20171009222629) do
     t.index ["user_id", "group_id"], name: "index_members_on_user_id_and_group_id", using: :btree
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.string   "body"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "group_id"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.integer  "user_id"
+    t.index ["group_id"], name: "index_messages_on_group_id", using: :btree
+    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.integer  "rating"
     t.string   "feedback"
@@ -155,5 +169,7 @@ ActiveRecord::Schema.define(version: 20171009222629) do
   add_foreign_key "meals", "meal_categories"
   add_foreign_key "meals", "users"
   add_foreign_key "meals", "weeks"
+  add_foreign_key "messages", "groups"
+  add_foreign_key "messages", "users"
   add_foreign_key "weeks", "groups"
 end

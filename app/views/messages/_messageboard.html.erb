@@ -1,0 +1,17 @@
+<h6>Swap Feed</h6>
+
+<% group.messages.each do |message| %>
+  <div class="row">
+    <div class="one columns">
+        <%= image_tag message.user.avatar.url(:thumb), width: '25', class: 'img-circle profile-img' %>
+    </div>
+    <div class="one columns">
+      <span class="message-time"><%= message.created_at.strftime('%b  %d') %></span>
+    </div>
+    <div class="ten columns">
+      <%= message.body %>
+    </div>
+  </div>  
+<% end %>
+
+<%= render partial: "messages/add", locals: { new_message: new_message, group: group } %>

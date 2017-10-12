@@ -52,5 +52,11 @@
         </div>
       </div>
     <% end %>
+
+    <div class="row messages-section">
+      <div class="u-full-width">
+        <%= render partial: "messages/messageboard", locals: { new_message: @new_message, group: @group } %>
+      </div>
+    </div>
   </div>
 </div>

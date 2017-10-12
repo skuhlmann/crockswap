@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
   resources :groups, only: [:index, :new, :create, :show, :update, :destroy], param: :name do
     resources :members, only: [:new, :index, :create, :destroy, :show, :update]
+    resources :messages, only: [:create]
     resources :weeks, only: [:new, :create, :show, :update] do
       resources :meals, only: [:index, :create, :new, :show, :update]
     end

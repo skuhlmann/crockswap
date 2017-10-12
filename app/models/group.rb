@@ -1,5 +1,6 @@
 class Group < ActiveRecord::Base
   has_many :members
+  has_many :messages
   has_many :users, through: :members
 
   has_and_belongs_to_many :diet_restrictions
