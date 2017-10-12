@@ -1,7 +1,53 @@
+@import "app-variables";
+
 .messages-section {
   margin-top: 30px;
 }
 
 .message-time {
   font-size: 10px;
+}
+
+.add-message-form,
+.message {
+  padding-top: 15px;
+  border-top: 1px solid $lightgrey;
+}
+
+.message-file-input {
+  font-size: 9px;
+}
+
+.message-table {
+  border: none;
+}
+
+.messages-cell {
+  border-bottom: 1px solid $lightgrey;
+}
+
+.avatar-cell {
+  max-width: 10px;
+}
+
+.delete-cell {
+  max-width: 30px;
+}
+
+.new-message-cell {
+  // min-width: 300px;
+  width: 80%;
+  border: none
+}
+
+.new-send-cell {
+  vertical-align: top;
+  border: none;
+  max-width: 10px;
+}
+
+.new-cell {
+  max-width: 125px;
+  vertical-align: top;
+  border: none;
 }

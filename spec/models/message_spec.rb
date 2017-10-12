@@ -8,12 +8,6 @@ RSpec.describe Message, type: :model do
     expect(message.body).to eq("I have someting to say!")
   end
 
-  it "body is required" do
-    message = Message.create(body: "")
-
-    expect(message).to be_invalid
-  end
-
   it "can belong to a group and a user" do
     user = build(:user)
     group = create(:group)
