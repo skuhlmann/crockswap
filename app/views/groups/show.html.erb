@@ -38,6 +38,15 @@
         <p>Budget: <%= number_to_currency(@group.budget) %></p>
       <% end %>
 
+      <h6 class="notifcation-note"><%= fa_icon "envelope-o" %> Email Notifications</h6>
+      <% if @member.email_opt %>
+        <p class="notifcation-note">You are subscribed to email notifications for new meal entries and meal ratings.</p>
+        <%= link_to 'Unsubscribe Me', email_opt_path(@group.name, @member, opt_status: false) %>
+      <% else %>
+        <p class="notifcation-note">You are not subscribed to email notifications for new meal entries and meal ratings.</p>
+        <%= link_to 'Subscribe Me', email_opt_path(@group.name, @member, opt_status: true) %>
+      <% end %>
+      
       <% if @group.admin == current_user.id %>
 
         <hr>
@@ -50,7 +59,7 @@
 
         </div>
       <% end %>
-      
+
     </div>
   </div>
 </div>

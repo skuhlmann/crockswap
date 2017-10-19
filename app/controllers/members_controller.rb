@@ -48,6 +48,15 @@ class MembersController < GroupsController
     redirect_to group_members_path(@group.name)
   end
 
+  def email_opt
+    member = Member.find(params[:id])
+    group = Group.find(member.group_id)
+    member.email_opt = params[:opt_status]
+    member.save
+
+    redirect_to group_path(group.name)
+  end
+
   def invite
     if !valid_invite?
       return redirect_to root_path, alert: "Invalid Invite"

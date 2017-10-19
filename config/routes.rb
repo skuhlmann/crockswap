@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get '/invite/:invite_token', :to => "members#invite", :as => "invite_confirmation"
   get 'profile/:id/complete_profile', to: 'users#temporary', as: :complete_profile
+  get 'groups/:group_name/email_opt/:id', to: 'members#email_opt', as: :email_opt
   patch 'profile/:id/update_profile', to: 'users#temporary_update', as: :complete_profile_update
 
   resources :users, only: [:edit, :update], path: 'profile', as: :profile do

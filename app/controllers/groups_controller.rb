@@ -15,6 +15,7 @@ class GroupsController < ApplicationController
     @is_admin = set_admin(@group)
     @weeks = sort_weeks
     @this_week_index = find_week_index
+    @member = Member.where(user_id: current_user.id).take
   end
 
   def new
