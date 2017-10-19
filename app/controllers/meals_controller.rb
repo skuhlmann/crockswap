@@ -31,6 +31,8 @@ class MealsController < ApplicationController
     @meal.week_id = params[:week_id]
     @meal.user_id = @user.id
     if @meal.save!
+      send_meal_added_emails
+
       redirect_to group_week_meal_path(@group.name, params[:week_id], @meal), notice: "That sounds tasty!"
     else
       render :new
@@ -84,6 +86,14 @@ class MealsController < ApplicationController
     @review = @meal.review_by_user(current_user)
     if @review.nil?
       @review = Review.new
+    end
+  end
+
+  def send_meal_added_emails
+    @group.users.each do |user|
+      unless user.id == @meal.user_id
+        MealMailer.meal_added_email(user, @meal, @group).deliver_now
+      end
     end
   end
 end

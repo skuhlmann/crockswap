@@ -6,7 +6,11 @@ class ReviewsController < ApplicationController
     review = Review.new(review_params)
     review.user_id = current_user.id
     review.meal_id = params[:meal_id]
-    review.save!
+
+    if review.save!
+      meal = Meal.find(review.meal_id)
+      MealMailer.rating_email(meal, review).deliver_now
+    end
 
     session[:return_to] ||= request.referer
     redirect_to session.delete(:return_to), notice: "Thanks for the feedback!"

@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi, <%= @user.name %>!</h1>
+    <hr>
+    <p>Someone added a meal for your group <%= @group.name %> on Crockswap!!</p>
+    <p><%= @meal.name %></p>
+    <%= image_tag @meal.picture.url(:medium), width: '300' %>
+    <hr>
+    <p>-Crockswap</p>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi, <%= @user.name %>!</h1>
+    <hr>
+    <p>Someone rated your meal on Crockswap!!</p>
+    <p><%= @meal.name %>:</p>
+    <p><%= @review.rating_text %></p>
+    <p><%= @review.feedback %></p>
+    <hr>
+    <p>-Crockswap</p>
+  </body>
+</html>
