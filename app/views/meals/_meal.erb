@@ -5,11 +5,12 @@
   <p><%= @meal.category ? @meal.category.name : "" %></p>
 
   <p class="list-label">Recipe</p>
-  <% unless @meal.recipe_url.nil? %>
+  <% unless @meal.recipe_url == 'http://' %>
     <p><%= link_to @meal.recipe_url, @meal.recipe_url, :target => "_blank" %></p>
   <% else %>
     <p></p>
   <% end %>
+    <%= image_tag @meal.picture.url(:medium), width: '300' %>
   
   <p class="list-label">Instructions</p>
   <p><%= @meal.instructions %></p>
