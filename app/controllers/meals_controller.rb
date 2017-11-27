@@ -90,8 +90,8 @@ class MealsController < ApplicationController
   end
 
   def send_meal_added_emails
-    @group.users.each do |user|
-      unless user.id == @meal.user_id
+    @group.emailable_users.each do |user|
+      unless user.id == @meal.user_id || 
         MealMailer.meal_added_email(user, @meal, @group).deliver_now
       end
     end

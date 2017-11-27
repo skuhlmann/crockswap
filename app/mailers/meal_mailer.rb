@@ -5,6 +5,7 @@ class MealMailer < ActionMailer::Base
     @review = review
     @meal = meal
     @user = User.find(meal.user_id)
+    @group = @meal.week.group
 
     mail(to: @user.email,
          subject: "Your #{@meal.name} was rated on Crockswap!")

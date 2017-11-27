@@ -3,13 +3,19 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Hi, <%= @user.name %>!</h1>
+    <h1>Hey, <%= @user.name %>!</h1>
     <hr>
-    <p>Someone rated your meal on Crockswap!!</p>
+    <p>Someone in your swap reviewed your meal for the week.</p>
     <p><%= @meal.name %>:</p>
     <p><%= @review.rating_text %></p>
     <p><%= @review.feedback %></p>
+    <p></p>
+    <%= link_to 'Check it out here', group_week_meal_url(@group.name, @meal.week_id, @meal) %>
     <hr>
     <p>-Crockswap</p>
+
+    <hr>
+    <p>If you don't want to get these email notifications visit this link:</p>
+    <%= link_to 'Unsubscribe Me', email_opt_url(@group.name, @user, opt_status: false) %>
   </body>
 </html>

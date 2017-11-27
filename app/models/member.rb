@@ -21,6 +21,10 @@ class Member < ActiveRecord::Base
     where(active: true)
   end
 
+  def self.email_opted_in
+    where(email_opt: true)
+  end
+
   def join_group
     update(status: "Accepted")
   end

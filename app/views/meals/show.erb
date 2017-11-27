@@ -6,7 +6,7 @@
       <% if @is_meal_owner %>
         <h3>My meal</h3>
       <% else %>
-        <h3><%= @meal.user.name + "'s" %> meal</h3>
+        <h3><%= @meal.user.name ? @meal.user.name + "'s" : 'Yummy' %> meal</h3>
       <% end %>
     </div>
     <div class="six columns">

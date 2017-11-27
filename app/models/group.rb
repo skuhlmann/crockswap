@@ -38,6 +38,10 @@ class Group < ActiveRecord::Base
     users.where(temporary: false).merge(Member.active)
   end
 
+  def emailable_users
+    users.merge(Member.email_opted_in)
+  end
+
   def leaderboard_users
     active_users
       .sort_by { |user| user.average_rating(self) }.reverse
