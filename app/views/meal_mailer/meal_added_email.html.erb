@@ -7,7 +7,7 @@
     <hr>
     <p>Someone in your swap just entered a dish. Yum.</p>
     <p><%= @meal.name %></p>
-    <% if a.picture.exists? %>
+    <% if @meal.picture.exists? %>
       <%= image_tag @meal.picture.url(:medium), width: '300' %>
     <% end %>
     <p></p>
