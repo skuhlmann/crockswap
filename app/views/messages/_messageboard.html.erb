@@ -4,12 +4,14 @@
 <div class="dashboard-table message-table">
 <% group.messages.reverse.each do |message| %>
   <div class="dashboard-table-row">
-    <div class="dashboard-table-cell avatar-cell messages-cell">
+    <div class="dashboard-table-cell avatar-cell messages-cell top-border-cell">
         <%= image_tag message.user.avatar.url(:thumb), width: '25', class: 'img-circle profile-img' %>
     </div>
-    <div class="dashboard-table-cell messages-cell">
+    <div class="dashboard-table-cell messages-cell top-border-cell">
       <span class="message-time"><%= message.created_at.strftime('%b  %d') %></span>
     </div>
+  </div>
+  <div class="dashboard-table-row">
     <div class="dashboard-table-cell messages-cell">
       <%= message.body %>
       <% if message.has_picture? %>
@@ -17,6 +19,7 @@
         <%= image_tag message.picture.url(:medium), width: '150' %>
       <% end %>
     </div>
+
     <div class="dashboard-table-cell delete-cell messages-cell">
       <% if message.user_id == current_user.id %>
       <%= link_to group_message_path(@group.name, message), :method => "delete", class: "button float-left" do %>

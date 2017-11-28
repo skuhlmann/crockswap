@@ -23,7 +23,11 @@
 }
 
 .messages-cell {
-  border-bottom: 1px solid $lightgrey;
+  border-bottom: 0px;
+}
+
+.top-border-cell {
+  border-top: 1px solid $lightgrey;
 }
 
 .avatar-cell {
@@ -35,7 +39,6 @@
 }
 
 .new-message-cell {
-  // min-width: 300px;
   width: 80%;
   border: none
 }

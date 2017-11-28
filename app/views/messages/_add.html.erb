@@ -4,20 +4,20 @@
       <div class="dashboard-table-cell new-message-cell">
           <%= f.text_area :body, autofocus: true %>
       </div>
+      <div class="dashboard-table-cell new-send-cell">
+        <%= button_tag(type: 'submit', class: "btn submit") do %>
+          <%= fa_icon "paper-plane-o" %>
+        <% end %>
+      </div>
+    </div>
 
+    <div class="dashboard-table-row add-message-form">
       <div class="dashboard-table-cell new-cell">
         <%= f.label :picture do %>
           <%= fa_icon "picture-o" %>
           <%= f.file_field :picture, accept: "image/*", class: 'message-file-input' %>
         <% end %>
       </div>
-
-      <div class="dashboard-table-cell new-send-cell">
-        <%= button_tag(type: 'submit', class: "btn submit") do %>
-          <%= fa_icon "paper-plane-o" %>
-        <% end %>
-      </div>
-
     </div>
   <% end %>
 </div>
