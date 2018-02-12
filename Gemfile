@@ -26,7 +26,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'spring'
-  gem 'nokogiri'
+  gem 'nokogiri', '~> 1.8.1'
   gem 'capybara'
   gem 'selenium'
 end
