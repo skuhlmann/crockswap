@@ -1,0 +1,10 @@
+<% if Rails.env == "production"  %>
+  <script>
+    
+    var host = "www.crockswap.com";
+    if ((host == window.location.host) && (window.location.protocol != "https:")){
+      window.location.protocol = "https";
+    }
+
+  </script>
+<% end %>
