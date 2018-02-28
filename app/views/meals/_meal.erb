@@ -23,25 +23,32 @@
   <%= form_for([@meal, @review]) do |f| %>
 
     <div class="field">
-      <div class="three columns">
+      <div class="six columns">
+        <%= f.label :rating, "One of your best", class: "field-label" %>
+        <%= f.radio_button :rating, "4" %>
+      </div>
+      
+      <div class="six columns">
         <%= f.label :rating, "Make it again", class: "field-label" %>
         <%= f.radio_button :rating, "3" %>
       </div>
-
-      <div class="five columns">
+    </div>
+    
+    <div class="field">
+      <div class="six columns">
         <%= f.label :rating, "Make it again, with changes",class: "field-label" %>
         <%= f.radio_button :rating, "2" %>
       </div>
 
-      <div class="three columns">
+      <div class="six columns">
         <%= f.label :rating, "Retire it",class: "field-label" %>
         <%= f.radio_button :rating, "1" %>
       </div>
     </div>
 
-    <br><br><br><br>
+    </br></br></br></br>
 
-    <div class="field">
+    <div class="field field-spacer">
       <%= f.label :feedback, class: "field-label" %>
       <%= f.text_area :feedback, class: "area-field" %>
     </div>

@@ -10,6 +10,8 @@ class Review < ActiveRecord::Base
       "Make it again, with changes"
     when 3
       "Make it again"
+    when 4
+      "One of your best"
     else
       ""
     end
